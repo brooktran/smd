@@ -137,6 +137,6 @@ return CMap::mergeArray(
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
-	'params'=>require(dirname(__FILE__).'/APP.php'),
+	'params'=>require(dirname(__FILE__).'/../components/APP.php'),
 
 ));
