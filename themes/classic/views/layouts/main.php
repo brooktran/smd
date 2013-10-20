@@ -66,35 +66,21 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
 
             <div class="btn-toolbar">
                 <div class="btn-group">
-                    <a data-placement="bottom" data-original-title="Show / Hide Sidebar" data-toggle="tooltip"
+                    <a data-placement="bottom" data-original-title="边栏" data-toggle="tooltip"
                        class="btn btn-success btn-sm" id="changeSidebarPos">
                         <i class="icon-resize-horizontal"></i>
                     </a>
                 </div>
                 <div class="btn-group">
-                    <a data-placement="bottom" data-original-title="E-mail" data-toggle="tooltip"
-                       class="btn btn-default btn-sm">
-                        <i class="icon-envelope"></i>
-                        <span class="label label-warning">5</span>
-                    </a>
-                    <a data-placement="bottom" data-original-title="Messages" href="#" data-toggle="tooltip"
+                    <a data-placement="bottom" data-original-title="消息" href="#" data-toggle="tooltip"
                        class="btn btn-default btn-sm">
                         <i class="icon-comments"></i>
                         <span class="label label-danger">4</span>
                     </a>
                 </div>
+
                 <div class="btn-group">
-                    <a data-placement="bottom" data-original-title="Document" href="#" data-toggle="tooltip"
-                       class="btn btn-default btn-sm">
-                        <i class="icon-file"></i>
-                    </a>
-                    <a data-toggle="modal" data-original-title="Help" data-placement="bottom"
-                       class="btn btn-default btn-sm" href="#helpModal">
-                        <i class="icon-question-sign"></i>
-                    </a>
-                </div>
-                <div class="btn-group">
-                    <a href="login.html" data-toggle="tooltip" data-original-title="Logout" data-placement="bottom"
+                    <a href="login.html" data-toggle="tooltip" data-original-title="退出" data-placement="bottom"
                        class="btn btn-metis-1 btn-sm">
                         <i class="icon-off"></i>
                     </a>
@@ -109,18 +95,18 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <!-- .nav -->
             <ul class="nav navbar-nav">
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="table.html">Tables</a></li>
-                <li><a href="file.html">File Manager</a></li>
+                <li><a href="#">控制台</a></li>
+                <li><a href="#">布局/主题</a></li>
+                <li><a href="#">文件管理</a></li>
                 <li class='dropdown '>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Form Elements <b class="caret"></b>
+                       高级工具<b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="form-general.html">General</a></li>
-                        <li><a href="form-validation.html">Validation</a></li>
-                        <li><a href="form-wysiwyg.html">WYSIWYG</a></li>
-                        <li><a href="form-wizard.html">Wizard &amp; File Upload</a></li>
+                        <li><a href="#">基本信息</a></li>
+                        <li><a href="#">网站重置</a></li>
+                        <li><a href="#">统计信息</a></li>
+                        <li><a href="#">备案 &amp; 审查</a></li>
                     </ul>
                 </li>
             </ul>
@@ -132,7 +118,7 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
     <!-- header.head -->
     <header class="head">
         <div class="search-bar">
-            <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip"
+            <a data-original-title="显示/隐藏菜单" data-placement="bottom" data-tooltip="tooltip"
                class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu"
                id="menu-toggle">
                 <i class="icon-sort"></i>
@@ -140,7 +126,7 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
 
             <form class="main-search">
                 <div class="input-group">
-                    <input type="text" class="input-small form-control" placeholder="Live Search ...">
+                    <input type="text" class="input-small form-control" placeholder="功能搜索 ...">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default btn-sm" type="button"><i class="icon-search"></i>
                                     </button>
@@ -151,7 +137,7 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
         </div>
         <!-- ."main-bar -->
         <div class="main-bar">
-            <h3><i class="icon-home"></i> Metis</h3>
+            <h3><i class="icon-home"></i> AirBool</h3>
         </div>
         <!-- /.main-bar -->
     </header>
@@ -163,95 +149,52 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
 <div id="left">
     <div class="media user-media">
         <a class="user-link" href="">
-            <img class="media-object img-thumbnail user-img" alt="User Picture" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/user.gif">
+            <img class="media-object img-thumbnail user-img" alt="用户头像" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/user.gif">
             <span class="label label-danger user-label">16</span>
         </a>
 
         <div class="media-body">
-            <h5 class="media-heading">Archie</h5>
+            <h5 class="media-heading">老九</h5>
             <ul class="list-unstyled user-info">
-                <li><a href="">Administrator</a></li>
-                <li>Last Access : <br>
-                    <small><i class="icon-calendar"></i> 16 Mar 16:32</small>
+                <li><a href="">超级管理员</a></li>
+                <li>上次登陆 : <br>
+                    <small><i class="icon-calendar"></i> 08-16 16:32</small>
                 </li>
             </ul>
         </div>
     </div>
     <!-- #menu -->
     <ul id="menu" class="collapse">
-        <li class="nav-header">Menu</li>
+        <li class="nav-header">菜单</li>
         <li class="nav-divider"></li>
         <li class="panel ">
             <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                data-target="#dashboard-nav">
-                <i class="icon-dashboard"></i> Dashboard
+                <i class="icon-dashboard"></i> 控制台
 	    <span class="pull-right">
 		<i class="icon-angle-left"></i>
             </span>
             </a>
             <ul class="collapse" id="dashboard-nav">
-                <li class=""><a href="dashboard.html"><i class="icon-angle-right"></i> Default Style</a></li>
-                <li class=""><a href="alterne.html"><i class="icon-angle-right"></i> Alternative Style</a></li>
+                <li class=""><a href="#"><i class="icon-angle-right"></i>前台控制</a></li>
+                <li class=""><a href="#"><i class="icon-angle-right"></i> 后台控制</a></li>
             </ul>
         </li>
         <li class="panel ">
             <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                data-target="#component-nav">
-                <i class="icon-tasks"></i> Components
+                <i class="icon-tasks"></i> 文章管理
 	    <span class="pull-right">
 		<i class="icon-angle-left"></i>
             </span>
             </a>
             <ul class="collapse" id="component-nav">
-                <li class=""><a href="icon.html"><i class="icon-angle-right"></i> Icon </a></li>
-                <li class=""><a href="button.html"><i class="icon-angle-right"></i> Button</a></li>
-                <li class=""><a href="progress.html"><i class="icon-angle-right"></i> Progress</a></li>
-                <li class=""><a href="pricing.html"><i class="icon-credit-card"></i> Pricing Table</a></li>
+                <li class=""><a href="#"><i class="icon-angle-right"></i>发表文章</a></li>
+                <li class=""><a href="#"><i class="icon-angle-right"></i>分类管理</a></li>
+                <li class=""><a href="#"><i class="icon-angle-right"></i>批量管理</a></li>
+                <li class=""><a href="#"><i class="icon-credit-card"></i>设置</a></li>
             </ul>
         </li>
-        <li class="panel ">
-            <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle collapsed"
-               data-target="#form-nav">
-                <i class="icon-pencil"></i> Forms
-	    <span class="pull-right">
-		<i class="icon-angle-left"></i>
-            </span>
-            </a>
-            <ul class="collapse" id="form-nav">
-                <li class=""><a href="form-general.html"><i class="icon-angle-right"></i> General</a></li>
-                <li class=""><a href="form-validation.html"><i class="icon-angle-right"></i> Validation</a></li>
-                <li class=""><a href="form-wysiwyg.html"><i class="icon-angle-right"></i> WYSIWYG</a></li>
-                <li class=""><a href="form-wizard.html"><i class="icon-angle-right"></i> Wizard &amp; File Upload</a>
-                </li>
-            </ul>
-        </li>
-        <li><a href="table.html"><i class="icon-table"></i> Tables</a></li>
-        <li><a href="file.html"><i class="icon-file"></i> File Manager</a></li>
-        <li><a href="typography.html"><i class="icon-font"></i> Typography</a></li>
-        <li><a href="maps.html"><i class="icon-map-marker"></i> Maps</a></li>
-        <li><a href="chart.html"><i class="icon-bar-chart"></i> Charts</a></li>
-        <li><a href="calendar.html"><i class="icon-calendar"></i> Calendar</a></li>
-        <li class="panel">
-            <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#error-nav">
-                <i class="icon-warning-sign"></i> Error Pages
-	    <span class="pull-right">
-		<i class="icon-angle-left"></i>
-            </span>
-            </a>
-            <ul class="collapse" id="error-nav">
-                <li><a href="403.html"><i class="icon-angle-right"></i> 403</a></li>
-                <li><a href="404.html"><i class="icon-angle-right"></i> 404</a></li>
-                <li><a href="405.html"><i class="icon-angle-right"></i> 405</a></li>
-                <li><a href="500.html"><i class="icon-angle-right"></i> 500</a></li>
-                <li><a href="503.html"><i class="icon-angle-right"></i> 503</a></li>
-                <li><a href="offline.html"><i class="icon-angle-right"></i> offline</a></li>
-                <li><a href="countdown.html"><i class="icon-angle-right"></i> Under Construction</a></li>
-            </ul>
-        </li>
-        <li><a href="grid.html"><i class="icon-columns"></i> Grid</a></li>
-        <li><a href="blank.html"><i class="icon-check-empty"></i> Blank Page</a></li>
-        <li class="nav-divider"></li>
-        <li><a href="login.html"><i class="icon-signin"></i> Login Page</a></li>
     </ul>
     <!-- /#menu -->
 </div>
@@ -260,48 +203,10 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
 <div id="content">
     <div class="outer">
         <div class="inner">
-
-
             <div class="col-lg-12">
-                <h2>Free Admin Template with Twitter Bootstrap</h2>
 
-                <h3>Installation</h3>
-                <h4>2.0 Version</h4>
-
-                <p>required <a href="http://nodejs.org/">node.js</a> &amp; <a href="http://gruntjs.com/getting-started">grunt</a>
-                </p>
-<pre><code>$ git clone https://github.com/onokumus/Bootstrap-Admin-Template.git yourfoldername
-        $ cd yourfoldername
-        $ git submodule init
-        $ git submodule update
-        $ npm install
-        $ grunt
-        $ cd dist/
-        $ open index.html</code></pre>
-                <h4>1.2 Version</h4>
-<pre><code>$ git clone -b v1.2 https://github.com/onokumus/Bootstrap-Admin-Template.git yourfoldername
-        $ cd yourfoldername
-        $ git submodule init
-        $ git submodule update
-        $ open index.html</code></pre>
-                <h3>Demo</h3>
-                <h4>For 2.0.0 version</h4>
-
-                <p><a href="http://demo.onokumus.com/metis/">http://demo.onokumus.com/metis/</a></p>
-                <h4>For 1.2 version</h4>
-
-                <p>(not development)
-                    <a href="http://demo.onokumus.com/metis/v12">http://demo.onokumus.com/metis/v12</a></p>
-
-                <h3>Licensing</h3>
-
-                <p>Bootstrap Admin template is open-sourced software licensed under the <a
-                        href="http://opensource.org/licenses/MIT">MIT License</a></p>
-
-                <p><a href="https://wrapbootstrap.com/theme/nuro-theme-WB0628X10">Buy me a coffee?</a></p>
 
             </div>
-
         </div>
         <!-- end .inner -->
     </div>
@@ -315,7 +220,7 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
 
 
 <div id="footer">
-    <p>2013 &copy; Metis Admin</p>
+    <p>2013 &copy; AirBool. by brook & laojiu</p>
 </div>
 
 
