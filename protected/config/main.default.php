@@ -1,15 +1,14 @@
 <?php
 
-$host='127.0.0.1';
-$dbu='root';
-$dbp='root';
+$host='www.airbool.com';
+$dbu='airbool_admin';
+$dbp='airbool123456';
 
 define('IS_SYNC', false);
-defined('YII_DEBUG') or define('YII_DEBUG',true);
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 
 return CMap::mergeArray(
-		require(dirname(__FILE__).DIRECTORY_SEPARATOR.'../../../smoothy/protected/config/main.php')
+		require(dirname(__FILE__).DIRECTORY_SEPARATOR.'../../../smoothy/protected/config/main.default.php')
 		, array(
 // 		'smoothyPath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'../../smoothy',
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
@@ -21,9 +20,11 @@ return CMap::mergeArray(
 	'preload'=>array('log'),
 
 	'import'=>array(
-			'application.models.yuy.*',
+			'application.models.domain.*',
 			'application.models.form.*',
 			'application.components.*',
+           'application.service.*',
+           'application.hybrid.*',
 	),
 	'modules'=>array(
 		'gii'=>array(
@@ -31,63 +32,12 @@ return CMap::mergeArray(
 			'password'=>'11',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
+//			'generatorPaths'=>array(
+//                'bootstrap.gii',
+//            ),
 		),
 		'back'=>array(
 			'class'=>'application.modules.back.BackModule'
-		),
-		'user'=>array(
-				'tableUsers' => 'wksvc.tbAuthUsers',
-				'tableProfiles' => 'wksvc.tbAuthProfiles',
-				'tableProfileFields' => 'wksvc.tbAuthProfilesFields',
-				# encrypting method (php hash function)
-				'hash' => 'md5',
-
-				# send activation email
-				'sendActivationMail' => true,
-
-				# allow access for non-activated users
-				'loginNotActiv' => false,
-
-				# activate user on registration (only sendActivationMail = false)
-				'activeAfterRegister' => false,
-
-				# automatically login from registration
-				'autoLogin' => true,
-
-				# registration path
-				'registrationUrl' => array('/user/registration'),
-
-				# recovery password path
-				'recoveryUrl' => array('/user/recovery'),
-
-				# login form path
-				'loginUrl' => array('/user/login'),
-
-				# page after login
-				'returnUrl' => array('/user/profile'),
-
-				# page after logout
-				'returnLogoutUrl' => array('/user/login'),
-		),
-
-		//Modules Rights
-		'rights'=>array(
-				'superuserName'=>'Admin', // Name of the role with super user privileges.
-				'authenticatedName'=>'Authenticated',  // Name of the authenticated user role.
-				'userIdColumn'=>'id', // Name of the user id column in the database.
-				'userNameColumn'=>'username',  // Name of the user name column in the database.
-				'enableBizRule'=>true,  // Whether to enable authorization item business rules.
-				'enableBizRuleData'=>true,   // Whether to enable data for business rules.
-				'displayDescription'=>true,  // Whether to use item description instead of name.
-				'flashSuccessKey'=>'RightsSuccess', // Key to use for setting success flash messages.
-				'flashErrorKey'=>'RightsError', // Key to use for setting error flash messages.
-
-				'baseUrl'=>'/rights', // Base URL for Rights. Change if module is nested.
-				'layout'=>'rights.views.layouts.main',  // Layout to use for displaying Rights.
-				'appLayout'=>'', // Application layout.
-				//               'cssFile'=>'rights.css', // Style sheet file to use for Rights.
-				'install'=>false,  // Whether to enable installer.
-				'debug'=>false,
 		),
 	),
 	'wrappers'=>array(
@@ -119,17 +69,18 @@ return CMap::mergeArray(
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 				'<module:\w+>/<controller:\w+>/<action:\w+>'=>'<module>/<controller>/<action>',
-
-
 			),
 			'urlSuffix'=>'.html',
 		),
+//		'bootstrap'=>array(
+//           'class'=>'bootstrap.components.Bootstrap',
+//        ),
 // 		'db'=>array(
 // 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 // 		),
 		'db'=>array(
 				'class' => 'CDbConnection',
-				'connectionString' => "mysql:host=$host;dbname=yuyctn",
+				'connectionString' => "mysql:host=$host;dbname=airbool_content",
 				'emulatePrepare' => true,
 				'username' => $dbu,
 				'password' => $dbp,
@@ -138,7 +89,7 @@ return CMap::mergeArray(
 		),
 		'service'=>array(
 				'class' => 'CDbConnection',
-				'connectionString' => "mysql:host=$host;dbname=yuysvc",
+				'connectionString' => "mysql:host=$host;dbname=airbool_service",
 				'emulatePrepare' => true,
 				'username' => $dbu,
 				'password' => $dbp,
@@ -147,16 +98,16 @@ return CMap::mergeArray(
 		),
 		'address'=>array(
 				'class' => 'CDbConnection',
-				'connectionString' => "mysql:host=$host;dbname=yuyads",
+				'connectionString' => "mysql:host=$host;dbname=airbool_address",
 				'emulatePrepare' => true,
 				'username' => $dbu,
 				'password' => $dbp,
 				'charset' => 'utf8',
 				'enableProfiling'=>true,
 		),
-		'yuy'=>array(
+		'domain'=>array(
 				'class' => 'CDbConnection',
-				'connectionString' => "mysql:host=$host;dbname=yuyuu",
+				'connectionString' => "mysql:host=$host;dbname=airbool_domain",
 				'emulatePrepare' => true,
 				'username' => $dbu,
 				'password' => $dbp,
@@ -181,10 +132,11 @@ return CMap::mergeArray(
 		),
 	),
 
+
+
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
-		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
-	),
+    ),
+
 ));
