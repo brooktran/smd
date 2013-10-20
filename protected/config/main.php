@@ -24,6 +24,8 @@ return CMap::mergeArray(
 			'application.models.domain.*',
 			'application.models.form.*',
 			'application.components.*',
+           'application.service.*',
+           'application.hybrid.*',
 	),
 	'modules'=>array(
 		'gii'=>array(
@@ -135,11 +137,6 @@ return CMap::mergeArray(
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
-	'params'=>array(
-		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
-	),
-
-
+	'params'=>require(dirname(__FILE__).'/APP.php'),
 
 ));
