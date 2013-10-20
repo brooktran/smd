@@ -15,7 +15,7 @@ class ProductHybrid{
         return $this->id;
     }
 
-    private  function _getProduct(){
+    public  function getProduct(){
         if(empty($this->product)){
             $this->product = new Product();
         }
@@ -23,19 +23,30 @@ class ProductHybrid{
     }
 
     /**
-     * 保存产品信息
+     * 保存、修改产品信息
      *
      */
     public function saveProducts($properties){
         $product = $this->_getProduct();
-        if($properties){
-            foreach ($properties as $name=>$value){
-                $product->$name=$value;
-            }
-        }
+        $contentHybrid = new ContentHybrid();
 
-        $result= $product->save();
-        $this->id = $result->getPrimaryKey();
+        if(!$properties['fdContentID']){//保存
+            $contentHybrid->saveContent($properties['fdTypeID'], $name = $properties['fdName']);
+            $properties['fdContentID'] = $contentHybrid->id;
+
+            $contentHybrid->saveBlob(null,$properties['fdValue']);
+
+            if($properties){
+                unset($properties['fdValue']);
+                unset($properties['fdName']);
+                foreach ($properties as $name=>$value){
+                    $product->$name=$value;
+                }
+            }
+            $result= $product->save();
+            $this->id = $result->getPrimaryKey();
+
+        }
 
         return $result;
     }

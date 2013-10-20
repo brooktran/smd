@@ -33,7 +33,16 @@ class ArticleHybrid{
 
     public function saveArticleContent($properties){
         $article = $this->_getArticle();
+        $contentHybrid = new ContentHybrid();
+
+        $contentHybrid->saveContent($properties['fdTypeID'], $name = $properties['fdName']);
+        $properties['fdContentID'] = $contentHybrid->id;
+
+        $contentHybrid->saveBlob(null,$properties['fdValue']);
+
         if($properties){
+            unset($properties['fdValue']);
+            unset($properties['fdName']);
             foreach ($properties as $name=>$value){
                 $article->$name=$value;
             }
@@ -45,6 +54,19 @@ class ArticleHybrid{
         return $result;
     }
 
+
+
+    /**
+     * 浏览次数加一
+     *
+     * @param $contentId 浏览次数添加的日志的ID
+     */
+    public function  addContentClick($contentId){
+        $content=Content::model()->findByPk($contentId);
+        $contentHot=$content->fdHot+1;
+
+        Content::model()->updateByPk($contentId, array('fdHot'=>$contentHot));
+    }
 
 
 

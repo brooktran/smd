@@ -1,12 +1,12 @@
 <?php
 
-class ProductController extends Controller
+class ArticleController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-//	public $layout='//layouts/column2';
+	//public $layout='//layouts/column2';
 
 	/**
 	 * @return array action filters
@@ -62,19 +62,19 @@ class ProductController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Product;
+		$model=new Article;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Product']))
+		if(isset($_POST['Article']))
 		{
-			$model->attributes=$_POST['Product'];
-           $attribute = array_merge($model->attributes,array('fdTypeID'=>Yii::app()->params['ATTR_PRODUCT_TYPEID']));
-           $product =  ProductService::factory()->saveProducts($attribute);
-			if($product){
-                $this->redirect(array('view','id'=>$model->id));
-            }
+			$model->attributes=$_POST['Article'];
+
+            $attribute = array_merge($model->attributes,array('fdTypeID'=>Yii::app()->params['ATTR_ARTICLE_TYPEID']));
+            $article =  ArticleService::factory()->saveArticle($attribute);
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
@@ -94,12 +94,10 @@ class ProductController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Product']))
+		if(isset($_POST['Article']))
 		{
-			$model->attributes=$_POST['Product'];
-
-           $product =  ProductService::factory()->updateProducts($model->attributes);
-			if($product)
+			$model->attributes=$_POST['Article'];
+			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
@@ -113,13 +111,9 @@ class ProductController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete()
+	public function actionDelete($id)
 	{
-		//$this->loadModel($id)->delete();
-        $ttr = $_GET;//array('id'=>$id,'fdContentID'=>$cid);
-         if(Yii::app()->request->isAjaxRequest){
-            ProductService::factory()->deleteProducts($attr);
-         }
+		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
@@ -131,7 +125,7 @@ class ProductController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Product');
+		$dataProvider=new CActiveDataProvider('Article');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -142,10 +136,10 @@ class ProductController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Product('search');
+		$model=new Article('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Product']))
-			$model->attributes=$_GET['Product'];
+		if(isset($_GET['Article']))
+			$model->attributes=$_GET['Article'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -156,12 +150,12 @@ class ProductController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Product the loaded model
+	 * @return Article the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Product::model()->findByPk($id);
+		$model=Article::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -169,11 +163,11 @@ class ProductController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Product $model the model to be validated
+	 * @param Article $model the model to be validated
 	 */
 	public function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='product-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='article-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

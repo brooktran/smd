@@ -46,11 +46,13 @@ class Product extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, fdContentID, fdDomainID, fdColumn', 'required'),
-			array('id, fdAreaID, fdContentID, fdDomainID, fdColumn', 'numerical', 'integerOnly'=>true),
+			array('id, fdContentID,  fdColumn', 'required'),
+			//array('id, fdAreaID, fdContentID, fdDomainID, fdColumn', 'numerical', 'integerOnly'=>true),
+
+
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, fdAreaID, fdContentID, fdDomainID, fdColumn', 'safe', 'on'=>'search'),
+			array('id, fdAreaID, fdContentID,  fdColumn', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -81,9 +83,9 @@ class Product extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'fdAreaID' => '地区',
-			'fdContentID' => 'Fd Content',
+			'fdContentID' => '产品名称',
 			'fdDomainID' => 'Fd Domain',
-			'fdColumn' => 'Fd Column',
+			'fdColumn' => '分类名称',
 		);
 	}
 

@@ -29,4 +29,61 @@ class ProductService extends AbstractService{
         return $result;
     }
 
+
+
+    /**
+     * @param array $properties
+     * @return bool|int
+     */
+    public function updateProduct($properties){
+        $productHybrid = new ProductHybrid();
+        $product = $productHybrid->getProduct();
+        $contentHybrid = new ContentHybrid();
+
+        if($properties['fdContentID']){//修改
+            try{
+                $contentHybrid->id =$properties['fdContentID'];
+                $contentHybrid->updateContent(array('fdName'=>$properties['fdName']));
+
+                $contentHybrid->updateBlob($properties['fdContentID'],array('fdValue'=>$properties['fdValue']));
+
+                $array = array();
+                unset($properties['fdValue']);
+                unset($properties['fdName']);
+                foreach ($properties as $name=>$value){
+                    $array[$name]=$value;
+                }
+
+                $result= $product->updateByPk($properties['id'],$array);
+            }catch (Exception $e){
+                return false;
+            }
+        }
+        return $result;
+    }
+
+
+    /**
+     * 删除产品
+     * @param array $attr
+     * @return int
+     */
+    public function deleteProducts($attr,$delete=false){
+        if($delete){
+
+        }
+
+        $contentHybrid = new ContentHybrid();
+        $contentHybrid->id = $attr['fdContentID'];
+        $contentNum = $contentHybrid->deleteContent();
+        $bold = Blob::model()->findByAttributes(array('fdContentID'=>$attr['fdContentID']));
+        $blobNum = $contentHybrid->deleteBlob($bold->id);
+
+        if($contentNum && $blobNum){
+            $result = Product::model()->deleteByPk($attr['id']);
+        }
+        return $result;
+    }
+
+
 }
