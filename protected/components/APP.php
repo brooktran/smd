@@ -16,11 +16,6 @@ class APP {
 	const ATTR_ARTICLE_TYPEID = 11;
 	
 	
-	
-	
-	
-	
-	
 }
 
 ?>

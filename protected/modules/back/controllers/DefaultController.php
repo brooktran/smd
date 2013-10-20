@@ -7,7 +7,4 @@ class DefaultController extends Controller {
 				 :$this->createUrl('/back/index'));
 	}
 	
-	public function actionXX(){
-		echo 'sdf';
-	}
 }

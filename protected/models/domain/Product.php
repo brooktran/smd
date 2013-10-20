@@ -80,7 +80,7 @@ class Product extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'fdAreaID' => 'Fd Area',
+			'fdAreaID' => '地区',
 			'fdContentID' => 'Fd Content',
 			'fdDomainID' => 'Fd Domain',
 			'fdColumn' => 'Fd Column',
