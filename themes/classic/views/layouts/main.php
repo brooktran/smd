@@ -167,6 +167,7 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
     <ul id="menu" class="collapse">
         <li class="nav-header">菜单</li>
         <li class="nav-divider"></li>
+
         <li class="panel ">
             <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                data-target="#dashboard-nav">
@@ -180,6 +181,7 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
                 <li class=""><a href="#"><i class="icon-angle-right"></i> 后台控制</a></li>
             </ul>
         </li>
+
         <li class="panel ">
             <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
                data-target="#component-nav">
@@ -194,7 +196,74 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
                 <li class=""><a href="#"><i class="icon-angle-right"></i>批量管理</a></li>
                 <li class=""><a href="#"><i class="icon-credit-card"></i>设置</a></li>
             </ul>
-        </li>
+        </li><!-- end panel -->
+
+
+        <li class="panel ">
+            <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
+               data-target="#product-nav">
+                <i class="icon-tasks"></i> 产品管理
+	    <span class="pull-right">
+		<i class="icon-angle-left"></i>
+            </span>
+            </a>
+            <ul class="collapse" id="product-nav">
+                <li class=""><a href="#"><i class="icon-angle-right"></i>发布产品</a></li>
+                <li class=""><a href="#"><i class="icon-angle-right"></i>分类管理</a></li>
+                <li class=""><a href="#"><i class="icon-angle-right"></i>批量管理</a></li>
+                <li class=""><a href="#"><i class="icon-credit-card"></i>属性设置</a></li>
+            </ul>
+        </li><!-- end panel -->
+
+
+        <li class="panel ">
+            <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
+               data-target="#order-nav">
+                <i class="icon-tasks"></i> 订单管理
+	    <span class="pull-right">
+		<i class="icon-angle-left"></i>
+            </span>
+            </a>
+            <ul class="collapse" id="order-nav">
+                <li class=""><a href="#"><i class="icon-angle-right"></i>分类管理</a></li>
+                <li class=""><a href="#"><i class="icon-angle-right"></i>批量管理</a></li>
+                <li class=""><a href="#"><i class="icon-credit-card"></i>设置</a></li>
+            </ul>
+        </li><!-- end panel -->
+
+
+        <li class="panel ">
+            <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
+               data-target="#users-nav">
+                <i class="icon-tasks"></i> 用户管理
+	    <span class="pull-right">
+		<i class="icon-angle-left"></i>
+            </span>
+            </a>
+            <ul class="collapse" id="users-nav">
+                <li class=""><a href="#"><i class="icon-angle-right"></i>权限管理</a></li>
+                <li class=""><a href="#"><i class="icon-angle-right"></i>分类管理</a></li>
+                <li class=""><a href="#"><i class="icon-angle-right"></i>批量管理</a></li>
+                <li class=""><a href="#"><i class="icon-credit-card"></i>设置</a></li>
+            </ul>
+        </li><!-- end panel -->
+
+
+        <li class="panel ">
+            <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
+               data-target="#settings-nav">
+                <i class="icon-tasks"></i> 基本设置
+	    <span class="pull-right">
+		<i class="icon-angle-left"></i>
+            </span>
+            </a>
+            <ul class="collapse" id="settings-nav">
+                <li class=""><a href="#"><i class="icon-angle-right"></i>网站设置</a></li>
+                <li class=""><a href="#"><i class="icon-angle-right"></i>联系方式</a></li>
+                <li class=""><a href="#"><i class="icon-angle-right"></i>留言系统</a></li>
+                <li class=""><a href="#"><i class="icon-credit-card"></i>设置</a></li>
+            </ul>
+        </li><!-- end panel -->
     </ul>
     <!-- /#menu -->
 </div>
