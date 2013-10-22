@@ -27,7 +27,8 @@ class ProductHybrid{
      *
      */
     public function saveProducts($properties){
-        $product = $this->_getProduct();
+        print_r($properties);exit;
+        $product = $this->getProduct();
         $contentHybrid = new ContentHybrid();
 
         if(!$properties['fdContentID']){//保存
