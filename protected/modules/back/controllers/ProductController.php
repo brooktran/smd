@@ -62,14 +62,14 @@ class ProductController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Product;
-
+		//$model=new Product;
+        $model = new ProductForm();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Product']))
+		if(isset($_POST['ProductForm']))
 		{
-			$model->attributes=$_POST['Product'];
+			$model->attributes=$_POST['ProductForm'];
            $attribute = array_merge($model->attributes,array('fdTypeID'=>Yii::app()->params['ATTR_PRODUCT_TYPEID']));
            $product =  ProductService::factory()->saveProducts($attribute);
 			if($product){
