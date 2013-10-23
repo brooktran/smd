@@ -1,100 +1,132 @@
 <?php
-$this->layout='none';
-$this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Login");
-?>
-
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="backend">
-    <meta name="author" content="brook">
-    <link rel="shortcut icon" href="<?php echo yii::app()->theme->baseUrl ?>/assets/ico/favicon.png">
-
-    <!-- Bootstrap core CSS -->
-    <link href="<?php echo yii::app()->theme->baseUrl ?>/assets/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="<?php echo yii::app()->theme->baseUrl ?>/assets/css/css.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/js/html5shiv.js"></script>
-      <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/js/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-
-
-
-<?php if(Yii::app()->user->hasFlash('loginMessage')): ?>
-<div class="success">
-	<?php echo Yii::app()->user->getFlash('loginMessage'); ?>
-</div>
-<?php endif; ?>
-
-
-  <body class="login_body">
-    <div class="container">
-    <?php echo CHtml::beginForm('','post',array(
-    		'class'=>"form-signin"
-    )); ?>
-        <h2 class="form-signin-heading">请登陆</h2>
-        <?php echo CHtml::activeTextField($model,'username',array(
-        		'class'=>"form-control",
-        		'onfocus' => 'if(this.value=="邮箱/手机/用户名"){this.value=""};',
-        		'type'=>"text",
-        		'placeholder'=>"邮箱/手机/用户名",
-        		'required'=>"required",
-        		"autofocus"
-        )) ?>
-        <?php echo CHtml::activePasswordField($model,'password',array(
-        		'type'=>"password",
-        		'class'=>"form-control",
-        		'placeholder'=>"密码：",
-        		'required'=>"required",
-        )) ?>
-        <label class="checkbox">
-          <?php echo CHtml::activeCheckBox($model,'rememberMe',array(
-          		'type'=>"checkbox",
-          		'value'=>"remember-me"
-          )); ?>
-		  		<?php echo CHtml::activeLabelEx($model,'rememberMe'); ?>
-        </label>
-        <label><?php echo CHtml::errorSummary($model); ?></label>
-        <?php echo CHtml::submitButton(UserModule::t("Login"),array(
-        		'class'=>"btn btn-lg btn-primary btn-block",
-        )); ?>
-	<?php echo CHtml::endForm(); ?>
-    </div> <!-- /container -->
-<?php
 $form = new CForm(array(
-    'elements'=>array(
-        'username'=>array(
-            'type'=>'text',
-			'class'=>'login_btn',
-            'maxlength'=>32,
-        ),
-        'password'=>array(
-            'type'=>'password',
-            'maxlength'=>32,
-        ),
-        'rememberMe'=>array(
-            'type'=>'checkbox',
-        )
-    ),
+			'elements'=>array(
+				'username'=>array(
+					'type'=>'text',
+					'maxlength'=>32,
+					),
+				'password'=>array(
+					'type'=>'password',
+					'maxlength'=>32,
+					),
+				'rememberMe'=>array(
+					'type'=>'checkbox',
+					)
+				),
 
-    'buttons'=>array(
-        'login'=>array(
-            'type'=>'submit',
-            'label'=>'Login',
-        ),
-    ),
-), $model);
+			'buttons'=>array(
+				'login'=>array(
+					'type'=>'submit',
+					'label'=>'Login',
+					),
+				),
+			), $model);
 ?>
 
+<?php
+$this->pageTitle = Yum::t('Login');
+$this->title = Yum::t('Login');
+$this->breadcrumbs=array(Yum::t('Login'));
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-  </body>
-</html>
+echo CHtml::beginForm(array('//user/auth/login'));  
+
+if(isset($_GET['action']))
+	echo CHtml::hiddenField('returnUrl', urldecode($_GET['action']));
+
+?>
+
+<div class="form">
+
+<?php if($model->hasErrors()) { ?>
+<div class="alert">
+<?php echo CHtml::errorSummary($model); ?>
+</div>
+<?php } ?>
+
+
+<div class="span5 loginform">
+<p> <?php echo Yum::t(
+		'Please fill out the following form with your login credentials:'); ?> </p>
+
+<div class="row">
+	<?php 
+if(Yum::module()->loginType & UserModule::LOGIN_BY_USERNAME)
+	echo CHtml::activeLabelEx($model,'username'); 
+if(Yum::module()->loginType & UserModule::LOGIN_BY_EMAIL)
+	printf ('<label for="YumUserLogin_username">%s <span class="required">*</span></label>', Yum::t('E-Mail address')); 
+	?>
+
+		<?php echo CHtml::activeTextField($model,'username') ?>
+</div>
+
+<div class="row">
+		<?php echo CHtml::activeLabelEx($model,'password'); ?>
+		<?php echo CHtml::activePasswordField($model,'password'); ?>
+</div>
+
+<?php if ($model->scenario == 'captcha' && CCaptcha::checkRequirements()) { ?>
+	<div class="row">
+		<?php echo CHtml::activeLabel($model, 'verifyCode'); ?>
+			<div>
+				<?php $this->widget('CCaptcha'); ?>
+				<?php echo CHtml::activeTextField($model, 'verifyCode'); ?>
+		</div>
+		<?php echo CHtml::error($model, 'verifyCode'); ?>
+	</div>
+<?php } ?>
+
+
+</div>
+		
+<?php if(Yum::module()->loginType & UserModule::LOGIN_BY_HYBRIDAUTH 
+		&& Yum::module()->hybridAuthProviders) { ?>
+	<div class="span5 hybridauth">
+<?php echo Yum::t('You can also login by') . ': <br />'; 
+foreach(Yum::module()->hybridAuthProviders as $provider) 
+	echo CHtml::link(
+			CHtml::image(
+				Yii::app()->getAssetManager()->publish(
+					Yii::getPathOfAlias(
+						'application.modules.user.assets.images').'/'.strtolower($provider).'.png'),
+				$provider) . $provider, $this->createUrl(
+					'//user/auth/login', array('hybridauth' => $provider)), array(
+					'class' => 'social')) . '<br />'; 
+?>
+</div>
+
+<div class="clearfix"></div>
+
+<?php } ?>
+
+<div class="span10">
+<div class="row">
+	<p class="hint">
+	<?php 
+	if(Yum::hasModule('registration') && Yum::module('registration')->enableRegistration)
+	echo CHtml::link(Yum::t("Registration"),
+			Yum::module('registration')->registrationUrl);
+	if(Yum::hasModule('registration') 
+			&& Yum::module('registration')->enableRegistration
+			&& Yum::module('registration')->enableRecovery)
+	echo ' | ';
+	if(Yum::hasModule('registration') 
+			&& Yum::module('registration')->enableRecovery) 
+	echo CHtml::link(Yum::t("Lost password?"),
+			Yum::module('registration')->recoveryUrl);
+	?>
+</p>
+
+</div>
+
+
+<div class="row">
+<div class="buttons">
+<?php echo CHtml::submitButton(Yum::t('Login'), array('class' => 'btn')); ?>
+</div>
+
+</div>
+</div>
+</div>
+
+<?php echo CHtml::endForm(); ?>
+

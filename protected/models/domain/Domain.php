@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'tbDomain':
  * @property integer $id
  * @property string $fdName
+ * @property string $fdHost
  * @property string $fdDescription
  */
 class Domain extends CActiveRecord
@@ -44,7 +45,7 @@ class Domain extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fdName', 'length', 'max'=>64),
+			array('fdName,fdHost', 'length', 'max'=>64),
 			array('fdDescription', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -72,6 +73,7 @@ class Domain extends CActiveRecord
 			'id' => 'ID',
 			'fdName' => 'Fd Name',
 			'fdDescription' => 'Fd Description',
+            'fdHost'=>域名,
 		);
 	}
 
@@ -88,7 +90,8 @@ class Domain extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('fdName',$this->fdName,true);
-		$criteria->compare('fdDescription',$this->fdDescription,true);
+        $criteria->compare('fdHost',$this->fdHost,true);
+        $criteria->compare('fdDescription',$this->fdDescription,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

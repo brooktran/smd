@@ -167,16 +167,16 @@ class ProductController extends Controller
 		return $model;
 	}
 
-	/**
-	 * Performs the AJAX validation.
-	 * @param Product $model the model to be validated
-	 */
-	public function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='product-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
+//	/**
+//	 * Performs the AJAX validation.
+//	 * @param Product $model the model to be validated
+//	 */
+//	public function performAjaxValidation($model)
+//	{
+//		if(isset($_POST['ajax']) && $_POST['ajax']==='product-form')
+//		{
+//			echo CActiveForm::validate($model);
+//			Yii::app()->end();
+//		}
+//	}
 }
