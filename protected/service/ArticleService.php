@@ -59,7 +59,8 @@ class ArticleService extends AbstractService{
     public function  deleteArticle($properties,$delete = false){
         if($delete){
             $blobFlag=Blob::model()->deleteAllByAttributes(array('fdContentID'=>$properties['fdContentID'],'fdAttributeID'=>null));
-            $contributeFlag=Contribute::model()->deleteAllByAttributes(array('fdContentID'=>$properties['fdContentID']));
+            //$contributeFlag=Contribute::model()->deleteAllByAttributes(array('fdContentID'=>$properties['fdContentID']));
+
         }
         $blobFlag=Blob::model()->deleteByAttributes(array('fdContentID'=>$properties['fdContentID'],'fdAttributeID'=>null));
        // $contributeFlag=Contribute::model()->deleteByAttributes(array('fdContentID'=>$properties['fdContentID']));

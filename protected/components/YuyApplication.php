@@ -14,8 +14,8 @@ class YUYApplication extends SApplication {
         if( strpos($host,'http://')===0){
             $host = substr($host,7);
         }
-        $this->domain=Domain::model()->findByAttributes("fdHost=$host");
-        print_r($host);
+  //      $this->domain=Domain::model()->findByAttributes("fdHost=$host");
+  //      print_r($host);
     }
 
     public function getDomainID(){

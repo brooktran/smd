@@ -15,38 +15,36 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-		<?php echo $form->error($model,'id'); ?>
-	</div>
+    <div class="row">
+        <?php echo $form->labelEx($model,'fdColumn'); ?>
+        <?php echo $form->textField($model,'fdColumn'); ?>
+        <?php echo $form->error($model,'fdColumn'); ?>
+    </div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'fdAreaID'); ?>
-		<?php echo $form->textField($model,'fdAreaID'); ?>
-		<?php echo $form->error($model,'fdAreaID'); ?>
+		<?php echo $form->labelEx($model,'fdName'); ?>
+		<?php echo $form->textField($model,'fdName'); ?>
+		<?php echo $form->error($model,'fdName'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'fdContentID'); ?>
-		<?php echo $form->textField($model,'fdContentID'); ?>
-		<?php echo $form->error($model,'fdContentID'); ?>
-	</div>
+	<!--<div class="row">
+		<?php //echo $form->labelEx($model,'fdAreaID'); ?>
+		<?php //echo $form->textField($model,'fdAreaID'); ?>
+		<?php //echo $form->error($model,'fdAreaID'); ?>
+	</div>-->
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'fdDomainID'); ?>
-		<?php echo $form->textField($model,'fdDomainID'); ?>
-		<?php echo $form->error($model,'fdDomainID'); ?>
+		<?php echo $form->labelEx($model,'fdValue'); ?>
+		<?php echo $form->textField($model,'fdValue'); ?>
+		<?php echo $form->error($model,'fdValue'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'fdColumn'); ?>
-		<?php echo $form->textField($model,'fdColumn'); ?>
-		<?php echo $form->error($model,'fdColumn'); ?>
-	</div>
+
+
+
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton( 'Create'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

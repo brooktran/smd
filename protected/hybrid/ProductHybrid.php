@@ -27,25 +27,24 @@ class ProductHybrid{
      *
      */
     public function saveProducts($properties){
-        $product = $this->_getProduct();
+        $product = $this->getProduct();
         $contentHybrid = new ContentHybrid();
-
+print_r($properties);exit;
         if(!$properties['fdContentID']){//保存
-            $contentHybrid->saveContent($properties['fdTypeID'], $name = $properties['fdName']);
-            $properties['fdContentID'] = $contentHybrid->id;
+            $contentID = $contentHybrid->saveContent($properties['fdTypeID'], $name = $properties['fdName']);
+            $properties['fdContentID'] = $contentID;
 
             $contentHybrid->saveBlob(null,$properties['fdValue']);
 
             if($properties){
                 unset($properties['fdValue']);
                 unset($properties['fdName']);
+                unset($properties['fdTypeID']);
                 foreach ($properties as $name=>$value){
                     $product->$name=$value;
                 }
             }
             $result= $product->save();
-            $this->id = $result->getPrimaryKey();
-
         }
 
         return $result;

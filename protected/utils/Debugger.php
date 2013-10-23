@@ -55,6 +55,11 @@ class Debugger {
 	}
 
 
+    public static function printDBErrors($model){
+        $errors = $model->getErrors();
+        print_r($errors);
+    }
+
 }
 
 ?>
