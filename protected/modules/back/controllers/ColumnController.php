@@ -18,16 +18,23 @@ class ColumnController extends Controller{
      */
     public function actionCreate(){
         $model = new CategoryForm();
+        $attributes = array();
+        $flag =  $_GET['tid'];//分类type
 
         if(isset($_POST['CategoryForm'])){
-            $attributes = $model->attributes = $_POST['CategoryForm'];
+            //$attributes = $model->attributes = $_POST['CategoryForm'];
+            $attributes['fdName'] = $_POST['CategoryForm']['name'];
+            $attributes['fdDescription'] = $_POST['CategoryForm']['introduce'];
+            $attributes['fdTypeID'] = $_POST['CategoryForm']['flag']==11 ? 11 : 12;
+            $attributes['fdParentID'] = isset($_POST['CategoryForm']['pid']) ? $_POST['pid'] : 0;
+
             $column = ColumnService::factory()->saveColumn($attributes);
 
             if($column){
-                $this->redirect(array('view','id'=>$model->id));
+               // $this->redirect(array('view','id'=>$model->id));
             }
         }
 
-        $this->render('create',array('model',$model));
+        $this->render('create',array('model'=>$model,'flag'=>$flag));
     }
 }

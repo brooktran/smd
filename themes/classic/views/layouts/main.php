@@ -190,7 +190,7 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
             </a>
             <ul class="collapse" id="component-nav">
                 <li class=""><a href="#"><i class="icon-angle-right"></i>发表文章</a></li>
-                <li class=""><a href="#"><i class="icon-angle-right"></i>分类管理</a></li>
+                <li class=""><a href="<?php echo $this->createUrl('/back/column/create',array('tid'=>11));?>"><i class="icon-angle-right"></i>分类管理</a></li>
                 <li class=""><a href="#"><i class="icon-angle-right"></i>批量管理</a></li>
                 <li class=""><a href="#"><i class="icon-credit-card"></i>设置</a></li>
             </ul>

@@ -29,7 +29,7 @@ class ProductHybrid{
     public function saveProducts($properties){
         $product = $this->getProduct();
         $contentHybrid = new ContentHybrid();
-
+print_r($properties);exit;
         if(!$properties['fdContentID']){//保存
             $contentID = $contentHybrid->saveContent($properties['fdTypeID'], $name = $properties['fdName']);
             $properties['fdContentID'] = $contentID;

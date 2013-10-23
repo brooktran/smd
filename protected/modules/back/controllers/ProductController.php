@@ -90,7 +90,7 @@ class ProductController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+        $model  = Product::model();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -118,7 +118,7 @@ class ProductController extends Controller
 		//$this->loadModel($id)->delete();
         $ttr = $_GET;//array('id'=>$id,'fdContentID'=>$cid);
          if(Yii::app()->request->isAjaxRequest){
-            ProductService::factory()->deleteProducts($attr);
+            //ProductService::factory()->deleteProducts($attr);
          }
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser

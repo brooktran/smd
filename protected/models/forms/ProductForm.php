@@ -42,6 +42,12 @@ class ProductForm extends CFormModel{
     {
         return array(
             'verifyCode'=>'Verification Code',
+            'fdColumn' => '产品分类',
+            'fdName' => '产品名称',
+            'fdValue' =>'产品信息',
+            'standard' =>'规格',
+            'weight' => '重量',
+            'fdAreaID'=>'产地',
         );
     }
 

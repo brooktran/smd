@@ -1,31 +1,18 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: user
- * Date: 13-10-21
- * Time: 下午11:01
- * To change this template use File | Settings | File Templates.
- */
-
 class CategoryForm extends CFormModel{
+    public $name;
+    public $introduce;
+    public $fdParentID;
+    public $flag;
+    public $verifyCode;
 
-    public $CategoryName;//分类名称
-    public $description;//描述
-    public $typeID;//文章11，产品12
-    public $parentID=0;//
-
-
-
-    /**
-     * Declares the validation rules.
-     */
     public function rules()
     {
         return array(
             // name, email, subject and body are required
-            array('categoryName', 'required'),
+            array('introduce, name', 'required'),
             // email has to be a valid email address
-
+            array('name', 'required','message'=>'名称不能为空'),
             // verifyCode needs to be entered correctly
             array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
         );
@@ -39,9 +26,13 @@ class CategoryForm extends CFormModel{
     public function attributeLabels()
     {
         return array(
-            'verifyCode'=>'Verification Code',
+
+            'name'=>'分类名称',
+
+            'introduce'=>'描述',
+
         );
     }
-
-
 }
+
+?>
