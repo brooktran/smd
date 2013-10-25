@@ -1,5 +1,6 @@
 <?php
 class CategoryForm extends CFormModel{
+    public $id=0;
     public $name;
     public $introduce;
     public $fdParentID;
@@ -10,7 +11,7 @@ class CategoryForm extends CFormModel{
     {
         return array(
             // name, email, subject and body are required
-            array('introduce, name', 'required'),
+            array(' name', 'required'),
             // email has to be a valid email address
             array('name', 'required','message'=>'名称不能为空'),
             // verifyCode needs to be entered correctly
@@ -28,8 +29,8 @@ class CategoryForm extends CFormModel{
         return array(
 
             'name'=>'分类名称',
-
             'introduce'=>'描述',
+            'fdParentID'=>'父分类',
 
         );
     }
