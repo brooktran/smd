@@ -45,7 +45,7 @@ class Article extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, fdContentID, fdDomainID, fdColumnID', 'required'),
+			//array('id, fdContentID, fdDomainID, fdColumnID', 'required'),
 			array('id, fdContentID, fdDomainID, fdColumnID', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -61,10 +61,10 @@ class Article extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'content'=>array(self::HAS_ONE,'Content','','on'=>'t.fdContentID=content.id AND content.fdTypeID='.APP::ATTR_ARTICLE_TYPEID),
+            'content'=>array(self::HAS_ONE,'Content','','on'=>'t.fdContentID=content.id AND content.fdTypeID='.Yii::app()->params['ATTR_ARTICLE_TYPEID']),
             'blob'=>array(self::HAS_ONE,'Blob','','on'=>'content.id=blob.fdContentID'),//文本内容
             'file'=>array(self::HAS_MANY,'File','','on'=>'content.id=file.fdContentID'),//图片
-		     'column'=>array(self::BELONGS_TO,'Column','','on'=>'content.id=column.fdContentID'),//分类
+		     'column'=>array(self::BELONGS_TO,'Column','fdColumnID'),//分类
             'contributes'=>array(self::BELONGS_TO,'Contribute','','on'=>'content.id=contributes.fdContentID'),//属性
             'integer'=>array(self::HAS_ONE,'Integer','','on'=>'content.id=Integer.fdContentID','condition'=>'integer.fdAttributeID=contributes.fdAttributeID'),
         );
@@ -77,9 +77,9 @@ class Article extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'fdContentID' => 'Fd Content',
+			'fdContentID' => '文章标题',
 			'fdDomainID' => 'Fd Domain',
-			'fdColumnID' => 'Fd Column',
+			'fdColumnID' => '文章分类',
 		);
 	}
 

@@ -10,12 +10,12 @@
 class ProductForm extends CFormModel{
 
     public $fdName;//产品名
-    public $fdContentID;//contentID
-    public $fdAreaID;//地区ID,产地
+   // public $fdText;//contentID
+    //public $fdAreaID;//地区ID,产地
     public $fdColumn;//分类
-    public $fdValue;//产品信息
-    public $standard;//规格
-    public $weight;//重量
+    public $fdText;//产品信息
+   // public $standard;//规格
+    //public $weight;//重量
 
 
     /**
@@ -25,7 +25,7 @@ class ProductForm extends CFormModel{
     {
         return array(
             // name, email, subject and body are required
-            array('fdName, fdValue, fdColumn', 'required'),
+            array('fdName, fdText, fdColumn', 'required'),
             // email has to be a valid email address
 
             // verifyCode needs to be entered correctly

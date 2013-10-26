@@ -43,14 +43,13 @@ class ArticleHybrid{
         if($properties){
             unset($properties['fdValue']);
             unset($properties['fdName']);
+            unset($properties['fdTypeID']);
             foreach ($properties as $name=>$value){
                 $article->$name=$value;
             }
         }
 
         $result= $article->save();
-        $this->id = $result->getPrimaryKey();
-
         return $result;
     }
 
