@@ -191,8 +191,8 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
             </span>
             </a>
             <ul class="collapse" id="component-nav">
-                <li class=""><a href="#"><i class="icon-angle-right"></i>发表文章</a></li>
-                <li class=""><a href="<?php echo $this->createUrl('/back/column/create',array('tid'=>11));?>"><i class="icon-angle-right"></i>分类管理</a></li>
+                <li class=""><a href="<?php echo $this->createUrl('/back/article/create');?>"><i class="icon-angle-right"></i>发表文章</a></li>
+                <li class=""><a href="<?php echo $this->createUrl('/back/column/index',array('tid'=>Yii::app()->params['ATTR_ARTICLE_TYPEID']));?>"><i class="icon-angle-right"></i>分类管理</a></li>
                 <li class=""><a href="#"><i class="icon-angle-right"></i>批量管理</a></li>
                 <li class=""><a href="#"><i class="icon-credit-card"></i>设置</a></li>
             </ul>
@@ -209,7 +209,7 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
             </a>
             <ul class="collapse" id="product-nav">
                 <li class=""><a href="#"><i class="icon-angle-right"></i>发布产品</a></li>
-                <li class=""><a href="#"><i class="icon-angle-right"></i>分类管理</a></li>
+                <li class=""><a href="<?php echo $this->createUrl('/back/column/index',array('tid'=>Yii::app()->params['ATTR_PRODUCT_TYPEID']));?>"><i class="icon-angle-right"></i>分类管理</a></li>
                 <li class=""><a href="#"><i class="icon-angle-right"></i>批量管理</a></li>
                 <li class=""><a href="#"><i class="icon-credit-card"></i>属性设置</a></li>
             </ul>

@@ -22,7 +22,7 @@
         <h4>栏目列表</h4>
 
 
-        <div class="fLeft"><a href='<?php echo $this->createUrl('/back/column/create')?>'><input type="button" value="添加栏目"></a></div>
+        <div class="fLeft"><a href='<?php echo $this->createUrl('/back/column/create',array('tid'=>$tid))?>'><input type="button" value="添加栏目"></a></div>
 
 
         <div class='cate'>

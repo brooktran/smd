@@ -15,32 +15,30 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+    <div class="row">
+        <?php echo $form->labelEx($model,'fdColumnID'); ?>
+        <?php echo $form->dropDownList($model,'fdColumnID',array(CHtml::listData($cates,'id','fdName'))); ?>
+        <?php echo $form->error($model,'fdColumnID'); ?>
+    </div>
+
 	<div class="row">
-		<?php echo $form->labelEx($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-		<?php echo $form->error($model,'id'); ?>
+		<?php echo $form->labelEx($model,'fdName'); ?>
+		<?php echo $form->textField($model,'fdName'); ?>
+		<?php echo $form->error($model,'fdName'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'fdContentID'); ?>
-		<?php echo $form->textField($model,'fdContentID'); ?>
-		<?php echo $form->error($model,'fdContentID'); ?>
+		<?php echo $form->labelEx($model,'fdValue'); ?>
+		<?php echo $form->textArea($model,'fdValue'); ?>
+		<?php echo $form->error($model,'fdValue'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'fdDomainID'); ?>
-		<?php echo $form->textField($model,'fdDomainID'); ?>
-		<?php echo $form->error($model,'fdDomainID'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'fdColumnID'); ?>
-		<?php echo $form->textField($model,'fdColumnID'); ?>
-		<?php echo $form->error($model,'fdColumnID'); ?>
-	</div>
+
+
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton( 'Create'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
