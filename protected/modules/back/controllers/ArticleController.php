@@ -56,29 +56,46 @@ class ArticleController extends Controller
 		));
 	}
 
+    /**
+     * 获取文章的分类
+     * @return array|CActiveRecord|mixed|null
+     */
+    public function getColumn(){
+       $articleColumn = ColumnService::factory()->getAllCategoryByTypeID(Yii::app()->params['ATTR_ARTICLE_TYPEID']);
+        return $articleColumn;
+    }
+
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
-		$model=new Article;
+		$model=new ArticleForm();
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Article']))
+		if(isset($_POST['ArticleForm']))
 		{
-			$model->attributes=$_POST['Article'];
+            $array = array();
+            $array['fdColumnID'] = $_POST['ArticleForm']['fdColumnID'];
+			 $array['fdName'] = $_POST['ArticleForm']['fdName'];
+            $array['fdValue'] =$_POST['ArticleForm']['fdValue'];
+            $array['fdDomainID'] = Yii::app()->params['ATTR_DOMAIN_ID'];
+            $array['fdTypeID'] = Yii::app()->params['ATTR_ARTICLE_TYPEID'];
 
-            $attribute = array_merge($model->attributes,array('fdTypeID'=>Yii::app()->params['ATTR_ARTICLE_TYPEID']));
-            $article =  ArticleService::factory()->saveArticle($attribute);
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+            $article =  ArticleService::factory()->saveArticle($array);
+			if($article){
+                $this->redirect($this->createUrl('/back/article/index'));
+            }
+
 		}
 
+        $articleColumn = $this->getColumn();
 		$this->render('create',array(
 			'model'=>$model,
+           'cates'=>$articleColumn,
 		));
 	}
 
