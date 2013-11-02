@@ -51,7 +51,7 @@ $('.search-form form').submit(function(){
 		'fdAreaID',
 		'fdContentID',
 		'fdDomainID',
-		'fdColumn',
+		'fdColumnID',
 		array(
 			'class'=>'CButtonColumn',
 		),

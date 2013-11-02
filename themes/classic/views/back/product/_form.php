@@ -15,27 +15,33 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model,'fdColumn'); ?>
-        <?php echo $form->textField($model,'fdColumn'); ?>
-        <?php echo $form->error($model,'fdColumn'); ?>
-    </div>
 
+
+<?php
+
+    if($cates){
+?>
+    <div class="row">
+        <?php echo $form->labelEx($model,'fdColumnID'); ?>
+        <?php echo $form->dropDownList($model,'fdColumnID',array(CHtml::listData($cates,'id','fdName'))); ?>
+        <?php echo $form->error($model,'fdColumnID'); ?>
+    </div>
+<?php }?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'fdName'); ?>
 		<?php echo $form->textField($model,'fdName'); ?>
 		<?php echo $form->error($model,'fdName'); ?>
 	</div>
 
-	<!--<div class="row">
-		<?php //echo $form->labelEx($model,'fdAreaID'); ?>
-		<?php //echo $form->textField($model,'fdAreaID'); ?>
-		<?php //echo $form->error($model,'fdAreaID'); ?>
-	</div>-->
+
+		<?php echo $form->labelEx($model,'fdAreaID'); ?>
+		<?php echo $form->textField($model,'fdAreaID'); ?>
+		<?php echo $form->error($model,'fdAreaID'); ?>
+
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fdValue'); ?>
-		<?php echo $form->textField($model,'fdValue'); ?>
+		<?php echo $form->textArea($model,'fdValue'); ?>
 		<?php echo $form->error($model,'fdValue'); ?>
 	</div>
 

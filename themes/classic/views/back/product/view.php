@@ -25,6 +25,6 @@ $this->menu=array(
 		'fdAreaID',
 		'fdContentID',
 		'fdDomainID',
-		'fdColumn',
+		'fdColumnID',
 	),
 )); ?>

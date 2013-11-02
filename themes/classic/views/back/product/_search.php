@@ -32,8 +32,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'fdColumn'); ?>
-		<?php echo $form->textField($model,'fdColumn'); ?>
+		<?php echo $form->label($model,'fdColumnID'); ?>
+		<?php echo $form->textField($model,'fdColumnID'); ?>
 	</div>
 
 	<div class="row buttons">
