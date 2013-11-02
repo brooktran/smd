@@ -190,4 +190,9 @@ class ArticleController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+    public function actionSaveFile(){
+        print_r($_POST);exit;
+    }
+
 }

@@ -67,6 +67,10 @@ class ArticleService extends AbstractService{
         $contentFlag=Content::model()->deleteByPk($properties['fdContentID']);
     }
 
+    public function deleteByID($id){
+
+    }
+
 
 
 }

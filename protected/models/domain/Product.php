@@ -8,7 +8,7 @@
  * @property integer $fdAreaID
  * @property integer $fdContentID
  * @property integer $fdDomainID
- * @property integer $fdColumn
+ * @property integer $fdColumnID
  */
 class Product extends CActiveRecord
 {
@@ -46,13 +46,13 @@ class Product extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, fdContentID,  fdColumn', 'required'),
-			//array('id, fdAreaID, fdContentID, fdDomainID, fdColumn', 'numerical', 'integerOnly'=>true),
+			//array('id, fdContentID,  fdColumnID', 'required'),
+			//array('id, fdAreaID, fdContentID, fdDomainID, fdColumnID', 'numerical', 'integerOnly'=>true),
 
 
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, fdAreaID, fdContentID,  fdColumn', 'safe', 'on'=>'search'),
+			array('id, fdAreaID, fdContentID,  fdColumnID', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,14 +64,14 @@ class Product extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'content'=>array(self::HAS_ONE,'Content','','on'=>'t.fdContentID=content.id AND content.fdTypeID='.APP::ATTR_PRODUCT_TYPEID),
+            'content'=>array(self::HAS_ONE,'Content','','on'=>'content.id = t.fdContentID AND content.fdTypeID='.Yii::app()->params['ATTR_PRODUCT_TYPEID']),
             'blob'=>array(self::HAS_ONE,'Blob','','on'=>'content.id=blob.fdContentID'),//文本内容
             'file'=>array(self::HAS_MANY,'File','','on'=>'content.id=file.fdContentID'),//图片
-            'column'=>array(self::BELONGS_TO,'Column','','on'=>'content.id=column.fdContentID'),//分类
+            'column'=>array(self::BELONGS_TO,'Column','fdColumnID'),//分类
             'area'=>array(self::BELONGS_TO,'Area','fdArea'),//地区（产地）
-            'price'=>array(self::HAS_ONE,'Price','','on'=>'content.id=column.fdContentID'),//价格
-            'contributes'=>array(self::BELONGS_TO,'Contribute','','on'=>'content.id=contributes.fdContentID'),//属性
-            'integer'=>array(self::HAS_ONE,'Integer','','on'=>'content.id=Integer.fdContentID','condition'=>'integer.fdAttributeID=contributes.fdAttributeID'),
+           // 'price'=>array(self::HAS_ONE,'Price','','on'=>'content.id=column.fdContentID'),//价格
+          //  'contributes'=>array(self::BELONGS_TO,'Contribute','','on'=>'content.id=contributes.fdContentID'),//属性
+         //   'integer'=>array(self::HAS_ONE,'Integer','','on'=>'content.id=Integer.fdContentID','condition'=>'integer.fdAttributeID=contributes.fdAttributeID'),
         );
 	}
 
@@ -85,7 +85,7 @@ class Product extends CActiveRecord
 			'fdAreaID' => '地区',
 			'fdContentID' => '产品名称',
 			'fdDomainID' => 'Fd Domain',
-			'fdColumn' => '分类名称',
+			'fdColumnID' => '分类名称',
 		);
 	}
 
@@ -104,7 +104,7 @@ class Product extends CActiveRecord
 		$criteria->compare('fdAreaID',$this->fdAreaID);
 		$criteria->compare('fdContentID',$this->fdContentID);
 		$criteria->compare('fdDomainID',$this->fdDomainID);
-		$criteria->compare('fdColumn',$this->fdColumn);
+		$criteria->compare('fdColumnID',$this->fdColumnID);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

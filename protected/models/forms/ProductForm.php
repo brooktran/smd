@@ -9,11 +9,12 @@
 
 class ProductForm extends CFormModel{
 
+    public $id=0;
     public $fdName;//产品名
    // public $fdText;//contentID
-    //public $fdAreaID;//地区ID,产地
-    public $fdColumn;//分类
-    public $fdText;//产品信息
+    public $fdAreaID;//地区ID,产地
+    public $fdColumnID;//分类
+    public $fdValue;//产品信息
    // public $standard;//规格
     //public $weight;//重量
 
@@ -25,9 +26,9 @@ class ProductForm extends CFormModel{
     {
         return array(
             // name, email, subject and body are required
-            array('fdName, fdText, fdColumn', 'required'),
+            array('fdName, fdValue, fdColumnID', 'required'),
             // email has to be a valid email address
-
+            array('fdAreaID','safe'),
             // verifyCode needs to be entered correctly
             array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
         );
@@ -42,7 +43,7 @@ class ProductForm extends CFormModel{
     {
         return array(
             'verifyCode'=>'Verification Code',
-            'fdColumn' => '产品分类',
+            'fdColumnID' => '产品分类',
             'fdName' => '产品名称',
             'fdValue' =>'产品信息',
             'standard' =>'规格',

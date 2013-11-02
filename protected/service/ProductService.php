@@ -17,6 +17,10 @@ class ProductService extends AbstractService{
         return  parent::factory(__CLASS__);
     }
 
+    public  function getProduct($id){
+        $product = Product::model()->findByPk($id);
+        return $product;
+    }
 
     /**
      * 保存产品信息
@@ -37,27 +41,25 @@ class ProductService extends AbstractService{
      */
     public function updateProduct($properties){
         $productHybrid = new ProductHybrid();
-        $product = $productHybrid->getProduct();
-        $contentHybrid = new ContentHybrid();
+        $product = $this->getProduct($properties['id']);
+        $contentHybrid = new ContentHybrid($product->fdContentID);
 
-        if($properties['fdContentID']){//修改
-            try{
-                $contentHybrid->id =$properties['fdContentID'];
-                $contentHybrid->updateContent(array('fdName'=>$properties['fdName']));
+        try{
+            $contentHybrid->updateContent(array('fdName'=>$properties['fdName']));
+            $contentHybrid->updateBlob($contentHybrid->content->blob->id,array('fdValue'=>$properties['fdValue']));
 
-                $contentHybrid->updateBlob($properties['fdContentID'],array('fdValue'=>$properties['fdValue']));
-
-                $array = array();
-                unset($properties['fdValue']);
-                unset($properties['fdName']);
-                foreach ($properties as $name=>$value){
-                    $array[$name]=$value;
+            $array = array();
+            unset($properties['fdValue']);
+            unset($properties['fdName']);
+            unset($properties['fdTypeID']);
+            foreach ($properties as $name=>$value){
+                if(!$value){
+                    $product->$name=$value;
                 }
-
-                $result= $product->updateByPk($properties['id'],$array);
-            }catch (Exception $e){
-                return false;
             }
+            $result= $product->save();
+        }catch (Exception $e){
+            return false;
         }
         return $result;
     }
