@@ -8,6 +8,7 @@
  */
 class ArticleForm extends CFormModel{
 
+    public $id=0;
     public $fdName;
     public $fdValue;
     public $fdColumnID;
@@ -31,9 +32,9 @@ class ArticleForm extends CFormModel{
     {
         return array(
             'verifyCode'=>'Verification Code',
-            'fdColumn' => '分类',
+            'fdColumnID' => '分  类',
             'fdName' => '新闻标题',
-            'fdText'=> '内容',
+            'fdValue'=> '内容',
 
         );
     }

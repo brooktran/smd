@@ -17,8 +17,9 @@ class ArticleService extends AbstractService{
         return  parent::factory(__CLASS__);
     }
 
-    public function getArticleContent(){
-
+    public function getArticle($id){
+        $article = Article::model()->findByPk($id);
+        return $article;
     }
 
     /**
@@ -33,43 +34,50 @@ class ArticleService extends AbstractService{
     }
 
     public function updateArticle($properties){
-        $article = $this->_getArticle();
-        $contentHybrid = new ContentHybrid();
+        $article = $this->getArticle($properties['id']);
+        $contentHybrid = new ContentHybrid($article->fdContentID);
 
-        $contentHybrid->id =$properties['fdContentID'];
-        $result = $contentHybrid->updateContent(array('fdName'=>$properties['fdName']));
+        try{
+            $contentHybrid->updateContent(array('fdName'=>$properties['fdName']));
+            $contentHybrid->updateBlob($contentHybrid->content->blob->id,array('fdValue'=>$properties['fdValue']));
 
-        $blob = Blob::model()->findByAttributes(array('fdContentID'=>$properties['fdContentID'],'fdAttributeID'=>24));
-        $blobChange = Blob::model()->updateByPk($blob->id, array('fdValue'=>$properties['fdValue']));
-
-        if($result && $blobChange){
             $array = array();
             unset($properties['fdValue']);
             unset($properties['fdName']);
+            unset($properties['fdTypeID']);
+            $article->fdColumnID = $properties['fdColumnID'];
             foreach ($properties as $name=>$value){
-                $array[$name]=$value;
+                if(!$value){
+                    $article->$name=$value;
+                }
             }
-
-            $result= $article->updateByPk($properties['id'],$array);
+            $result= $article->save();
+            return $result;
+        }catch (Exception $e){
+            return false;
         }
-        return $result;
     }
 
 
-    public function  deleteArticle($properties,$delete = false){
-        if($delete){
-            $blobFlag=Blob::model()->deleteAllByAttributes(array('fdContentID'=>$properties['fdContentID'],'fdAttributeID'=>null));
-            //$contributeFlag=Contribute::model()->deleteAllByAttributes(array('fdContentID'=>$properties['fdContentID']));
-
+    /**
+     * 删除文章和商品,先删除文本内容，再去content下删除content.id，再删除article表数据
+     *
+     * @param int $id
+     */
+    public function  deleteArticleByID($id){
+        $article = Article::model()->findByPk($id);
+        try{
+            $contentHybrid = new ContentHybrid($article->fdContentID);
+            $blod = Blob::model()->findByAttributes(array('fdContentID'=>$article->fdContentID));
+            $contentHybrid->deleteBlob($blod->id);
+            $contentHybrid->deleteContent();
+            Article::model()->deleteByPk($id);
+            return true;
+        }catch (Exception $e){
+            return false;
         }
-        $blobFlag=Blob::model()->deleteByAttributes(array('fdContentID'=>$properties['fdContentID'],'fdAttributeID'=>null));
-       // $contributeFlag=Contribute::model()->deleteByAttributes(array('fdContentID'=>$properties['fdContentID']));
-        $contentFlag=Content::model()->deleteByPk($properties['fdContentID']);
     }
 
-    public function deleteByID($id){
-
-    }
 
 
 

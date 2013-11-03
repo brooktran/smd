@@ -123,7 +123,7 @@ class ProductController extends Controller
             }
         }
 
-        $id = $_GET['id'];
+        //$id = $_GET['id'];
         $product = Product::model()->with('content','column','blob')->findByPk($id);
 
         $categorys = ColumnService::factory()->getAllCategoryByTypeID(Yii::app()->params['ATTR_PRODUCT_TYPEID']);
@@ -139,13 +139,10 @@ class ProductController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete()
+	public function actionDelete($id)
 	{
 		//$this->loadModel($id)->delete();
-        $attr = $_GET;//array('id'=>$id,'fdContentID'=>$cid);
-         if(Yii::app()->request->isAjaxRequest){
-            ProductService::factory()->deleteProducts($attr);
-         }
+        $ressult = ProductService::factory()->deleteProductByID($id);
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))

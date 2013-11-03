@@ -92,7 +92,7 @@ class ArticleController extends Controller
 
 		}
 
-        $articleColumn = $this->getColumn();
+       $articleColumn = $this->getColumn();
 		$this->render('create',array(
 			'model'=>$model,
            'cates'=>$articleColumn,
@@ -106,21 +106,37 @@ class ArticleController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
-
+		//$model=$this->loadModel($id);
+        $model = new ArticleForm();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Article']))
+		if(isset($_POST['ArticleForm']))
 		{
-			$model->attributes=$_POST['Article'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+            $array = array();
+            $array['id'] = isset($_GET['id']) ? intval($_GET['id']) : 0;
+            $array['fdColumnID'] = $_POST['ArticleForm']['fdColumnID'];
+            $array['fdName'] = $_POST['ArticleForm']['fdName'];
+            $array['fdValue'] =$_POST['ArticleForm']['fdValue'];
+            $array['fdDomainID'] = Yii::app()->params['ATTR_DOMAIN_ID'];
+            $array['fdTypeID'] = Yii::app()->params['ATTR_ARTICLE_TYPEID'];
+
+            $article =  ArticleService::factory()->updateArticle($array);
+            if($article){
+                $this->redirect($this->createUrl('/back/article/index'));
+            }
+			//if($model->save())
+			//	$this->redirect(array('view','id'=>$model->id));
 		}
 
-		$this->render('update',array(
-			'model'=>$model,
-		));
+        $article = Article::model()->with('content','column','blob')->findByPk($id);
+
+        $categorys = ColumnService::factory()->getAllCategoryByTypeID(Yii::app()->params['ATTR_ARTICLE_TYPEID']);
+        $this->render('update',array(
+            'model'=>$model,
+            'cate'=>$article,
+            'cates'=>$categorys
+        ));
 	}
 
 	/**
@@ -130,8 +146,8 @@ class ArticleController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
+        $articleService = ArticleService::factory();
+        $result = $articleService->deleteArticleByID($id);
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
@@ -157,7 +173,7 @@ class ArticleController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Article']))
 			$model->attributes=$_GET['Article'];
-
+        //print_r($model->search());exit;
 		$this->render('admin',array(
 			'model'=>$model,
 		));

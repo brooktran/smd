@@ -80,6 +80,8 @@ class Article extends CActiveRecord
 			'fdContentID' => '文章标题',
 			'fdDomainID' => 'Fd Domain',
 			'fdColumnID' => '文章分类',
+            'content.fdName'=>'文章标题',
+            'column.fdName' =>'分类',
 		);
 	}
 
@@ -98,6 +100,7 @@ class Article extends CActiveRecord
 		$criteria->compare('fdContentID',$this->fdContentID);
 		$criteria->compare('fdDomainID',$this->fdDomainID);
 		$criteria->compare('fdColumnID',$this->fdColumnID);
+        $criteria->with = array('content','column');
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

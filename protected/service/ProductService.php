@@ -40,7 +40,7 @@ class ProductService extends AbstractService{
      * @return bool|int
      */
     public function updateProduct($properties){
-        $productHybrid = new ProductHybrid();
+        //$productHybrid = new ProductHybrid();
         $product = $this->getProduct($properties['id']);
         $contentHybrid = new ContentHybrid($product->fdContentID);
 
@@ -52,6 +52,7 @@ class ProductService extends AbstractService{
             unset($properties['fdValue']);
             unset($properties['fdName']);
             unset($properties['fdTypeID']);
+            $product->fdColumnID = $properties['fdColumnID'];
             foreach ($properties as $name=>$value){
                 if(!$value){
                     $product->$name=$value;
@@ -70,21 +71,18 @@ class ProductService extends AbstractService{
      * @param array $attr
      * @return int
      */
-    public function deleteProducts($attr,$delete=false){
-        if($delete){
-
+    public function  deleteProductByID($id){
+        $product = Product::model()->findByPk($id);
+        try{
+            $contentHybrid = new ContentHybrid($product->fdContentID);
+            $blod = Blob::model()->findByAttributes(array('fdContentID'=>$product->fdContentID));
+            $contentHybrid->deleteBlob($blod->id);
+            $contentHybrid->deleteContent();
+            Product::model()->deleteByPk($id);
+            return true;
+        }catch (Exception $e){
+            return false;
         }
-
-        $contentHybrid = new ContentHybrid();
-        $contentHybrid->id = $attr['fdContentID'];
-        $contentNum = $contentHybrid->deleteContent();
-        $bold = Blob::model()->findByAttributes(array('fdContentID'=>$attr['fdContentID']));
-        $blobNum = $contentHybrid->deleteBlob($bold->id);
-
-        if($contentNum && $blobNum){
-            $result = Product::model()->deleteByPk($attr['id']);
-        }
-        return $result;
     }
 
 
