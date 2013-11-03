@@ -29,7 +29,11 @@
         <div class="row">
             <?php echo $form->labelEx($model,'fdColumnID'); ?>
             <?php echo $form->dropDownList($model,'fdColumnID',array(CHtml::listData($cates,'id','fdName')),
-                array('empty'=>$cate->column->fdName)
+                array(
+
+                    'options'=>array($cate->column->id=>array('selected'=>true)),
+                    'empty'=>'--请选择--'
+                )
             ); ?>
             <?php echo $form->error($model,'fdColumnID'); ?>
         </div>

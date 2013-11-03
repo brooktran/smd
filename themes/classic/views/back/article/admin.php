@@ -45,10 +45,20 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
-		'fdContentID',
+		//'id',
+        array(
+            'class'=>'CCheckBoxColumn',
+            'value'=>$model->id,   //注意这里用的是$data
+            'htmlOptions'=>array(
+                'width'=>'5px',
+                'height'=>'25px',
+            ),
+        ),
+		//'fdContentID',
+        'content.fdName',
 		'fdDomainID',
-		'fdColumnID',
+       // 'fdColumnID',
+		'column.fdName',
 		array(
 			'class'=>'CButtonColumn',
 		),
