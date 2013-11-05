@@ -47,11 +47,22 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+		//'id',
+        array(
+            'class'=>'CCheckBoxColumn',
+            'name'=>'id',
+            //'value'=>$data->fdContentID,   //注意这里用的是$data
+            'htmlOptions'=>array(
+                'width'=>'5px',
+                'height'=>'25px',
+            ),
+        ),
 		'fdAreaID',
-		'fdContentID',
+		//'fdContentID',
+        'content.fdName',
 		'fdDomainID',
-		'fdColumnID',
+        'column.fdName',
+		//'fdColumnID',
 		array(
 			'class'=>'CButtonColumn',
 		),

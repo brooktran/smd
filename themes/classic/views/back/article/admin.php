@@ -39,7 +39,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'model'=>$model,
 )); ?>
 </div><!-- search-form -->
+<?php
 
+?>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'article-grid',
 	'dataProvider'=>$model->search(),
@@ -48,14 +50,17 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		//'id',
         array(
             'class'=>'CCheckBoxColumn',
-            'value'=>$model->id,   //注意这里用的是$data
+            'name'=>'id',
+            //'value'=>$data->fdContentID,   //注意这里用的是$data
             'htmlOptions'=>array(
                 'width'=>'5px',
                 'height'=>'25px',
             ),
         ),
-		//'fdContentID',
+
         'content.fdName',
+
+
 		'fdDomainID',
        // 'fdColumnID',
 		'column.fdName',
