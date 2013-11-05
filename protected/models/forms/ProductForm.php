@@ -28,7 +28,7 @@ class ProductForm extends CFormModel{
             // name, email, subject and body are required
             array('fdName, fdValue, fdColumnID', 'required'),
             // email has to be a valid email address
-            array('fdAreaID','safe'),
+            array('fdAreaID , id','safe'),
             // verifyCode needs to be entered correctly
             array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
         );

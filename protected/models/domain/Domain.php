@@ -71,8 +71,8 @@ class Domain extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'fdName' => 'Fd Name',
-			'fdDescription' => 'Fd Description',
+			'fdName' => '网站名称',
+			'fdDescription' => '网站描述',
             'fdHost'=>域名,
 		);
 	}

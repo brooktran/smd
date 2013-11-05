@@ -100,6 +100,7 @@ class Product extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+        $criteria->with = array('content','column');
 		$criteria->compare('id',$this->id);
 		$criteria->compare('fdAreaID',$this->fdAreaID);
 		$criteria->compare('fdContentID',$this->fdContentID);

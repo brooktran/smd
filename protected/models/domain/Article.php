@@ -11,6 +11,7 @@
  */
 class Article extends CActiveRecord
 {
+    public $fdName=null;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -49,7 +50,7 @@ class Article extends CActiveRecord
 			array('id, fdContentID, fdDomainID, fdColumnID', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, fdContentID, fdDomainID, fdColumnID', 'safe', 'on'=>'search'),
+			array('id, fdContentID, fdDomainID, fdColumnID, fdName', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -82,6 +83,7 @@ class Article extends CActiveRecord
 			'fdColumnID' => '文章分类',
             'content.fdName'=>'文章标题',
             'column.fdName' =>'分类',
+            'fdName'=>'Fd Name'
 		);
 	}
 
@@ -96,14 +98,20 @@ class Article extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+        $criteria->with = array('content','column');
+
 		$criteria->compare('id',$this->id);
 		$criteria->compare('fdContentID',$this->fdContentID);
 		$criteria->compare('fdDomainID',$this->fdDomainID);
 		$criteria->compare('fdColumnID',$this->fdColumnID);
-        $criteria->with = array('content','column');
+        $criteria->compare('content.fdName',$this->fdName);
+
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+
+
+
 }
