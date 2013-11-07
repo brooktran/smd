@@ -16,7 +16,7 @@
 </div>
 <div class="div_head">
             <span>
-                <span style="float:left">当前位置是：商品管理-》修改分类</span>
+                <span style="float:left">当前位置是：分类管理-》修改分类</span>
                 <span style="float:right;margin-right: 8px;font-weight: bold">
                     <a style="text-decoration: none" href="create">【返回】</a>
                 </span>
@@ -37,8 +37,11 @@
     <table border="0" width="100%" class="table_a">
 
         <?php
-        if($cates){
-           $parent = ColumnService::factory()->getParentByID($cate->fdParentID,$cate->fdTypeID)
+
+        $parent = ColumnService::factory()->getParentByID($cate->fdParentID,$cate->fdTypeID);
+
+        if($cates && $parent!=''){
+
         ?>
         <tr>
             <td width=80>

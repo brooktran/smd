@@ -80,9 +80,7 @@
 
                                 <textarea id="cleditor" class="form-control"></textarea>
 
-                                <div class="form-actions no-margin-bottom" id="cleditorForm">
-                                    <input type="submit" value="Submit" class="btn btn-primary">
-                                </div>
+
 
                         </div>
                     </div>
@@ -100,6 +98,10 @@
             </div>
         <?php $this->endWidget(); ?>
     </div>
+
+
+
+
 	<?php echo $form->errorSummary($model); ?>
     <?php
         if($cates){
