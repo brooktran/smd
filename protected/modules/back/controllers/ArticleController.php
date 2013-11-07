@@ -123,7 +123,7 @@ class ArticleController extends Controller
 
             $article =  ArticleService::factory()->updateArticle($array);
             if($article){
-                $this->redirect($this->createUrl('/back/article/index'));
+                $this->redirect($this->createUrl('back/article/index'));
             }
 			//if($model->save())
 			//	$this->redirect(array('view','id'=>$model->id));
