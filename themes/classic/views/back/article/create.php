@@ -13,6 +13,16 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Article</h1>
+<div class="row">
+<div class="col-lg-12">
+<div class="box">
+<header>
+    <div class="icons"><i class="icon-edit"></i></div>
+    <a href="<?php echo $this->createUrl('/back/article/create')?>" class="btn btn-default btn-xs"><h5>发布文章</h5></a>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model,'cates'=>$cates)); ?>
+</header>
+    <?php echo $this->renderPartial('_form', array('model'=>$model,'cates'=>$cates)); ?>
+</div>
+</div>
+</div>
+

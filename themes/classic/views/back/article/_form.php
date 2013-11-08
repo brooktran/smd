@@ -55,13 +55,16 @@
                 </div>
             </div>
 
+        
+
+
 
             <div class="row">
                 <div class="col-lg-12">
                     <div class="box">
                         <header>
                             <div class="icons"><i class="icon-th-large"></i></div>
-                            <h5>WYSIWYG Editor</h5>
+                            <h5>文章内容</h5>
                             <ul class="nav pull-right">
                                 <li>
                                     <div class="btn-group">
