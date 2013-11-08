@@ -13,20 +13,21 @@ class ColumnController extends Controller{
         $typeID =  $_GET['tid'];//分类type
         $column= ColumnService::factory()->getAllCategoryByTypeID($typeID);
 
-        $this->render('index',array('column'=>$column,tid=>$typeID));
+        $this->render('index',array('column'=>$column,'tid'=>$typeID));
     }
 
     /**
      * 删除分类
      */
     public function actionDelete(){
-        $id = $_GET['id'];
+        $id =   RequestUtils::getNormalRequest('id');
+        $tid = RequestUtils::getNormalRequest('tid');
         if(!$id){
-            $this->redirect($this->createUrl('/back/column'));
+            $this->redirect($this->createUrl('/back/column',array('tid'=>$tid)));
         }
         $column= ColumnService::factory()->deleteByCateId($id);
         if($column){
-            $this->redirect($this->createUrl('/back/column'));
+            $this->redirect($this->createUrl('/back/column',array('tid'=>$tid)));
         }
     }
 
