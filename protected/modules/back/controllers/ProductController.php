@@ -53,6 +53,7 @@ class ProductController extends Controller
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+           ''
 		));
 	}
 
@@ -154,10 +155,11 @@ class ProductController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Product');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+//		$dataProvider=new CActiveDataProvider('Product');
+//		$this->render('index',array(
+//			'dataProvider'=>$dataProvider,
+//		));
+        $this->actionAdmin();
 	}
 
 	/**
@@ -184,7 +186,7 @@ class ProductController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Product::model()->findByPk($id);
+		$model=Product::model()->with('content','column','blob')->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

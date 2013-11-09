@@ -123,7 +123,7 @@ class ArticleController extends Controller
 
             $article =  ArticleService::factory()->updateArticle($array);
             if($article){
-                $this->redirect($this->createUrl('back/article/index'));
+                $this->redirect($this->createUrl('index'));
             }
 			//if($model->save())
 			//	$this->redirect(array('view','id'=>$model->id));
@@ -158,10 +158,11 @@ class ArticleController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Article');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+//		$dataProvider=new CActiveDataProvider('Article');
+//		$this->render('index',array(
+//			'dataProvider'=>$dataProvider,
+//		));
+        $this->actionAdmin();
 	}
 
 	/**
@@ -188,7 +189,7 @@ class ArticleController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Article::model()->findByPk($id);
+		$model=Article::model()->with('content','column','blob')->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
