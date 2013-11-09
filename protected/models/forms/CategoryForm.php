@@ -29,7 +29,7 @@ class CategoryForm extends CFormModel{
         return array(
 
             'name'=>'分类名称',
-            'introduce'=>'描述',
+            'introduce'=>'分类描述',
             'fdParentID'=>'父分类',
 
         );

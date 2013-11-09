@@ -33,8 +33,8 @@ class ArticleForm extends CFormModel{
         return array(
             'verifyCode'=>'Verification Code',
             'fdColumnID' => '分  类',
-            'fdName' => '新闻标题',
-            'fdValue'=> '内容',
+            'fdName' => '文章标题',
+            'fdValue'=> '文章内容',
 
         );
     }

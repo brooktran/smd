@@ -81,11 +81,15 @@ class Product extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => '产品序号',
 			'fdAreaID' => '地区',
 			'fdContentID' => '产品名称',
 			'fdDomainID' => 'Fd Domain',
 			'fdColumnID' => '分类名称',
+            'fdValue' =>'产品信息',
+            'content.fdName'=>'产品名称',
+            'column.fdName'=>'分类名称',
+            'content.fdCreate'=>'发布时间'
 		);
 	}
 

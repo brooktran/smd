@@ -77,9 +77,10 @@ class Article extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => '文章序号',
 			'fdContentID' => '文章标题',
 			'fdDomainID' => 'Fd Domain',
+           'fdValue'=>'文章信息',
 			'fdColumnID' => '文章分类',
             'content.fdName'=>'文章标题',
             'column.fdName' =>'分类',
