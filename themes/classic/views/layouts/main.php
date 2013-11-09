@@ -14,8 +14,7 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
 
     <link rel="stylesheet" href="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo yii::app()->theme->baseUrl ?>/assets/css/main.css">
-    <link rel="stylesheet"
-          href="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/Font-Awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/Font-Awesome/css/font-awesome.css"/>
     <link rel="stylesheet" href="<?php echo yii::app()->theme->baseUrl ?>/assets/css/theme.css">
 
     <script>
@@ -191,6 +190,7 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
             </span>
             </a>
             <ul class="collapse" id="component-nav">
+                <li class=""><a href="<?php echo $this->createUrl('/back/article/');?>"><i class="icon-angle-right"></i>查看文章</a></li>
                 <li class=""><a href="<?php echo $this->createUrl('/back/article/create');?>"><i class="icon-angle-right"></i>发表文章</a></li>
                 <li class=""><a href="<?php echo $this->createUrl('/back/column/index',array('tid'=>Yii::app()->params['ATTR_ARTICLE_TYPEID']));?>"><i class="icon-angle-right"></i>分类管理</a></li>
                 <li class=""><a href="#"><i class="icon-angle-right"></i>批量管理</a></li>
@@ -208,7 +208,8 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
             </span>
             </a>
             <ul class="collapse" id="product-nav">
-                <li class=""><a href="#"><i class="icon-angle-right"></i>发布产品</a></li>
+                <li class=""><a href="<?php echo $this->createUrl('/back/product/');?>"><i class="icon-angle-right"></i>查看产品</a></li>
+                <li class=""><a href="<?php echo $this->createUrl('/back/product/create');?>"><i class="icon-angle-right"></i>发布产品</a></li>
                 <li class=""><a href="<?php echo $this->createUrl('/back/column/index',array('tid'=>Yii::app()->params['ATTR_PRODUCT_TYPEID']));?>"><i class="icon-angle-right"></i>分类管理</a></li>
                 <li class=""><a href="#"><i class="icon-angle-right"></i>批量管理</a></li>
                 <li class=""><a href="#"><i class="icon-credit-card"></i>属性设置</a></li>
