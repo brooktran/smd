@@ -17,44 +17,19 @@
 <?php
 $article = Article::model()->with('content','blob','column')->findByPk($data->id);
 ?>
-
-
- <ul>
-     <li>
-
-         <b><?php //echo CHtml::encode($data->getAttributeLabel('id')); ?></b>
-         <?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-         <br />
-     </li>
-
-     <li>
-         <b><?php //echo CHtml::encode($data->getAttributeLabel('fdColumnID')); ?></b>
-         <?php echo $article->column->fdName; ?>
-         <br />
-
-     </li>
-
-     <li>
-         <b><?php //echo CHtml::encode($data->getAttributeLabel('fdContentID')); ?></b>
-         <?php echo $article->content->fdName; ?>
-         <br />
-     </li>
-     <li>
-         <a href='<?php echo $this->createUrl('update',array('id'=>$article->id))?>'>修改</a>
-     </li>
-     <li>
-         <a href='<?php echo $this->createUrl('delete',array('id'=>$article->id))?>'>删除</a>
-     </li>
- </ul>
-
-
-
-
-
-
-
-
-
+    <tr>
+        <td> <?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?></td>
+        <td> <?php echo $article->content->fdName; ?></td>
+        <td>   <?php echo $article->column->fdName; ?> </td>
+        <td>   <?php echo $article->content->fdCreate; ?> </td>
+        <td> <a href='<?php echo $this->createUrl('update',array('id'=>$article->id))?>'>修改</a></td>
+        <td> <a href='<?php echo $this->createUrl('delete',array('id'=>$article->id))?>'>删除</a></td>
+    </tr>
 
 
 </div>
+
+
+
+
+

@@ -4,16 +4,33 @@
 /* @var $form CActiveForm */
 ?>
 
-<div class="form">
 
-<?php //$form=$this->beginWidget('CActiveForm', array(
-//	'id'=>'article-form',
-//	'enableAjaxValidation'=>false,
-//)); ?>
+<style>
+    .form-control.col-lg-6 {
+        width: 50% !important;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box">
+            <header class="dark">
+                <div class="icons"><i class="icon-edit"></i></div>
+                <h5><?php if($this->action->id=='update'){echo '修改';}else{echo '发布';}?>文章</h5>
+                <div class="toolbar">
+                    <ul class="nav">
+                        <li>
+                            <div class="btn-group">
+                                <a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse"
+                                   href="#collapse2">
+                                    <i class="icon-chevron-up"></i>
+                                </a>
+                                <button class="btn btn-xs btn-danger close-box"><i class="icon-remove"></i></button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
-	<p class="note row">带 <span class="required">*</span> 的必须填写</p>
-
-
+            </header>
     <div id="collapse2" class="body collapse in">
 
         <?php $form=$this->beginWidget('CActiveForm', array(
@@ -55,103 +72,48 @@
                 </div>
             </div>
 
-        
 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <header>
+                        <div class="icons"><i class="icon-th-large"></i></div>
+                        <h5>  <?php echo $form->labelEx($model,'fdValue'); ?></h5>
+                        <ul class="nav pull-right">
+                            <li>
+                                <div class="btn-group">
+                                    <a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse"
+                                       href="#cleditorDiv">
+                                        <i class="icon-minus"></i>
+                                    </a>
+                                    <button class="btn btn-xs btn-danger close-box"><i
+                                            class="icon-remove"></i></button>
+                                </div>
+                            </li>
+                        </ul>
+                    </header>
 
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="box">
-                        <header>
-                            <div class="icons"><i class="icon-th-large"></i></div>
-                            <h5>文章内容</h5>
-                            <ul class="nav pull-right">
-                                <li>
-                                    <div class="btn-group">
-                                        <a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse"
-                                           href="#cleditorDiv">
-                                            <i class="icon-minus"></i>
-                                        </a>
-                                        <button class="btn btn-xs btn-danger close-box"><i
-                                                class="icon-remove"></i></button>
-                                    </div>
-                                </li>
-                            </ul>
-                        </header>
-
-                        <div id="cleditorDiv" class="body collapse in">
-
-                                <textarea id="cleditor" class="form-control"></textarea>
-
-
-
-                        </div>
+                    <div id="cleditorDiv" class="body collapse in">
+                        <?php echo $form->textArea($model,'fdValue',array('value'=>$cate->blob->fdValue,'class'=>'form-control','id'=>"cleditor",'cols'=>30,'rows'=>5)); ?>
+                        <?php echo $form->error($model,'fdValue'); ?>
                     </div>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
-
-
-
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
 
 
             <div class="form-actions no-margin-bottom">
-                <input type="submit" value="提交" class="btn btn-primary">
+                <input type="submit" value="<?php if($this->action->id=='update'){echo '修改';}else{echo '发布';}?>" class="btn btn-primary">
             </div>
         <?php $this->endWidget(); ?>
     </div>
-
-
-
-
-	<?php echo $form->errorSummary($model); ?>
-    <?php
-        if($cates){
-    ?>
-    <div class="row">
-
-
-
-
-        <?php echo $form->labelEx($model,'fdColumnID'); ?>
-        <?php echo $form->dropDownList($model,'fdColumnID',array(CHtml::listData($cates,'id','fdName')),
-            array(
-                'options'=>array($cate->column->id=>array('selected'=>true)),
-                'empty'=>'--请选择--',
-
-            )
-
-
-        ); ?>
-        <?php echo $form->error($model,'fdColumnID'); ?>
+        </div>
     </div>
-    <?php
-        }
-    ?>
-	<div class="row">
-		<?php echo $form->labelEx($model,'fdName'); ?>
-		<?php echo $form->textField($model,'fdName',array('value'=>$cate->content->fdName)); ?>
-		<?php echo $form->error($model,'fdName'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'fdValue'); ?>
-		<?php echo $form->textArea($model,'fdValue',array('value'=>$cate->blob->fdValue)); ?>
-		<?php echo $form->error($model,'fdValue'); ?>
-	</div>
-
-
-
-
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton( 'Create'); ?>
-	</div>
-
-<?php //$this->endWidget(); ?>
-
-</div><!-- form -->
+    <!-- /.col-lg-12 -->
+</div>
+<!--</div><!-- form -->
 
 <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/wysihtml5/lib/js/wysihtml5-0.3.0.js"></script>
 <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/bootstrap-wysihtml5-hack.js"></script>

@@ -16,14 +16,67 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Article #<?php echo $model->id; ?></h1>
+<style>
+    .form-control.col-lg-6 {
+        width: 50% !important;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box">
+            <header class="dark">
+                <div class="icons"><i class="icon-edit"></i></div>
+                <h5>产品信息</h5>
+                <div class="toolbar">
+                    <ul class="nav">
+                        <li>
+                            <div class="btn-group">
+                                <a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse"
+                                   href="#collapse2">
+                                    <i class="icon-chevron-up"></i>
+                                </a>
+                                <button class="btn btn-xs btn-danger close-box"><i class="icon-remove"></i></button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </header>
+
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'fdContentID',
-		'fdDomainID',
-		'fdColumnID',
+//		'fdContentID',
+//		'fdDomainID',
+//		'fdColumnID',
+        array(
+            'name'=>'fdContentID',
+            'value'=>$model->content->fdName,
+        ),
+        array(
+            'name'=>'fdColumnID',
+            'value'=>$model->column->fdName,
+        ),
+        array(
+            'name'=>'fdValue',
+            'value'=>$model->blob->fdValue,
+        )
 	),
 )); ?>
+
+
+        </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+
+<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/wysihtml5/lib/js/wysihtml5-0.3.0.js"></script>
+<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/bootstrap-wysihtml5-hack.js"></script>
+<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/CLEditor1_4_3/jquery.cleditor.min.js"></script>
+<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/pagedown/Markdown.Converter.js"></script>
+<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/pagedown/Markdown.Sanitizer.js"></script>
+<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/Markdown.Editor-hack.js"></script>
+

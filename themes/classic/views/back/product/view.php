@@ -16,15 +16,58 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Product #<?php echo $model->id; ?></h1>
+<style>
+    .form-control.col-lg-6 {
+        width: 50% !important;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box">
+            <header class="dark">
+                <div class="icons"><i class="icon-edit"></i></div>
+                <h5>产品信息</h5>
+                <div class="toolbar">
+                    <ul class="nav">
+                        <li>
+                            <div class="btn-group">
+                                <a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse"
+                                   href="#collapse2">
+                                    <i class="icon-chevron-up"></i>
+                                </a>
+                                <button class="btn btn-xs btn-danger close-box"><i class="icon-remove"></i></button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </header>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'fdAreaID',
-		'fdContentID',
-		'fdDomainID',
-		'fdColumnID',
+		//'fdAreaID',
+		//'fdContentID',
+		//'fdDomainID',
+		//'fdColumnID',
+        array(
+            'name'=>'fdContentID',
+            'value'=>$model->content->fdName,
+        ),
+        array(
+            'name'=>'fdColumnID',
+            'value'=>$model->column->fdName,
+        ),
+        array(
+            'name'=>'fdValue',
+            'value'=>$model->blob->fdValue,
+        )
 	),
 )); ?>
+
+        </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!--</div><!-- form -->

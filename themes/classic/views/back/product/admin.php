@@ -26,21 +26,16 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box">
+            <header>
+                <div class="icons"><i class="icon-move"></i></div>
+                <a href="<?php echo $this->createUrl('/back/product/create',array('tid'=>Yii::app()->params['ATTR_PRODUCT_TYPEID']))?>" class="btn btn-default btn-xs"><h5>发布产品</h5></a>
 
+                <h5>产品列表</h5>
+            </header>
 
-<h1>产品管理</h1>
-
-<p>
-可以使用 (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-或者 <b>=</b>) 进行过滤.
-</p>
-
-<?php echo CHtml::link('高级搜索','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'product-grid',
@@ -57,14 +52,21 @@ $('.search-form form').submit(function(){
                 'height'=>'25px',
             ),
         ),
-		'fdAreaID',
+
 		//'fdContentID',
         'content.fdName',
-		'fdDomainID',
+		//'fdDomainID',
         'column.fdName',
+        'content.fdCreate',
 		//'fdColumnID',
+       // 'fdAreaID',
 		array(
 			'class'=>'CButtonColumn',
 		),
 	),
 )); ?>
+
+
+        </div>
+    </div>
+</div>
