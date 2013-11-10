@@ -54,15 +54,16 @@ class ProductService extends AbstractService{
             unset($properties['fdTypeID']);
             $product->fdColumnID = $properties['fdColumnID'];
             foreach ($properties as $name=>$value){
-                if(!$value){
+                if(!empty($value)){
                     $product->$name=$value;
                 }
             }
             $result= $product->save();
+            return $result;
         }catch (Exception $e){
             return false;
         }
-        return $result;
+
     }
 
 

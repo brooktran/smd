@@ -113,6 +113,10 @@ class ArticleController extends Controller
 
 		if(isset($_POST['ArticleForm']))
 		{
+            if(empty($_POST['ProductForm']['fdColumnID'])){
+                $this->redirect_message($this->createUrl('/back/column/create',array('tid'=>Yii::app()->params['ATTR_ARTICLE_TYPEID'])),'请先创建产品分类');
+                return;
+            }
             $array = array();
             $array['id'] = isset($_GET['id']) ? intval($_GET['id']) : 0;
             $array['fdColumnID'] = $_POST['ArticleForm']['fdColumnID'];

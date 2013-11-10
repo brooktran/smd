@@ -63,6 +63,7 @@ class ProductController extends Controller
 	 */
 	public function actionCreate()
 	{
+
 		//$model=new Product;
         $model = new ProductForm();
 		// Uncomment the following line if AJAX validation is needed
@@ -70,6 +71,10 @@ class ProductController extends Controller
 
 		if(isset($_POST['ProductForm']))
 		{
+            if(empty($_POST['ProductForm']['fdColumnID'])){
+                $this->redirect_message($this->createUrl('/back/column/create',array('tid'=>Yii::app()->params['ATTR_PRODUCT_TYPEID'])),'请先创建产品分类');
+                return;
+            }
             $array = array();
 			$model->attributes=$_POST['ProductForm'];
             $array['fdColumnID'] = $_POST['ProductForm']['fdColumnID'];
@@ -110,7 +115,7 @@ class ProductController extends Controller
             $array = array();
             $model->attributes=$_POST['ProductForm'];
             $array['id'] = isset($_GET['id']) ? intval($_GET['id']) : null;
-            $array['fdColumnID'] = $_POST['ProductForm']['fdColumnID'];
+            $array['fdColumnID'] = $_POST['ProductForm']['fdColumnID']?$_POST['ProductForm']['fdColumnID']:0;
             $array['fdName'] = $_POST['ProductForm']['fdName'];
             $array['fdValue'] =$_POST['ProductForm']['fdValue'];
             $array['fdAreaID'] =isset($_POST['ProductForm']['fdAreaID']) ? $_POST['ProductForm']['fdAreaID'] : null;
