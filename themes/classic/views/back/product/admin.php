@@ -70,3 +70,9 @@ $('.search-form form').submit(function(){
         </div>
     </div>
 </div>
+
+<style>
+    .grid-view .button-column{
+        width:80px !important;
+    }
+</style>

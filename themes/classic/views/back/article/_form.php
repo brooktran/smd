@@ -121,3 +121,9 @@
 <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/pagedown/Markdown.Converter.js"></script>
 <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/pagedown/Markdown.Sanitizer.js"></script>
 <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/Markdown.Editor-hack.js"></script>
+
+<script>
+    $(function(){
+        alert(22)
+    })
+</script>
