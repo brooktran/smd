@@ -16,10 +16,9 @@ class ArticleForm extends CFormModel{
     public function rules()
     {
         return array(
-            // name, email, subject and body are required
+            // fdName, fdValue, fdColumnID are required
             array('fdName, fdValue, fdColumnID', 'required'),
-            // email has to be a valid email address
-
+            array('fdName','required','message'=>'标题必填'),
         );
     }
 
