@@ -46,7 +46,7 @@
                     <div class="form-group row">
                         <?php echo $form->labelEx($model,'fdColumnID',array('class'=>'control-label col-lg-4')); ?>
                         <div class="col-lg-4">
-                            <?php echo $form->dropDownList($model,'fdColumnID',array(CHtml::listData($cates,'id','fdName')),
+                            <?php echo $form->dropDownList($model,'fdColumnID',CHtml::listData($cates,'id','fdName'),
                                 array(
                                     'options'=>array($cate->column->id=>array('selected'=>true)),
                                     'empty'=>'请选择',
