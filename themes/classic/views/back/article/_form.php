@@ -35,7 +35,11 @@
 
         <?php $form=$this->beginWidget('CActiveForm', array(
             'id'=>'popup-validation',
-            'enableAjaxValidation'=>false,
+           // 'enableAjaxValidation'=>false,
+            'enableClientValidation'=>true,
+            'clientOptions'=>array(
+                'validateOnSubmit'=>true,
+            ),
             "htmlOptions"=>array('class'=>'form-horizontal')
         )); ?>
 
@@ -105,7 +109,10 @@
 
 
             <div class="form-actions no-margin-bottom">
-                <input type="submit" value="<?php if($this->action->id=='update'){echo '修改';}else{echo '发布';}?>" class="btn btn-primary">
+                <?php
+                    $str = $this->action->id=='update'? '修改': '发布';
+                    echo CHtml::submitButton($str,array('class'=>"btn btn-primary"));
+                ?>
             </div>
         <?php $this->endWidget(); ?>
     </div>
@@ -122,8 +129,3 @@
 <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/pagedown/Markdown.Sanitizer.js"></script>
 <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/Markdown.Editor-hack.js"></script>
 
-<script>
-    $(function(){
-        alert(22)
-    })
-</script>
