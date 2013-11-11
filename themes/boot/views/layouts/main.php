@@ -9,7 +9,6 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
 <html dir="ltr" lang="en-US">
 <head>
     <meta charset="UTF-8" />
-    <title>AWES HTML5 Template | Responsive Portfolio Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- IE6-8 support of HTML5 elements -->
@@ -17,15 +16,15 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <!--[if lte IE 8]>
-    <link rel="stylesheet" type="text/css" href="./css/ie.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo yii::app()->theme->baseUrl ?>/assets/css/ie.css" />
     <![endif]-->
 
     <!-- Favicon and Apple Touch Icons -->
-    <link rel="shortcut icon" href="./img/ico/favicon.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./img/ico/apple-touch-icon-144-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./img/ico/apple-touch-icon-114-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./img/ico/apple-touch-icon-72-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" href="./img/ico/apple-touch-icon-57-precomposed.png" />
+    <link rel="shortcut icon" href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/ico/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/ico/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/ico/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/ico/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/ico/apple-touch-icon-57-precomposed.png" />
 
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
@@ -34,28 +33,28 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
     </style>
 
 
-    <link rel='stylesheet' id='layerslider_css-css' href='./assets/LayerSlider/css/layerslider.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='layerslider_css-css' href='<?php echo yii::app()->theme->baseUrl ?>/assets/LayerSlider/css/layerslider.css' type='text/css' media='all' />
     <link rel='stylesheet' id='opensans-css' href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C300italic%2C400italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic&ver=3.4.1' type='text/css' media='all' />
-    <link rel='stylesheet' id='bootstrap-css' href='./css/bootstrap.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='bootstrapresponsive-css' href='./css/bootstrap-responsive.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='main-css' href='./css/main.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='googleprettify-css' href='./assets/google-code-prettify/prettify.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='nivoslider-css' href='./assets/nivo/nivo-slider.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='prettyphoto-css' href='./css/prettyPhoto.css' type='text/css' media='all' />
-    <script type='text/javascript' src='./js/jquery-1.7.1.min.js'></script>
-    <script type='text/javascript' src='./assets/LayerSlider/js/layerslider.kreaturamedia.jquery.js'></script>
-    <script type='text/javascript' src='./assets/LayerSlider/js/jquery-easing-1.3.js'></script>
+    <link rel='stylesheet' id='bootstrap-css' href='<?php echo yii::app()->theme->baseUrl ?>/assets/css/bootstrap.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='bootstrapresponsive-css' href='<?php echo yii::app()->theme->baseUrl ?>/assets/css/bootstrap-responsive.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='main-css' href='<?php echo yii::app()->theme->baseUrl ?>/assets/css/main.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='googleprettify-css' href='<?php echo yii::app()->theme->baseUrl ?>/assets/google-code-prettify/prettify.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='nivoslider-css' href='<?php echo yii::app()->theme->baseUrl ?>/assets/nivo/nivo-slider.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='prettyphoto-css' href='<?php echo yii::app()->theme->baseUrl ?>/assets/css/prettyPhoto.css' type='text/css' media='all' />
+    <script type='text/javascript' src='<?php echo yii::app()->theme->baseUrl ?>/assets/js/jquery-1.7.1.min.js'></script>
+    <script type='text/javascript' src='<?php echo yii::app()->theme->baseUrl ?>/assets/LayerSlider/js/layerslider.kreaturamedia.jquery.js'></script>
+    <script type='text/javascript' src='<?php echo yii::app()->theme->baseUrl ?>/assets/LayerSlider/js/jquery-easing-1.3.js'></script>
 
-    <script type='text/javascript' src='./js/bootstrap.min.js'></script>
-    <script type='text/javascript' src='./js/application.js'></script>
-    <script type='text/javascript' src='./js/superfish-menu/superfish.js'></script>
-    <script type='text/javascript' src='./js/jquery.nivo.slider.pack.js'></script>
-    <script type='text/javascript' src='./js/jquery.prettyPhoto.js'></script>
-    <script type='text/javascript' src='./js/slides.min.jquery.js'></script>
-    <script type='text/javascript' src='./js/jquery.isotope.min.js'></script>
-    <script type='text/javascript' src='./js/testimonialrotator.js'></script>
-    <script type='text/javascript' src='./js/jquery.waitforimages.js'></script>
-    <script type='text/javascript' src='./js/jquery.preloader.js'></script>
+    <script type='text/javascript' src='<?php echo yii::app()->theme->baseUrl ?>/assets/js/bootstrap.min.js'></script>
+    <script type='text/javascript' src='<?php echo yii::app()->theme->baseUrl ?>/assets/js/application.js'></script>
+    <script type='text/javascript' src='<?php echo yii::app()->theme->baseUrl ?>/assets/js/superfish-menu/superfish.js'></script>
+    <script type='text/javascript' src='<?php echo yii::app()->theme->baseUrl ?>/assets/js/jquery.nivo.slider.pack.js'></script>
+    <script type='text/javascript' src='<?php echo yii::app()->theme->baseUrl ?>/assets/js/jquery.prettyPhoto.js'></script>
+    <script type='text/javascript' src='<?php echo yii::app()->theme->baseUrl ?>/assets/js/slides.min.jquery.js'></script>
+    <script type='text/javascript' src='<?php echo yii::app()->theme->baseUrl ?>/assets/js/jquery.isotope.min.js'></script>
+    <script type='text/javascript' src='<?php echo yii::app()->theme->baseUrl ?>/assets/js/testimonialrotator.js'></script>
+    <script type='text/javascript' src='<?php echo yii::app()->theme->baseUrl ?>/assets/js/jquery.waitforimages.js'></script>
+    <script type='text/javascript' src='<?php echo yii::app()->theme->baseUrl ?>/assets/js/jquery.preloader.js'></script>
 
     <script type="text/javascript">
 
@@ -74,7 +73,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                 navStartStop		: false,
                 navButtons			: false,
                 skin				: 'defaultskin',
-                skinsPath			: 'assets/LayerSlider/skins/',
+                skinsPath			: '<?php echo yii::app()->theme->baseUrl ?>/assets/LayerSlider/skins/',
                 globalBGColor		: 'white',
                 yourLogo			: false,
                 yourLogoStyle		: 'position: absolute; left: 10px; top: 10px; z-index: 99;',
@@ -100,7 +99,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
         });
 
     </script>
-    <link class="skin" href="./styles/green.css" rel="stylesheet" type="text/css" />
+    <link class="skin" href="<?php echo yii::app()->theme->baseUrl ?>/assets/styles/green.css" rel="stylesheet" type="text/css" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
@@ -114,7 +113,21 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                     <p class="feed">AWES is a responsive template for showing your work and everyone in the world.</p>
                 </div>
                 <div class="span6 soc_icons">
-                    <a target="_blank" href="#"><div class="icon_rss"></div></a><a target="_blank" href="#"><div class="icon_dribbble"></div></a><a target="_blank" href="#"><div class="icon_forrst"></div></a><a target="_blank" href="#"><div class="icon_lastfm"></div></a><a target="_blank" href="#"><div class="icon_vimeo"></div></a><a target="_blank" href="#"><div class="icon_youtube"></div></a><a target="_blank" href="#"><div class="icon_pinterest"></div></a><a target="_blank" href="#"><div class="icon_linkedin"></div></a><a target="_blank" href="#"><div class="icon_skype"></div></a><a target="_blank" href="#"><div class="icon_flickr"></div></a><a target="_blank" href="#"><div class="icon_picasa"></div></a><a target="_blank" href="#"><div class="icon_google"></div></a><a target="_blank" href="#"><div class="icon_t"></div></a><a target="_blank" href="#"><div class="icon_facebook"></div></a>                </div>
+                    <a target="_blank" href="#"><div class="icon_rss"></div></a>
+                    <a target="_blank" href="#"><div class="icon_dribbble"></div></a>
+                    <a target="_blank" href="#"><div class="icon_forrst"></div></a>
+                    <a target="_blank" href="#"><div class="icon_lastfm"></div></a>
+                    <a target="_blank" href="#"><div class="icon_vimeo"></div></a>
+                    <a target="_blank" href="#"><div class="icon_youtube"></div></a>
+                    <a target="_blank" href="#"><div class="icon_pinterest"></div></a>
+                    <a target="_blank" href="#"><div class="icon_linkedin"></div></a>
+                    <a target="_blank" href="#"><div class="icon_skype"></div></a>
+                    <a target="_blank" href="#"><div class="icon_flickr"></div></a>
+                    <a target="_blank" href="#"><div class="icon_picasa"></div></a>
+                    <a target="_blank" href="#"><div class="icon_google"></div></a>
+                    <a target="_blank" href="#"><div class="icon_t"></div></a>
+                    <a target="_blank" href="#"><div class="icon_facebook"></div></a>
+                </div>
             </div>
         </div>
     </div></div>
@@ -125,7 +138,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
         <div class="row">
             <div class="span4">
                 <div class="logo">
-                    <a href="./index.html"><img src="./img/logo.png" alt="AWES" title="Responsive HTML5 Template" /></a>
+                    <a href="./index.html"><img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/logo.png" alt="AWES" title="Responsive HTML5 Template" /></a>
                 </div>
             </div>
             <div class="span8">
@@ -133,7 +146,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                     <div class="menu-right-bg"></div>
                     <div class="menu-bg">
                         <ul id="menu">
-                            <li><a href="./index.html">Home +</a>
+                            <li><a href="./index.html">首页 +</a>
                                 <ul>
                                     <li><a href="./index-2.html">Home Without Slider</a></li>
                                 </ul>
@@ -182,7 +195,8 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
         <div class="row">
             <!-- widget -->
             <div class="span3">
-                <h6>Developer Theme</h6><hr /><div class="text-widget">					<img class="widgetlogo" alt="" src="./img/small_logo.png" />
+                <h6>Developer Theme</h6><hr /><div class="text-widget">
+                    <img class="widgetlogo" alt="" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/small_logo.png" />
                     <p>The Internet isn’t just on your computer screen anymore. It’s also on your phone, your tablet, your laptop, and god knows what else in the next few years. So when you visit AWES webpage, morph to ideally match the size and shape of the screen you’re viewing it on.</p>
                 </div>                </div>
             <!-- end widget -->
@@ -229,7 +243,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
     </div>
 </footer>
 <!--/FOOTER-->
-<script src="./js/custom.js"></script>
+<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/js/custom.js"></script>
 
 <!--[if IE]>
 <script type="text/javascript">
