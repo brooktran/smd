@@ -18,5 +18,9 @@ class ArticleController extends Controller{
        $this->render('index');
     }
 
+    public function actionArtDetail(){
+        $this->render('detail');
+    }
+
 
 }
