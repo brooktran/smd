@@ -4,7 +4,7 @@
         <div class="row">
             <div class="span12">
                 <div class="welcome">
-                    <h1><span class="colored">Blog</span><span class="grey_colored"> / latest news</span></h1>
+                    <h1><span class="colored">行业动态</span><span class="grey_colored"> / latest news</span></h1>
 
                 </div></div>
         </div>
@@ -28,9 +28,9 @@
                         <span> admin <i class="icon-user"></i></span>
 
                         <span><a href="#" title="View all posts in software" rel="category">software</a> <i class="icon-list-alt"></i></span>
-                        <span><a href="./blog-single.html" title="Comment on Your Responsive Design">3 Comments</a> <i class="icon-comment"></i></span>
+                        <span><a href="./blog-single.html" title="Comment on Your Responsive Design">3 留言</a> <i class="icon-comment"></i></span>
                         <hr />
-                        <div class="meta_readmore"><a class="readmore" href="./blog-single.html"><span class="readmoreicon"></span>read more</a></div>
+                        <div class="meta_readmore"><a class="readmore" href="./blog-single.html"><span class="readmoreicon"></span>更多</a></div>
 
                     </div>
                 </div>

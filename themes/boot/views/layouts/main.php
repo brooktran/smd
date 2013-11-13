@@ -99,6 +99,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
         });
 
     </script>
+
     <link class="skin" href="<?php echo yii::app()->theme->baseUrl ?>/assets/styles/green.css" rel="stylesheet" type="text/css" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
@@ -253,6 +254,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
     </div>
 </footer>
 <!--/FOOTER-->
+<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/js/twitter.js"></script>
 <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/js/custom.js"></script>
 
 <!--[if IE]>
@@ -260,13 +262,27 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
     runFancy = false;
 </script>
 <![endif]-->
+
 <script type="text/javascript">
+ jQuery(document).ready(function(){
+	var runFancy = true;
+	var Browser = { 
+	'isIE' : (navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0), 
+	'isFirefox' : navigator.userAgent.indexOf('Firefox') >= 0, 
+	'isOpera' : navigator.userAgent.indexOf('Opera') >= 0 
+	}; 
+	
+	if(Browser.isIE){
+		runFancy = false;
+	}
+ 
     if (runFancy) {
         jQuery.noConflict()(function($){
             $(".view").preloader();
             $(".theme-default").preloader();
         });
     };
+ });
 </script>
 
 
