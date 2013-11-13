@@ -35,11 +35,11 @@
                 </li>
                 <li><a href="#" data-filter=".graphic">graphic</a>
                 </li>
-                <li><a href="#" data-filter=".mobile">mobile</a>
+                <li><a href="#" data-filter=".mobile">血清</a>
                 </li>
-                <li><a href="#" data-filter=".print">print</a>
+                <li><a href="#" data-filter=".print">试剂</a>
                 </li>
-				<li><a href="#" data-filter=".test">test</a>
+				<li><a href="#" data-filter=".test">耗材</a>
                 </li>
             </ul>
         </div>
