@@ -166,8 +166,16 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                                     <li><a href="./portfolio-2columns.html">分类2</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">资讯中心</a></li>
-                            <li><a href="./elements.html">Features +</a>
+							<li><a href="./contact.html">技术服务</a></li>
+                            <li><a href="./blog.html">资讯中心 +</a>
+								<ul>
+                                    <li><a href="./elements.html">企业新闻</a></li>
+                                    <li><a href="./typography.html">行业动态</a></li>
+                                    <li><a href="./full-width.html">企业未来计划</a></li>
+                                </ul>
+							
+							</li>
+                           <!-- <li><a href="./elements.html">Features +</a>
                                 <ul>
                                     <li><a href="./elements.html">Template Elements</a></li>
                                     <li><a href="./typography.html">Typography</a></li>
@@ -175,10 +183,11 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                                     <li><a href="./sitemap.html">Sitemap</a></li>
                                     <li><a href="./404.html">404 Page</a></li>
                                 </ul>
-                            </li>
+                            </li>-->
                             <li><a href="./contact.html">联系我们</a></li>
-                            <li><a target="_blank" href="#">Purchase Now</a></li>
-                        </ul>                    </div><div class="menu-left-bg"></div>
+                            <li><a target="_blank" href="#">购买指南</a></li>
+                        </ul>                    
+						</div><div class="menu-left-bg"></div>
                 </nav>
             </div>
         </div>
@@ -197,7 +206,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
             <div class="span3">
                 <h6>企业文化</h6><hr /><div class="text-widget">
                     <img class="widgetlogo" alt="" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/small_logo.png" />
-                    <p>The Internet isn’t just on your computer screen anymore. It’s also on your phone, your tablet, your laptop, and god knows what else in the next few years. So when you visit AWES webpage, morph to ideally match the size and shape of the screen you’re viewing it on.</p>
+                    <p> 一个好的企业不是靠一个人做出来的，我们有公司团队，21世纪是一个团队合作的年代，一个人再厉害也敌不过一个群体</p>
                 </div>                </div>
             <!-- end widget -->
             <!-- widget -->
@@ -220,9 +229,9 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
 
             <!-- widget -->
             <div class="span3">
-                <h6>Contact info</h6><hr /><p>
+                <h6>Contact us</h6><hr /><p>
                     <i class="icon-map-marker icon-white"></i> 湖南省 长沙市<br />
-                    <i class="icon-user  icon-white"></i> +61 (0) 3 8376 6284<br />
+                    <i class="icon-user  icon-white"></i> +86 188 7408 5701<br />
                     <i class="icon-envelope icon-white"></i> <a href="mailto:example@yourdomain.com">example@yourdomain.com</a></p>
 
 
