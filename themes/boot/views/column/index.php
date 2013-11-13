@@ -39,7 +39,8 @@
                 </li>
                 <li><a href="#" data-filter=".print">print</a>
                 </li>
-
+				<li><a href="#" data-filter=".test">test</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -217,6 +218,23 @@
                 <div class="descr"><h6><a href="./portfolio-single.html">Fresh Design</a></h6></div>
                 <p style="text-align:center">Another Project</p>
             </div>
+			
+			<div class="span2 test block ">
+
+                <div class="view view-first">
+                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/2-460x460.png" alt="" />
+
+
+                    <div class="mask">
+                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/2.png" rel="prettyPhoto" class="info"></a>
+                        <a href="./portfolio-single.html" class="link"></a>
+                    </div>
+                </div>
+                <div class="descr"><h6><a href="./portfolio-single.html">Fresh Design</a></h6></div>
+                <p style="text-align:center">Another Project</p>
+            </div>
+			
+			
         </div>
         <!-- end PORTFOLIO -->
     </section>
