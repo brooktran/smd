@@ -17,4 +17,8 @@ class ColumnController extends Controller{
     public function actionIndex(){
         $this->render('index');
     }
+
+    public function actionGoods(){
+        $this->render('goods');
+    }
 }
