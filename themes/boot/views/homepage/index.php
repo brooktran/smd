@@ -3,8 +3,9 @@
         <div class="row">
             <div class="presentation">
                 <div class="span12">
-                    <div class="taglinedesc">欢迎光临！研科生物</div>
-                    <h1><span class="colored">Awes template is for</span><br />showing your work to the world!</h1>
+                    <!--<div class="taglinedesc">欢迎光临！研科生物</div>-->
+					<h2><span class="colored">研科生物 ------ 欢迎光临！</span></h2>
+                    <!--<h1><span class="colored">Awes template is for</span><br />showing your work to the world!</h1>-->
                 </div>
             </div>
         </div>
@@ -53,11 +54,11 @@
     </div>
     <div class="span4">
 
-        <h3 class="titlemore"><span class="slash-colored">//</span> About AWES Template</h3>
-        <p>Powerful template designed in a clean style. This theme is very flexible, easy for customizing and well documented, approaches for personal and professional use.</p>
+        <h3 class="titlemore"><span class="slash-colored">//</span> 关 于 研 科</h3>
+        <p>研科生物成立于2012年，随着时间的推移，公司的效益越来越高！</p>
         <p>AWES template has been coded in HTML5 &amp; CSS3 and jQuery. It has a solid flexible responsive layout.<br />
         <hr />
-        <h4>Some of Template Features:</h4>
+        <h4><span class="slash-colored">//</span> 公 司 联 系 方 式</h4>
         <div class="row">
             <div class="span2">
                 <ul style="margin-top:10px;" class="unstyled">
@@ -84,7 +85,7 @@
 
 <div class="row">
 <div class="span12">
-<div class="margintop30"></div>			<h3 class="titlemore"><span class="slash-colored">//</span> Latest Projects</h3>	<div class="row">
+<div class="margintop30"></div>			<h3 class="titlemore"><span class="slash-colored">//</span> 热 卖 产 品 </h3>	<div class="row">
 
 
     <div class="span3 block">
@@ -222,7 +223,7 @@
     <div class="span6"><div class="margintop30"></div>
         <div id="slides">
             <div class="titlemore">
-                <h3 class="pull-left" style="margin-bottom:0px;"><span class="slash-colored">//</span> Latest Post From the blog</h3>
+                <h3 class="pull-left" style="margin-bottom:0px;"><span class="slash-colored">//</span> 最 新 行 业 动 态</h3>
                 <div class="pull-right"><a href="#" class="prev"></a><a href="#" class="next"></a></div>
                 <div class="clearfix"></div>
             </div>
@@ -350,7 +351,7 @@
     </div>
     <div class="span6">
         <div class="margintop30"></div>
-        <h3 class="titlemore"><span class="slash-colored">//</span> Clients</h3>
+        <h3 class="titlemore"><span class="slash-colored">//</span> 友 情 链 接</h3>
         <div class="row">
             <div class="span2 block">
                 <div class="view view-first noinfo">
