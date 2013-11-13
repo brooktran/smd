@@ -148,25 +148,25 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                         <ul id="menu">
                             <li><a href="./index.html">首页 +</a>
                                 <ul>
-                                    <li><a href="./index-2.html">Home Without Slider</a></li>
+                                    <li><a href="./index-2.html">首 页 无 动 画</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./portfolio-4columns.html">Portfolio +</a>
+                            <li><a href="./portfolio-4columns.html">产品中心 +</a>
                                 <ul>
-                                    <li><a href="#">Portfolio Types</a>
+                                    <li><a href="#">产品分类</a>
                                         <ul>
-                                            <li><a href="./portfolio-slider.html">Portfolio With Slider</a></li>
-                                            <li><a href="./portfolio-video.html">Portfolio With Video</a></li>
-                                            <li><a href="./portfolio-single.html">Portfolio With Image</a></li>
+                                            <li><a href="./portfolio-slider.html">产品动画</a></li>
+                                            <li><a href="./portfolio-video.html">产品视频</a></li>
+                                            <li><a href="./portfolio-single.html">产品相册</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="./portfolio-6columns.html">Portfolio 6 Columns</a></li>
-                                    <li><a href="./portfolio-4columns.html">Portfolio 4 Columns</a></li>
-                                    <li><a href="./portfolio-3columns.html">Portfolio 3 Columns</a></li>
-                                    <li><a href="./portfolio-2columns.html">Portfolio 2 Columns</a></li>
+                                    <li><a href="./portfolio-6columns.html">分类6</a></li>
+                                    <li><a href="./portfolio-4columns.html">分类4</a></li>
+                                    <li><a href="./portfolio-3columns.html">分类3</a></li>
+                                    <li><a href="./portfolio-2columns.html">分类2</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="./blog.html">资讯中心</a></li>
                             <li><a href="./elements.html">Features +</a>
                                 <ul>
                                     <li><a href="./elements.html">Template Elements</a></li>
@@ -176,7 +176,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                                     <li><a href="./404.html">404 Page</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="./contact.html">联系我们</a></li>
                             <li><a target="_blank" href="#">Purchase Now</a></li>
                         </ul>                    </div><div class="menu-left-bg"></div>
                 </nav>
@@ -195,14 +195,15 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
         <div class="row">
             <!-- widget -->
             <div class="span3">
-                <h6>Developer Theme</h6><hr /><div class="text-widget">
+                <h6>企业文化</h6><hr /><div class="text-widget">
                     <img class="widgetlogo" alt="" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/small_logo.png" />
                     <p>The Internet isn’t just on your computer screen anymore. It’s also on your phone, your tablet, your laptop, and god knows what else in the next few years. So when you visit AWES webpage, morph to ideally match the size and shape of the screen you’re viewing it on.</p>
                 </div>                </div>
             <!-- end widget -->
             <!-- widget -->
             <div class="span3">
-                <h6>TWITTER</h6><hr />				<div id="jstwitter" class="clearfix">
+                <h6>TWITTER</h6><hr />				
+				<div id="jstwitter" class="clearfix">
                     <ul id="twitter_update_list"></ul>
                 </div>
 
@@ -220,7 +221,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
             <!-- widget -->
             <div class="span3">
                 <h6>Contact info</h6><hr /><p>
-                    <i class="icon-map-marker icon-white"></i> PO Box 21177 Little Lonsdale St, Melbourne Victoria 8011 Australia<br />
+                    <i class="icon-map-marker icon-white"></i> 湖南省 长沙市<br />
                     <i class="icon-user  icon-white"></i> +61 (0) 3 8376 6284<br />
                     <i class="icon-envelope icon-white"></i> <a href="mailto:example@yourdomain.com">example@yourdomain.com</a></p>
 
@@ -235,7 +236,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
         <div class="container">
             <div class="row">
                 <div class="span6">
-                    <span style="font-size:11px;">© 2012 AWES Responsive HTML5 Template. Collect from <a href="http://www.cssmoban.com/" title="网站模板" target="_blank">网站模板</a></span>
+                    <span style="font-size:11px;">© 2012 AWES Responsive HTML5 Template. Collect from by Laojiu QQ407898830</span>
                 </div>
 
             </div>
