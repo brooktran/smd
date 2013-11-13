@@ -62,10 +62,10 @@
         <div class="row">
             <div class="span2">
                 <ul style="margin-top:10px;" class="unstyled">
-                    <li><i class="icon-user"></i> Built for and by nerds</li>
-                    <li><i class="icon-th"></i> 12-column grid</li>
-                    <li><i class="icon-resize-horizontal"></i> Max-width 1200px</li>
-                    <li><i class="icon-book"></i> Growing library</li>
+                    <li><i class="icon-user"></i> 严 经 理</li>
+                    <li><i class="icon-th"></i> 18664846215</li>
+                    <li><i class="icon-resize-horizontal"></i> 0731 - 88888888</li>
+                    <li><i class="icon-book"></i> 湖南省 长沙市 雨花区</li>
                 </ul>
             </div>
             <div class="span2">

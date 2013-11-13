@@ -20,11 +20,11 @@
 .nivo-caption a{display:inline!important}
 .nivo-html-caption{display:none}
 .nivo-directionNav a{position:absolute;top:45%;z-index:9;cursor:pointer;font-size:0;content:''}
-.nivo-prevNav{left:5px;background:url(../../img/arr-left.png);width:40px;height:40px}
-.nivo-nextNav{right:5px;background:url(../../img/arr-right.png);width:40px;height:40px}
+.nivo-prevNav{left:5px;background:url(../img/arr-left.png);width:40px;height:40px}
+.nivo-nextNav{right:5px;background:url(../img/arr-right.png);width:40px;height:40px}
 .standard .nivo-directionNav{display:block!important;visibility:visible!important}
-.nivo-nextNav:hover{background:url(../../img/arr-right-hover.png)}
-.nivo-prevNav:hover{background:url(../../img/arr-left-hover.png)}
+.nivo-nextNav:hover{background:url(../img/arr-right-hover.png)}
+.nivo-prevNav:hover{background:url(../img/arr-left-hover.png)}
 .nivo-controlNav{text-align:center;padding:15px 0;display:none}
 .nivo-controlNav a{cursor:pointer}
 .nivo-controlNav a.active{font-weight:bold}
