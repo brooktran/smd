@@ -26,14 +26,14 @@ var styleSwitcher = {
 
         // Style Switcher CSS
         yepnope([
-            {load: 'assets/css/style-switcher.css'},
-            {load: 'assets/lib/colorpicker/css/colorpicker.css'},
-            {load: 'assets/lib/cssbeautify/cssbeautify.js'},
-            {load       : 'assets/lib/colorpicker/js/bootstrap-colorpicker.js',
+            {load: '/themes/classic/assets/css/style-switcher.css'},
+            {load: '/themes/classic/assets/lib/colorpicker/css/colorpicker.css'},
+            {load: '/themes/classic/assets/lib/cssbeautify/cssbeautify.js'},
+            {load       : '/themes/classic/assets/lib/colorpicker/js/bootstrap-colorpicker.js',
                 complete: function () {
                     yepnope([
-                        {load: 'less!assets/less/theme.less'},
-                        {load       : 'assets/lib/less-1.4.2.min.js',
+                        {load: 'less!/themes/classic/assets/less/theme.less'},
+                        {load       : '/themes/classic/assets/lib/less-1.4.2.min.js',
                             complete: function () {
 
 
@@ -72,7 +72,7 @@ var styleSwitcher = {
             }
             if (localStorage.pattern) {
                 $('body').css({
-                    'background': 'url(assets/img/pattern/' + localStorage.pattern + '.png) repeat'
+                    'background': 'url(/themes/classic/assets/img/pattern/' + localStorage.pattern + '.png) repeat'
                 });
             }
         }
@@ -311,7 +311,7 @@ var styleSwitcher = {
         patternList.find('a').on('click', function (e) {
             e.preventDefault();
             $('body').css({
-                'background-image' : 'url(assets/img/pattern/' + $(this).data('patternImage') + '.png)',
+                'background-image' : 'url(/themes/classic/assets/img/pattern/' + $(this).data('patternImage') + '.png)',
                 'background-repeat': ' repeat'
             });
             $this.patternImage = $(this).data('patternImage');
