@@ -61,6 +61,7 @@ return CMap::mergeArray(
 			'allowAutoLogin'=>true,
 		),
 		// uncomment the following to enable URLs in path-format
+
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'showScriptName'=>false,
