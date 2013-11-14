@@ -42,6 +42,10 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
     <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/js/html5shiv.js"></script>
     <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/js/respond.min.js"></script>
     <![endif]-->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/jquery-2.0.3.min.js"><\/script>')</script>
+
 </head>
 
 <body>
@@ -317,13 +321,9 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
 </div>
 <!-- /.modal -->
 <!-- /#helpModal -->
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/jquery-2.0.3.min.js"><\/script>')</script>
 <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="<?php echo yii::app()->theme->baseUrl ?>/assets/js/style-switcher.js"></script>
 <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/js/main.js"></script>
-
 
 </body>
 </html>
