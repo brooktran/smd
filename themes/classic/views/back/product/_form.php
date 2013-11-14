@@ -34,7 +34,11 @@
 
                 <?php $form=$this->beginWidget('CActiveForm', array(
                     'id'=>'popup-validation',
-                    'enableAjaxValidation'=>false,
+                   // 'enableAjaxValidation'=>false,
+                    'enableClientValidation'=>true,
+                    'clientOptions'=>array(
+                        'validateOnSubmit'=>true,
+                    ),
                     "htmlOptions"=>array('class'=>'form-horizontal')
                 )); ?>
 
@@ -123,11 +127,5 @@
 </div>
 <!--</div><!-- form -->
 
-<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/wysihtml5/lib/js/wysihtml5-0.3.0.js"></script>
-<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/bootstrap-wysihtml5-hack.js"></script>
-<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/CLEditor1_4_3/jquery.cleditor.min.js"></script>
-<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/pagedown/Markdown.Converter.js"></script>
-<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/pagedown/Markdown.Sanitizer.js"></script>
-<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/lib/Markdown.Editor-hack.js"></script>
 
 
