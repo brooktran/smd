@@ -12,6 +12,8 @@
  */
 class Product extends CActiveRecord
 {
+    public $fdName=null;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -46,8 +48,9 @@ class Product extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			//array('id, fdContentID,  fdColumnID', 'required'),
-			//array('id, fdAreaID, fdContentID, fdDomainID, fdColumnID', 'numerical', 'integerOnly'=>true),
+            array('fdName', 'required','message'=>'需要'),
+			array(' fdContentID,  fdColumnID', 'required'),
+			array('id, fdAreaID, fdContentID, fdDomainID, fdColumnID', 'numerical', 'integerOnly'=>true),
 
 
 			// The following rule is used by search().

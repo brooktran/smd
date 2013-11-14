@@ -27,6 +27,7 @@ class ProductForm extends CFormModel{
         return array(
             // name, email, subject and body are required
             array('fdName, fdValue, fdColumnID', 'required'),
+            array('fdName','required','message'=>'标题必填'),
             // email has to be a valid email address
             array('fdAreaID , id','safe'),
             // verifyCode needs to be entered correctly
