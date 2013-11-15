@@ -46,8 +46,8 @@ class Article extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fdName', 'required','message'=>'需要'),
-			array('id, fdContentID, fdDomainID, fdColumnID', 'numerical', 'integerOnly'=>true),
+			//array('fdName', 'required','message'=>'需要'),
+			//array('id, fdContentID, fdDomainID, fdColumnID', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, fdContentID, fdDomainID, fdColumnID, fdName', 'safe', 'on'=>'search'),

@@ -17,7 +17,7 @@ class ArticleForm extends CFormModel{
     {
         return array(
             // fdName, fdValue, fdColumnID are required
-            array('fdName, fdValue, fdColumnID', 'required'),
+            array('fdName, fdValue', 'required'),
             array('fdName','required','message'=>'标题必填'),
         );
     }
