@@ -111,9 +111,8 @@ class ArticleController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['ArticleForm']))
-		{
-            if(empty($_POST['ProductForm']['fdColumnID'])){
+		if(isset($_POST['ArticleForm'])){
+            if(empty($_POST['ArticleForm']['fdColumnID'])){
                 $this->redirect_message($this->createUrl('/back/column/create',array('tid'=>Yii::app()->params['ATTR_ARTICLE_TYPEID'])),'请先创建文章分类');
                 return;
             }
