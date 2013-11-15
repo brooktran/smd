@@ -59,4 +59,35 @@ class VerifyUtils{
             return 'loginName_Fail';
         }
     }
+
+    /**
+     * 生成一段随机码
+     * @param length 长度
+     * @param type 类型 1：纯数字 ，2：纯英文，3：数字、英文混合
+     * @author john
+     * @return string
+     */
+    public static function getRandomCode($length,$type=1){
+        switch ($type){
+            case 1 :
+                $originCode = '0123456789';
+                break;
+            case 2 :
+                $originCode = 'abcdefghijklmnopqrstuvwxyz';
+                break;
+            case 3 :
+                $originCode = '0123456789abcdefghijklmnopqrstuvwxyz';
+                break;
+            default:
+                $originCode = '0123456789';
+        }
+        $code = '';
+        $codeLenth = strlen($originCode);
+        for($i=0;$i<$length;$i++){
+            $index = rand(0, $codeLenth-1);
+            $code .= $originCode[$index];
+        }
+        return $code;
+    }
+
 }
