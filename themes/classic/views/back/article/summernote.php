@@ -22,9 +22,16 @@
 
         $('.btn-primary').live('click',function(){
             var content = $('.note-editor .note-editable').html();
-           var text = $('#textContent').val(content);
-
+           var text = $('#ArticleForm_fdValue').val(content);
         })
+
+        <?php
+        if($cate->blob->fdValue){
+        ?>
+        $('.note-editor .note-editable').html('<?php print_r($cate->blob->fdValue);?>');
+        <?php
+        }
+        ?>
     });
 </script>
 
@@ -37,7 +44,10 @@
     <div class="body">
         <div class="container">
             <div class="summernote "></div>
-            <input id='textContent' type="hidden" name='content' value='' />
+            <?php
+                echo $form->hiddenField($model,'fdValue');
+            ?>
+<!--            <input id='textContent' type="hidden" name='content' value='' />-->
         </div>
     </div>
 </div>
