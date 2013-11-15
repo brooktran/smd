@@ -25,6 +25,7 @@ return CMap::mergeArray(
 			'application.components.*',
            'application.service.*',
            'application.hybrid.*',
+           'application.utils.*',
 	),
 	'modules'=>array(
 		'gii'=>array(
