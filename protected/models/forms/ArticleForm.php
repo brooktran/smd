@@ -12,6 +12,7 @@ class ArticleForm extends CFormModel{
     public $fdName;
     public $fdValue;
     public $fdColumnID;
+    public $file;
 
     public function rules()
     {
