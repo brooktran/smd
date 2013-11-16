@@ -4,7 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 
-
+<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl;?>/assets/css/bootstrap-fileupload.min.css">
 <style>
     .form-control.col-lg-6 {
         width: 50% !important;
@@ -40,7 +40,7 @@
             'clientOptions'=>array(
                 'validateOnSubmit'=>true,
             ),
-            "htmlOptions"=>array('class'=>'form-horizontal')
+            "htmlOptions"=>array('class'=>'form-horizontal','enctype'=>'multipart/form-data')
         )); ?>
 
 
@@ -75,6 +75,23 @@
                     <?php echo $form->error($model,'fdName'); ?>
                 </div>
             </div>
+
+        <div class="form-group">
+            <label class="control-label col-lg-4">封面图片</label>
+            <div class="col-lg-8">
+                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <span class="btn btn-file btn-default">
+                                    <span class="fileupload-new">选择图片</span>
+                                    <span class="fileupload-exists">Change</span>
+                                    <input type='file' name = 'cover'/>
+                                </span>
+                    <span class="fileupload-preview">000000</span>
+                    <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+                </div>
+            </div>
+        </div>
+
+
         <?php
         $this->renderPartial('summernote',array('form'=>$form,'model'=>$model,'cate'=>$cate));
         ?>
