@@ -82,14 +82,15 @@
                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                 <span class="btn btn-file btn-default">
                                     <span class="fileupload-new">选择图片</span>
-                                    <span class="fileupload-exists">Change</span>
+                                    <span class="fileupload-exists">换一张</span>
                                     <input type='file' name = 'cover'/>
                                 </span>
-                    <span class="fileupload-preview">000000</span>
+                    <span class="fileupload-preview"></span>
                     <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
                 </div>
             </div>
         </div>
+
 
 
         <?php
@@ -109,3 +110,5 @@
     <!-- /.col-lg-12 -->
 </div>
 <!--</div><!-- form -->
+
+<script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/lib/jasny/js/bootstrap-fileupload.js"></script>
