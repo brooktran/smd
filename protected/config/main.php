@@ -23,6 +23,7 @@ return CMap::mergeArray(
 			'application.models.domain.*',
 			'application.models.forms.*',
 			'application.components.*',
+            'application.extensions.*',
            'application.service.*',
            'application.hybrid.*',
            'application.utils.*',
