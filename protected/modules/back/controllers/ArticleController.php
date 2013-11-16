@@ -78,6 +78,8 @@ class ArticleController extends Controller
 
 		if(isset($_POST['ArticleForm']))
 		{
+            $img = XUpload::upload( $_FILES['cover'], array( 'thumb'=>true, 'thumbSize'=>array ( 400 , 250 ) , 'allowExts' => 'jpg,gif,png,jpeg', 'maxSize' => 3292200) );
+            print_r($img);exit;
             $array = array();
             $array['fdColumnID'] = $_POST['ArticleForm']['fdColumnID'];
 			 $array['fdName'] = $_POST['ArticleForm']['fdName'];
