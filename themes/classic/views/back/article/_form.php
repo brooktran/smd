@@ -96,38 +96,7 @@
         $this->renderPartial('summernote',array('form'=>$form,'model'=>$model,'cate'=>$cate));
         ?>
 
-<!--        <div class="row">-->
-<!--            <div class="col-lg-12">-->
-<!--                <div class="box">-->
-<!--                    <header>-->
-<!--                        <div class="icons"><i class="icon-th-large"></i></div>-->
-<!--                        <h5>  --><?php //echo $form->labelEx($model,'fdValue'); ?><!--</h5>-->
-<!--                        <ul class="nav pull-right">-->
-<!--                            <li>-->
-<!--                                <div class="btn-group">-->
-<!--                                    <a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse"-->
-<!--                                       href="#cleditorDiv">-->
-<!--                                        <i class="icon-minus"></i>-->
-<!--                                    </a>-->
-<!--                                    <button class="btn btn-xs btn-danger close-box"><i-->
-<!--                                            class="icon-remove"></i></button>-->
-<!--                                </div>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </header>-->
-<!---->
-<!--                    <div id="cleditorDiv" class="body collapse in">-->
-<!--                        --><?php //echo $form->textArea($model,'fdValue',array('value'=>$cate->blob->fdValue,'class'=>'form-control','id'=>"cleditor",'cols'=>30,'rows'=>5)); ?>
-                        <?php //echo $form->error($model,'fdValue'); ?>
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <!-- /.col-lg-12 -->
-<!--        </div>-->
-        <!-- /.row -->
-
-
-            <div class="form-actions no-margin-bottom">
+          <div class="form-actions no-margin-bottom">
                 <?php
                     $str = $this->action->id=='update'? '修改': '发布';
                     echo CHtml::submitButton($str,array('class'=>"btn btn-primary"));
