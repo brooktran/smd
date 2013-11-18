@@ -13,8 +13,8 @@ class UploadController extends Controller{
     }
 
     public function actionUpload(){
-        $file = XUpload::upload( $_FILES['imgFile'] ,$params = array( 'thumb'=>true));
-
+        $file = XUpload::upload( $_FILES['imgFile']);
+        print_r($file);
 
 
    }
