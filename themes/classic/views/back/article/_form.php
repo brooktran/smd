@@ -115,7 +115,10 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+<!--                        <a href="javascript:$('#uploadify').uploadify('upload')">-->
+<!--                            <button type="button" class="btn btn-primary">-->
+<!--                            开始上传</button>-->
+<!--                        </a>-->
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
