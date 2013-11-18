@@ -3,6 +3,12 @@
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl;?>/assets/lib/uploadify/css/uploadify.css">
 <style>
 body { background: #E7EDEF }
+#fileListWarp{
+    list-style: none;
+}
+#fileListWarp li{
+    float: left;
+}
 </style>
 
 <form>
@@ -37,8 +43,12 @@ $(function() {
             });
         },
         'onUploadSuccess': function(file, data, response) {
-           //alert(response);
-           // var json = $.parseJSON(data);
+            var json = $.parseJSON(data);
+            if (response) {
+                $("#fileListWarp").append('<li id="image_' + json.fileId + '"><a href="<?php echo Yii::app()->request->baseUrl;?>/' + json.file + '" target="_blank"><img src="<?php echo Yii::app()->request->baseUrl;?>/'+json.file+'" width="40" height="40"  align="absmiddle"/></a>&nbsp;<br /><a href="javascript:uploadifyRemove(&quot;' + json.fileId + '&quot;,&quot;image_&quot;)">删除</a></a><input name="imageList[fileId][]" type="hidden" value="'+json.fileId+'" /><input name="imageList[file][]" type="hidden" value="'+json.file+'"/></li>');
+            } else {alert(response);
+                alert(json.message);
+            }
 
         }
 
@@ -47,3 +57,12 @@ $(function() {
 
 
 	</script>
+<script>
+    function uploadifyRemove(fileId,attrName){
+        $.post("<?php echo $this->createUrl('/back/upload/remove')?>",{id:fileId},function(res){
+            $("#"+attrName+fileId).remove();
+        },'json');
+
+    }
+
+</script>

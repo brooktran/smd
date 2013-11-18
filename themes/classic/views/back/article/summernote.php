@@ -20,7 +20,7 @@
 
            //获取编辑器的val
         $('.note-editor .note-editable').keyup(function(){
-            var content = $('.summernote').code();
+            var content = $('.summernote').code();alert(content);
             $('textarea[name="content"]').val(content);
         })
         $('.note-editor .note-editable').blur(function(){
@@ -48,6 +48,7 @@
     <div class="body">
         <div class="container">
             <div class="summernote "></div>
+            <textarea name='content' style='display:none;'></textarea>
         </div>
     </div>
 </div>

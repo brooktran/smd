@@ -91,38 +91,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="control-label col-lg-4">组图上传</label>
-            <div class="col-lg-8">
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                    + 组图上传
-                </button>
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">+ 组图上传</h4>
-                    </div>
-                    <div class="modal-body">
-                        <?php
-                            echo $this->renderPartial('/upload/index');
-                        ?>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-<!--                        <a href="javascript:$('#uploadify').uploadify('upload')">-->
-<!--                            <button type="button" class="btn btn-primary">-->
-<!--                            开始上传</button>-->
-<!--                        </a>-->
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
 
         <?php
         $this->renderPartial('summernote',array('form'=>$form,'model'=>$model,'cate'=>$cate));
@@ -143,50 +111,3 @@
 <!--</div><!-- form -->
 
 <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/lib/jasny/js/bootstrap-fileupload.js"></script>
-<script>
-    function uploadifyAction(fileField,frameId) {
-        $.Zebra_Dialog('', {
-            source: {
-                'iframe': {
-                    'src': '<?php echo $this->createUrl('uploadify/basic')?>',
-                    'height': 300,
-                    'name': 'bagecms_com',
-                    'id': 'bagecms_com'
-                }
-            },
-            width: 600,
-            'buttons': [
-                {
-                    caption: '确认',
-                    callback: function() {
-                        var htmls = $(window.frames['bagecms_com'].document).find("#fileListWarp").html();
-                        if(htmls){
-                            $("#" + fileField).append(htmls);
-                        }else{
-                            alert('没有文件被选择');
-                        }
-                    }
-                },
-                {
-                    caption: '取消',
-                    callback: function() {
-                        return;
-                    }
-                }
-            ],
-            'type': false,
-            'title': '附件上传',
-            'modal': false
-        });
-    }
-
-
-    function uploadifyRemove(fileId,attrName){
-        if(confirm('本操作不可恢复，确定继续？')){
-            $.post("<?php echo $this->createUrl('uploadify/remove')?>",{imageId:fileId},function(res){
-                $("#"+attrName+fileId).remove();
-            },'json');
-        }
-    }
-
-</script>
