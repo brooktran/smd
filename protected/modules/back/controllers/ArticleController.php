@@ -78,7 +78,15 @@ class ArticleController extends Controller
 
 		if(isset($_POST['ArticleForm']))
 		{
-            $img = XUpload::upload( $_FILES['cover'], array( 'thumb'=>true, 'thumbSize'=>array ( 400 , 250 ) , 'allowExts' => 'jpg,gif,png,jpeg', 'maxSize' => 3292200) );
+            if($_FILES['cover']['name']){
+                $file = XUpload::upload( $_FILES['cover'], array( 'thumb'=>true, 'thumbSize'=>array ( 400 , 250 ) , 'allowExts' => 'jpg,gif,png,jpeg', 'maxSize' => 3292200) );
+                $args = array();
+                $args['name'] = $file['name'];
+                $args['typeID'] = 0;
+                $args['size']=$file['size'];
+                $args['url'] = $file['pathname'];
+                $fileObj = ContentService::factory()->saveFile($args);
+            }
 
             $array = array();
             $array['fdColumnID'] = $_POST['ArticleForm']['fdColumnID'];

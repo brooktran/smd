@@ -12,11 +12,50 @@ class UploadController extends Controller{
         $this->render('index');
     }
 
+    /**
+     * 上传图片
+     */
     public function actionUpload(){
         $file = XUpload::upload( $_FILES['imgFile']);
-        print_r($file);
+
+        if(is_array($file)){
+            $args = array();
+            $args['name'] = $file['name'];
+            $args['typeID'] = 0;
+            $args['size']=$file['size'];
+            $args['url'] = $file['pathname'];
+            $fileObj = ContentService::factory()->saveFile($args);
+
+            if ( $fileObj ) {
+                exit( CJSON::encode( array (  'fileId'=>$fileObj->id, 'realFile'=>$fileObj->fdName, 'message' => '上传成功' , 'file' =>  $file['pathname'] ) ) );
+            } else {
+                @unlink( $file['pathname'] );
+                exit( CJSON::encode( array ( 'message' => '数据写入失败，上传错误' ) ) );
+            }
+        }else {
+            exit( CJSON::encode( array (  'message' => '上传错误' ) ) );
+        }
 
 
    }
+
+    /**
+     * 在选择后删除图片
+     */
+    public function actionRemove(){
+        $id = RequestUtils::getNormalRequest('id');
+
+        try {
+            $fileResult = ContentService::factory()->deleteFileByPk($id);
+
+            $var['state'] = 'success';
+            $var['message'] = '删除完成';
+        } catch ( Exception $e ) {
+            $var['state'] = 'errro';
+            $var['message'] = '失败：'.$e->getMessage();
+        }
+        exit( CJSON::encode( $var ) );
+
+    }
 
 }
