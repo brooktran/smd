@@ -52,7 +52,7 @@ class XUpload {
         require_once 'Tp/UploadFile.class.php';
         $upload = new UploadFile();
         // 设置上传文件大小
-        $upload->maxSize = $params['maxSize'];
+        $upload->maxSize = isset($params['maxSize']) ? $params['maxSize'] : 6000000;
         // 设置上传文件类型
         $upload->allowExts = explode( ',', $params['allowExts']  );
         // 设置附件上传目录
