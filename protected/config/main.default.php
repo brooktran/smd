@@ -23,8 +23,10 @@ return CMap::mergeArray(
 			'application.models.domain.*',
 			'application.models.form.*',
 			'application.components.*',
-           'application.service.*',
-           'application.hybrid.*',
+			'application.extensions.*',
+            'application.service.*',
+            'application.hybrid.*',
+            'application.utils.*',
 	),
 	'modules'=>array(
 		'gii'=>array(
@@ -137,6 +139,14 @@ return CMap::mergeArray(
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
+        'ATTR_PRODUCT_TYPEID' => 12,//产品
+        'ATTR_ARTICLE_TYPEID' =>11,//文章
+
+        'ATTR_DOMAIN_ID'=>'1',//域名ID
+
+        'COVER_TYPEID'=> '1',//file的封面图片
+
+        'DBcontent'=>'airbool_content',
     ),
 
 ));
