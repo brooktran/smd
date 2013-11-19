@@ -95,7 +95,7 @@ class ArticleController extends Controller
                     $fileID = $file ? $file->id : 0;
                 }
 
-                ContentService::factory()->saveContribute($article->fdContentID,$userID, $fileID);
+                ContentService::factory()->saveContribute($article->fdContentID, $fileID, $userID);
                 $this->redirect($this->createUrl('/back/article/index'));
                 return ;
             }catch (Exception $e){
@@ -141,8 +141,8 @@ class ArticleController extends Controller
 
             if($article && $_FILES['cover']['name']){
                 $file = $this->updateFile($_FILES['cover'],$article->fdContentID);
-                ContentService::factory()->saveText(null, $file->fdURL, $article->fdContentID);
-                ContentService::factory()->updateText($id, array('fdValue'=>$file->fdURL));
+                $content = Content::model()->with('coverImage')->findByPk($article->fdContentID);var_dump($content->coverImage);exit;
+                ContentService::factory()->updateText($content->coverImage->id , array('fdValue'=>$file->fdURL));
                 $fileID = $file ? $file->id : 0;
             }
 
@@ -232,16 +232,19 @@ class ArticleController extends Controller
 	}
 
     public function saveFile($uploadFile,$contentID){
-        $file = XUpload::upload( $uploadFile, array( 'thumb'=>true, 'thumbSize'=>array ( 400 , 250 ) , 'allowExts' => 'jpg,gif,png,jpeg', 'maxSize' => 3292200) );
-        $args = array();
-        $args['name'] = $file['name'];
-        $args['typeID'] = Yii::app()->params['COVER_TYPEID'];
-        $args['size']=$file['size'];
-        $args['url'] = $file['pathname'];
-        $args['contentID'] = $contentID;
-        $fileObj = ContentService::factory()->saveFile($args);
+        $file = XUpload::upload( $uploadFile, array( 'thumb'=>true, 'thumbSize'=>array ( 400 , 250 ), 'allowExts' => 'jpg,gif,png,jpeg', 'maxSize' => 6000000) );
 
-        return $fileObj;
+        if(is_array($file)){
+            $args = array();
+            $args['name'] = $file['name'];
+            $args['typeID'] = Yii::app()->params['COVER_TYPEID'];
+            $args['size']=$file['size'];
+            $args['url'] = $file['pathname'];
+            $args['contentID'] = $contentID;
+            $fileObj = ContentService::factory()->saveFile($args);
+            return $fileObj;
+        }
+        return $file;
     }
 
     /**
@@ -251,14 +254,14 @@ class ArticleController extends Controller
      * @return int
      */
     public function updateFile($uploadFile,$contentID){
-        $file = XUpload::upload( $uploadFile, array( 'thumb'=>true, 'thumbSize'=>array ( 400 , 250 ) , 'allowExts' => 'jpg,gif,png,jpeg', 'maxSize' => 3292200) );
+        $file = XUpload::upload( $uploadFile, array( 'thumb'=>true, 'thumbSize'=>array ( 400 , 250 ) , 'allowExts' => 'jpg,gif,png,jpeg', 'maxSize' =>6000000) );
         $args = array();
         $args['name'] = $file['name'];
         $args['size']=$file['size'];
         $args['url'] = $file['pathname'];
         $args['contentID'] = $contentID;
 
-        $content = Content::model()->with('coverfile')->findByPk($contentID);
+        $content = Content::model()->with('coverFile')->findByPk($contentID);print_r($content->coverFile);exit;
         FileService::factory()->deleteLocalFile($content->coverfile->fdURL);
         $fileObj = ContentService::factory()->updateFile($content->coverfile->id, $args);
 
