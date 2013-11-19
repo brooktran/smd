@@ -196,7 +196,7 @@ class UploadFile {//类定义开始
                 if(!$this->save($file)) return false;
                 if(function_exists($this->hashType)) {
                     $fun =  $this->hashType;
-                    $file['hash']   =  $fun($this->autoCharset($file['savepath'].$file['savename'],'utf-8','gbk'));
+                   // $file['hash']   =  $fun($this->autoCharset($file['savepath'].$file['savename'],'utf-8','gbk'));
                 }
                 //上传成功后保存文件信息，供其他地方调用
                 unset($file['tmp_name'],$file['error']);
@@ -408,7 +408,8 @@ class UploadFile {//类定义开始
         }
         //文件上传成功，进行自定义规则检查
         //检查文件大小
-        if(!$this->checkSize($file['size'])) {
+
+        if($this->checkSize($file['size']) > 0) {
             $this->error = '上传文件大小不符！';
             return false;
         }
@@ -481,7 +482,7 @@ class UploadFile {//类定义开始
      * @return boolean
      */
     private function checkSize($size) {
-        return !($size > $this->maxSize) || (-1 == $this->maxSize);
+        return $size - $this->maxSize;
     }
 
     /**
