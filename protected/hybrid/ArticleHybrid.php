@@ -50,7 +50,7 @@ class ArticleHybrid{
         }
 
         $result= $article->save();
-        return $result;
+        return $result ? $article : false;
     }
 
 
