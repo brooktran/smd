@@ -25,7 +25,7 @@ class ArticleService extends AbstractService{
     /**
      * 保存文章
      * @param  array $properties
-     * @return bool
+     * @return bool|article
      */
     public function saveArticle($properties){
         $articleHybrid = new ArticleHybrid();
@@ -52,7 +52,7 @@ class ArticleService extends AbstractService{
                 }
             }
             $result= $article->save();
-            return $result;
+            return $result ? $article : false;
         }catch (Exception $e){
             return false;
         }
