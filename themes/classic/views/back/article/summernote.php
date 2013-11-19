@@ -20,7 +20,7 @@
 
            //获取编辑器的val
         $('.note-editor .note-editable').keyup(function(){
-            var content = $('.summernote').code();alert(content);
+            var content = $('.summernote').code();
             $('textarea[name="content"]').val(content);
         })
         $('.note-editor .note-editable').blur(function(){

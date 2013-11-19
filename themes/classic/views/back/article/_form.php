@@ -24,7 +24,7 @@
                                    href="#collapse2">
                                     <i class="icon-chevron-up"></i>
                                 </a>
-                                <button class="btn btn-xs btn-danger close-box"><i class="icon-remove"></i></button>
+<!--                                <button class="btn btn-xs btn-danger close-box"><i class="icon-remove"></i></button>-->
                             </div>
                         </li>
                     </ul>
@@ -85,7 +85,7 @@
                                     <span class="fileupload-exists">换一张</span>
                                     <input type='file' name = 'cover'/>
                                 </span>
-                    <span class="fileupload-preview"></span>
+                    <span class="fileupload-preview"><?php if($cate->content->coverImage){echo '<a href="/'.$cate->content->coverImage->fdValue.'" target="_black"><img width="50" src="/'.$cate->content->coverImage->fdValue.'"/></a>';}?></span>
                     <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
                 </div>
             </div>
