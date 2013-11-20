@@ -95,7 +95,7 @@ class ArticleController extends Controller
                     $fileID = $file ? $file->id : 0;
                 }
 
-                ContentService::factory()->saveContribute($article->fdContentID, $fileID, $userID);
+                ContentService::factory()->saveContribute($article->fdContentID,  $userID, $fileID);
                 $this->redirect($this->createUrl('/back/article/index'));
                 return ;
             }catch (Exception $e){
@@ -133,7 +133,7 @@ class ArticleController extends Controller
             $array['id'] = isset($_GET['id']) ? intval($_GET['id']) : 0;
             $array['fdColumnID'] = $_POST['ArticleForm']['fdColumnID'];
             $array['fdName'] = $_POST['ArticleForm']['fdName'];
-            $array['fdValue'] =$_POST['ArticleForm']['fdValue'];
+            $array['fdValue'] =$_POST['content'];
             $array['fdDomainID'] = Yii::app()->params['ATTR_DOMAIN_ID'];
             $array['fdTypeID'] = Yii::app()->params['ATTR_ARTICLE_TYPEID'];
 
@@ -141,9 +141,8 @@ class ArticleController extends Controller
 
             if($article && $_FILES['cover']['name']){
                 $file = $this->updateFile($_FILES['cover'],$article->fdContentID);
-                $content = Content::model()->with('coverImage')->findByPk($article->fdContentID);var_dump($content->coverImage);exit;
+                $content = Content::model()->with('coverImage')->findByPk($article->fdContentID);
                 ContentService::factory()->updateText($content->coverImage->id , array('fdValue'=>$file->fdURL));
-                $fileID = $file ? $file->id : 0;
             }
 
 
@@ -256,14 +255,14 @@ class ArticleController extends Controller
     public function updateFile($uploadFile,$contentID){
         $file = XUpload::upload( $uploadFile, array( 'thumb'=>true, 'thumbSize'=>array ( 400 , 250 ) , 'allowExts' => 'jpg,gif,png,jpeg', 'maxSize' =>6000000) );
         $args = array();
-        $args['name'] = $file['name'];
-        $args['size']=$file['size'];
-        $args['url'] = $file['pathname'];
-        $args['contentID'] = $contentID;
+        $args['fdName'] = $file['name'];
+        $args['fdSize']=$file['size'];
+        $args['fdURL'] = $file['pathname'];
+        $args['fdContentID'] = $contentID;
 
-        $content = Content::model()->with('coverFile')->findByPk($contentID);print_r($content->coverFile);exit;
-        FileService::factory()->deleteLocalFile($content->coverfile->fdURL);
-        $fileObj = ContentService::factory()->updateFile($content->coverfile->id, $args);
+        $content = Content::model()->with('coverFile')->findByPk($contentID);
+        FileService::factory()->deleteLocalFile($content->coverFile->fdURL);
+        $fileObj = ContentService::factory()->updateFile($content->coverFile->id, $args);
 
         return $fileObj;
     }
