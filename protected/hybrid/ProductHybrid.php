@@ -45,7 +45,8 @@ class ProductHybrid{
             }
         }
         $result= $product->save();
-        return $result;
+
+        return $result ? $product : false;
     }
 
 
