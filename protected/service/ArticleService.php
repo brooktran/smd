@@ -68,8 +68,11 @@ class ArticleService extends AbstractService{
         $article = Article::model()->findByPk($id);
         try{
             $contentHybrid = new ContentHybrid($article->fdContentID);
+            $content = Content::model()->with('coverImage')->findByPk($article->fdContentID);
             $blod = Blob::model()->findByAttributes(array('fdContentID'=>$article->fdContentID));
             $contentHybrid->deleteBlob($blod->id);
+            $contentHybrid->deleteFileByContentID();
+            $contentHybrid->deleteText($content->coverImage->id);
             $contentHybrid->deleteContent();
             Article::model()->deleteByPk($id);
             return true;
