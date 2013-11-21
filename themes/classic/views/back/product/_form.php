@@ -3,6 +3,8 @@
 /* @var $model Product */
 /* @var $form CActiveForm */
 ?>
+
+<link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl;?>/assets/css/bootstrap-fileupload.min.css">
 <style>
     .form-control.col-lg-6 {
         width: 50% !important;
@@ -22,7 +24,7 @@
                                    href="#collapse2">
                                     <i class="icon-chevron-up"></i>
                                 </a>
-                                <button class="btn btn-xs btn-danger close-box"><i class="icon-remove"></i></button>
+<!--                                <button class="btn btn-xs btn-danger close-box"><i class="icon-remove"></i></button>-->
                             </div>
                         </li>
                     </ul>
@@ -76,42 +78,24 @@
                 </div>
 
 
-
-
-
-
-
-
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="box">
-                            <header>
-                                <div class="icons"><i class="icon-th-large"></i></div>
-                                <h5>  <?php echo $form->labelEx($model,'fdValue'); ?></h5>
-                                <ul class="nav pull-right">
-                                    <li>
-                                        <div class="btn-group">
-                                            <a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse"
-                                               href="#cleditorDiv">
-                                                <i class="icon-minus"></i>
-                                            </a>
-                                            <button class="btn btn-xs btn-danger close-box"><i
-                                                    class="icon-remove"></i></button>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </header>
-
-                            <div id="cleditorDiv" class="body collapse in">
-                                <?php echo $form->textArea($model,'fdValue',array('value'=>$cate->blob->fdValue,'class'=>'form-control','id'=>"cleditor",'cols'=>30,'rows'=>5)); ?>
-                                <?php echo $form->error($model,'fdValue'); ?>
-                            </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-4">封面图片</label>
+                    <div class="col-lg-8">
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <span class="btn btn-file btn-default">
+                                    <span class="fileupload-new">选择图片</span>
+                                    <span class="fileupload-exists">换一张</span>
+                                    <input type='file' name = 'cover'/>
+                                </span>
+                            <span class="fileupload-preview"><?php if($cate->content->coverImage){echo '<a href="/'.$cate->content->coverImage->fdValue.'" target="_black"><img width="50" src="/'.$cate->content->coverImage->fdValue.'"/></a>';}?></span>
+                            <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
                         </div>
                     </div>
-                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.row -->
+
+                <?php
+                $this->renderPartial('/article/summernote',array('form'=>$form,'model'=>$model,'cate'=>$cate));
+                ?>
 
 
 
@@ -128,4 +112,5 @@
 <!--</div><!-- form -->
 
 
+    <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/lib/jasny/js/bootstrap-fileupload.js"></script>
 
