@@ -69,26 +69,39 @@ class ProductController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['ProductForm']))
-		{
+		if(isset($_POST['ProductForm'])){
             if(empty($_POST['ProductForm']['fdColumnID'])){
                 $this->redirect_message($this->createUrl('/back/column/create',array('tid'=>Yii::app()->params['ATTR_PRODUCT_TYPEID'])),'请先创建产品分类');
                 return;
             }
-            $array = array();
-			$model->attributes=$_POST['ProductForm'];
-            $array['fdColumnID'] = $_POST['ProductForm']['fdColumnID'];
-            $array['fdName'] = $_POST['ProductForm']['fdName'];
-            $array['fdValue'] =$_POST['ProductForm']['fdValue'];
-            $array['fdAreaID'] =isset($_POST['ProductForm']['fdAreaID']) ? $_POST['ProductForm']['fdAreaID'] : null;
-            $array['fdDomainID'] = Yii::app()->params['ATTR_DOMAIN_ID'];
-            $array['fdTypeID'] = Yii::app()->params['ATTR_PRODUCT_TYPEID'];
 
-           $product =  ProductService::factory()->saveProducts($array);
-			if($product){
+            $userID = 0;//Yii::app()->user->id;
+            $fileID = 0;
+            //try{
+                $array = array();
+                //$model->attributes=$_POST['ProductForm'];
+                $array['fdColumnID'] = $_POST['ProductForm']['fdColumnID'];
+                $array['fdName'] = $_POST['ProductForm']['fdName'];
+                $array['fdValue'] =$_POST['content'];
+                $array['fdAreaID'] =isset($_POST['ProductForm']['fdAreaID']) ? $_POST['ProductForm']['fdAreaID'] : null;
+                $array['fdDomainID'] = Yii::app()->params['ATTR_DOMAIN_ID'];
+                $array['fdTypeID'] = Yii::app()->params['ATTR_PRODUCT_TYPEID'];
+
+               $product =  ProductService::factory()->saveProducts($array);
+
+                if($_FILES['cover']['name']){
+                    $file = $this->saveFile($_FILES['cover'],$product->fdContentID);
+                    ContentService::factory()->saveText(null, $file->fdURL, $product->fdContentID);
+                    $fileID = $file ? $file->id : 0;
+                }
+
+                ContentService::factory()->saveContribute($product->fdContentID,  $userID, $fileID);
                 $this->redirect($this->createUrl('/back/product/index'));
-                return;
-            }
+                return ;
+//            }catch (Exception $e){
+//                return false;
+//            }
+
 		}
 
 		$articleColumn = ColumnService::factory()->getAllCategoryByTypeID(Yii::app()->params['ATTR_PRODUCT_TYPEID']);

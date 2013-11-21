@@ -117,13 +117,16 @@ class ArticleController extends Controller
 	 * @param integer $id the ID of the model to be updated
 	 */
 	public function actionUpdate($id)
-	{
+	{//XXX
 		//$model=$this->loadModel($id);
         $model = new ArticleForm();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['ArticleForm'])){
+            $userID = 0;//Yii::app()->user->id;
+            $fileID = 0;
+
             if(empty($_POST['ArticleForm']['fdColumnID'])){
                 $this->redirect_message($this->createUrl('/back/column/create',array('tid'=>Yii::app()->params['ATTR_ARTICLE_TYPEID'])),'请先创建文章分类');
                 return;
@@ -141,8 +144,20 @@ class ArticleController extends Controller
 
             if($article && $_FILES['cover']['name']){
                 $file = $this->updateFile($_FILES['cover'],$article->fdContentID);
-                $content = Content::model()->with('coverImage')->findByPk($article->fdContentID);
-                ContentService::factory()->updateText($content->coverImage->id , array('fdValue'=>$file->fdURL));
+                $content = Content::model()->with('coverImage','contributes')->findByPk($article->fdContentID);
+                if($content->coverImage->id){
+                    ContentService::factory()->updateText($content->coverImage->id , array('fdValue'=>$file->fdURL));
+                }else{
+                    ContentService::factory()->saveText(null, $file->id , $content->id);
+                    $args=array(
+                        'fdContentID'=>$content->id,
+                        'fdFileID'=>$file->id,
+                        'fdUserID'=>$userID,
+                        'fdAttributes'=>0,
+                    );
+                    ContentService::factory()->updateContribute($args);
+                }
+
             }
 
 
@@ -235,11 +250,11 @@ class ArticleController extends Controller
 
         if(is_array($file)){
             $args = array();
-            $args['name'] = $file['name'];
-            $args['typeID'] = Yii::app()->params['COVER_TYPEID'];
-            $args['size']=$file['size'];
-            $args['url'] = $file['pathname'];
-            $args['contentID'] = $contentID;
+            $args['fdName'] = $file['name'];
+            $args['fdTypeID'] = Yii::app()->params['COVER_TYPEID'];
+            $args['fdSize']=$file['size'];
+            $args['fdURL'] = $file['pathname'];
+            $args['fdContentID'] = $contentID;
             $fileObj = ContentService::factory()->saveFile($args);
             return $fileObj;
         }
@@ -253,16 +268,22 @@ class ArticleController extends Controller
      * @return int
      */
     public function updateFile($uploadFile,$contentID){
-        $file = XUpload::upload( $uploadFile, array( 'thumb'=>true, 'thumbSize'=>array ( 400 , 250 ) , 'allowExts' => 'jpg,gif,png,jpeg', 'maxSize' =>6000000) );
+        $file = XUpload::upload( $uploadFile, array( 'thumb'=>true, 'thumbSize'=>array ( 400 , 250 ) , 'allowExts' => 'jpg,gif,png,jpeg', 'maxSize' =>10000000) );
         $args = array();
         $args['fdName'] = $file['name'];
+        $args['fdTypeID'] = Yii::app()->params['COVER_TYPEID'];
         $args['fdSize']=$file['size'];
         $args['fdURL'] = $file['pathname'];
         $args['fdContentID'] = $contentID;
 
         $content = Content::model()->with('coverFile')->findByPk($contentID);
         FileService::factory()->deleteLocalFile($content->coverFile->fdURL);
-        $fileObj = ContentService::factory()->updateFile($content->coverFile->id, $args);
+        if($content->coverFile->id){
+            $fileObj = ContentService::factory()->updateFile($content->coverFile->id, $args);
+        }else{
+            $fileObj = ContentService::factory()->saveFile($args);
+        }
+
 
         return $fileObj;
     }
