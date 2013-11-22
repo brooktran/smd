@@ -74,7 +74,7 @@ class ProductController extends Controller
                 $this->redirect_message($this->createUrl('/back/column/create',array('tid'=>Yii::app()->params['ATTR_PRODUCT_TYPEID'])),'请先创建产品分类');
                 return;
             }
-
+print_r($_POST);exit;
             $userID = 0;//Yii::app()->user->id;
             $fileID = 0;
             try{
