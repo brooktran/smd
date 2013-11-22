@@ -100,15 +100,23 @@
                 ?>
 
                  <div class="form-actions no-margin-bottom">
-                    <input type="submit" value="<?php if($this->action->id=='update'){echo '修改';}else{echo '发布';}?>" class="btn btn-primary">
+                    <input type="submit" value="<?php if($this->action->id=='update'){echo '修改';}else{echo '发布';}?>" class="btn btn-primary sub">
                 </div>
                 <?php $this->endWidget(); ?>
-
+                <?php $this->renderPartial('/upload/modal')?>
+            </div>
         </div>
-    </div>
     <!-- /.col-lg-12 -->
+    </div>
 </div>
 <!--</div><!-- form -->
 
 <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/lib/jasny/js/bootstrap-fileupload.js"></script>
 
+<script>
+    $(function(){
+        $('.sub').click(function(){
+            $('#dialogs').empty();
+        })
+    })
+</script>
