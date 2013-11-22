@@ -41,7 +41,7 @@
                     'clientOptions'=>array(
                         'validateOnSubmit'=>true,
                     ),
-                    "htmlOptions"=>array('class'=>'form-horizontal')
+                    "htmlOptions"=>array('class'=>'form-horizontal','enctype'=>'multipart/form-data')
                 )); ?>
 
 
@@ -93,14 +93,13 @@
                     </div>
                 </div>
 
+
                 <?php
+                $this->renderPartial('/upload/_form');
                 $this->renderPartial('/article/summernote',array('form'=>$form,'model'=>$model,'cate'=>$cate));
                 ?>
 
-
-
-
-                <div class="form-actions no-margin-bottom">
+                 <div class="form-actions no-margin-bottom">
                     <input type="submit" value="<?php if($this->action->id=='update'){echo '修改';}else{echo '发布';}?>" class="btn btn-primary">
                 </div>
                 <?php $this->endWidget(); ?>
@@ -111,6 +110,5 @@
 </div>
 <!--</div><!-- form -->
 
-
-    <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/lib/jasny/js/bootstrap-fileupload.js"></script>
+<script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/lib/jasny/js/bootstrap-fileupload.js"></script>
 

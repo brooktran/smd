@@ -9,6 +9,8 @@ body { background: #E7EDEF }
 #fileListWarp li{
     float: left;
 }
+
+
 </style>
 
 <form>
@@ -53,6 +55,12 @@ $(function() {
         }
 
     });
+
+    $('.uploadFile').click(function(){
+        var imgList = $("#fileListWarp").html();
+        run(imgList);
+    })
+
 });
 
 
