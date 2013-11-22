@@ -20,10 +20,10 @@ class UploadController extends Controller{
 
         if(is_array($file)){
             $args = array();
-            $args['name'] = $file['name'];
-            $args['typeID'] = 0;
-            $args['size']=$file['size'];
-            $args['url'] = $file['pathname'];
+            $args['fdName'] = $file['name'];
+            $args['fdTypeID'] = 0;
+            $args['fdSize']=$file['size'];
+            $args['fdURL'] = $file['pathname'];
             $fileObj = ContentService::factory()->saveFile($args);
 
             if ( $fileObj ) {

@@ -77,12 +77,12 @@ class ProductController extends Controller
 
             $userID = 0;//Yii::app()->user->id;
             $fileID = 0;
-            //try{
+            try{
                 $array = array();
                 //$model->attributes=$_POST['ProductForm'];
                 $array['fdColumnID'] = $_POST['ProductForm']['fdColumnID'];
                 $array['fdName'] = $_POST['ProductForm']['fdName'];
-                $array['fdValue'] =$_POST['content'];
+                $array['fdValue'] = $_POST['content'];
                 $array['fdAreaID'] =isset($_POST['ProductForm']['fdAreaID']) ? $_POST['ProductForm']['fdAreaID'] : null;
                 $array['fdDomainID'] = Yii::app()->params['ATTR_DOMAIN_ID'];
                 $array['fdTypeID'] = Yii::app()->params['ATTR_PRODUCT_TYPEID'];
@@ -90,7 +90,7 @@ class ProductController extends Controller
                $product =  ProductService::factory()->saveProducts($array);
 
                 if($_FILES['cover']['name']){
-                    $file = $this->saveFile($_FILES['cover'],$product->fdContentID);
+                    $file = FileService::factory()->saveFile($_FILES['cover'],$product->fdContentID);
                     ContentService::factory()->saveText(null, $file->fdURL, $product->fdContentID);
                     $fileID = $file ? $file->id : 0;
                 }
@@ -98,9 +98,9 @@ class ProductController extends Controller
                 ContentService::factory()->saveContribute($product->fdContentID,  $userID, $fileID);
                 $this->redirect($this->createUrl('/back/product/index'));
                 return ;
-//            }catch (Exception $e){
-//                return false;
-//            }
+            }catch (Exception $e){
+                return false;
+            }
 
 		}
 
@@ -125,24 +125,45 @@ class ProductController extends Controller
 
         if(isset($_POST['ProductForm']))
         {
+            $userID = 0;//Yii::app()->user->id;
+            $fileID = 0;
             $array = array();
-            $model->attributes=$_POST['ProductForm'];
+            //$model->attributes=$_POST['ProductForm'];
             $array['id'] = isset($_GET['id']) ? intval($_GET['id']) : null;
             $array['fdColumnID'] = $_POST['ProductForm']['fdColumnID']?$_POST['ProductForm']['fdColumnID']:0;
             $array['fdName'] = $_POST['ProductForm']['fdName'];
-            $array['fdValue'] =$_POST['ProductForm']['fdValue'];
+            $array['fdValue'] =  $_POST['content'];
             $array['fdAreaID'] =isset($_POST['ProductForm']['fdAreaID']) ? $_POST['ProductForm']['fdAreaID'] : null;
             $array['fdDomainID'] = Yii::app()->params['ATTR_DOMAIN_ID'];
             $array['fdTypeID'] = Yii::app()->params['ATTR_PRODUCT_TYPEID'];
 
             $product =  ProductService::factory()->updateProduct($array);
+
+            if($product && $_FILES['cover']['name']){
+                $file = FileService::factory()->updateFile($_FILES['cover'],$product->fdContentID);
+                $content = Content::model()->with('coverImage','contributes')->findByPk($product->fdContentID);
+                if($content->coverImage->id){
+                    ContentService::factory()->updateText($content->coverImage->id , array('fdValue'=>$file->fdURL));
+                }else{
+                    ContentService::factory()->saveText(null, $file->id , $content->id);
+                    $args=array(
+                        'fdContentID'=>$content->id,
+                        'fdFileID'=>$file->id,
+                        'fdUserID'=>$userID,
+                        'fdAttributes'=>0,
+                    );
+                    ContentService::factory()->updateContribute($args);
+                }
+
+            }
+
+
             if($product){
                 $this->redirect($this->createUrl('/back/product/index'));
                 return;
             }
         }
 
-        //$id = $_GET['id'];
         $product = Product::model()->with('content','column','blob')->findByPk($id);
 
         $categorys = ColumnService::factory()->getAllCategoryByTypeID(Yii::app()->params['ATTR_PRODUCT_TYPEID']);

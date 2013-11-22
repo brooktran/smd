@@ -48,7 +48,7 @@ class Product extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('fdName', 'required','message'=>'需要'),
+           // array('fdName', 'required','message'=>'需要'),
 			array(' fdContentID,  fdColumnID', 'required'),
 			array('id, fdAreaID, fdContentID, fdDomainID, fdColumnID', 'numerical', 'integerOnly'=>true),
 

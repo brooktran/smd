@@ -32,7 +32,7 @@ class ProductHybrid{
 
         $contentID = $contentHybrid->saveContent($properties['fdTypeID'], $name = $properties['fdName']);
 
-        $properties['fdContentID'] = $contentID;
+        $properties['fdContentID'] = $contentHybrid->id;
 
         $contentHybrid->saveBlob(null,$properties['fdValue']);
 
