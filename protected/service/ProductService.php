@@ -59,7 +59,7 @@ class ProductService extends AbstractService{
                 }
             }
             $result= $product->save();
-            return $result;
+            return $product;
         }catch (Exception $e){
             return false;
         }
