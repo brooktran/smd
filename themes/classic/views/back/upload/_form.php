@@ -25,7 +25,15 @@
         $('#show').removeClass('none');
         $('.fileListWarp').append(imgList);
     }
+
 </script>
+
+<?php
+if($content){
+    $files = ContentService::factory()->getFileByContent($content->id,0);
+}
+
+?>
 
 
 
@@ -44,15 +52,24 @@
         <div class="form-group none" id='show'>
             <label class="control-label col-lg-4">图片列表</label>
             <ul class="fileListWarp">
-                <?php foreach((array)$imageList as $key=>$row):?>
-                    <?php if($row):?>
-                        <li id="image_<?php echo $row['fileId']?>"><a href="<?php echo $this->_baseUrl?>/<?php echo $row['file']?>" target="_blank"><img src="<?php echo $this->_baseUrl?>/<?php echo $row['file']?>" width="40" height="40" align="absmiddle"></a>&nbsp;<br>
-                            <a href='javascript:uploadifyRemove("<?php echo $row['fileId']?>", "image_")'>删除</a>
-                            <input name="imageList[fileId][]" type="hidden" value="<?php echo $row['fileId']?>">
-                            <input name="imageList[file][]" type="hidden" value="<?php echo $row['file']?>">
+                <?php
+                    if($files){
+                ?>
+                    <script>
+                        run('');
+                    </script>
+                <?php
+                    foreach($files as $key=>$file){?>
+
+                        <li id="image_<?php echo $file['id']?>">
+                            <a href="<?php echo Yii::app()->request->baseUrl;?>/<?php echo $file['fdURL']?>" target="_blank">
+                                <img src="<?php echo Yii::app()->request->baseUrl?>/<?php echo $file['fdURL']?>" width="40" height="40" align="absmiddle"></a>&nbsp;<br>
+                            <a href='javascript:uploadifyRemove("<?php echo $file['id']?>", "image_")'>删除</a>
+<!--                            <input name="imageList[fileId][]" type="hidden" value="--><?php //echo $row['fileId']?><!--">-->
+<!--                            <input name="imageList[file][]" type="hidden" value="--><?php //echo $row['file']?><!--">-->
                         </li>
-                    <?php endif?>
-                <?php endforeach?>
+
+                <?php }}?>
             </ul>
         </div>
 

@@ -95,7 +95,7 @@
 
 
                 <?php
-                $this->renderPartial('/upload/_form');
+                $this->renderPartial('/upload/_form',array('content'=>$cate->content));
                 $this->renderPartial('/article/summernote',array('form'=>$form,'model'=>$model,'cate'=>$cate));
                 ?>
 
@@ -112,11 +112,3 @@
 <!--</div><!-- form -->
 
 <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/lib/jasny/js/bootstrap-fileupload.js"></script>
-
-<script>
-    $(function(){
-        $('.sub').click(function(){
-            $('#dialogs').empty();
-        })
-    })
-</script>
