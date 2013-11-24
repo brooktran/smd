@@ -74,7 +74,7 @@ class ProductController extends Controller
                 $this->redirect_message($this->createUrl('/back/column/create',array('tid'=>Yii::app()->params['ATTR_PRODUCT_TYPEID'])),'请先创建产品分类');
                 return;
             }
-print_r($_POST);exit;
+
             $userID = 0;//Yii::app()->user->id;
             $fileID = 0;
             try{
@@ -89,13 +89,28 @@ print_r($_POST);exit;
 
                $product =  ProductService::factory()->saveProducts($array);
 
-                if($_FILES['cover']['name']){
+                if($_FILES['cover']['name']){//缩略图
                     $file = FileService::factory()->saveFile($_FILES['cover'],$product->fdContentID);
                     ContentService::factory()->saveText(null, $file->fdURL, $product->fdContentID);
                     $fileID = $file ? $file->id : 0;
+                    ContentService::factory()->saveContribute($product->fdContentID,  $userID, $fileID);
                 }
 
-                ContentService::factory()->saveContribute($product->fdContentID,  $userID, $fileID);
+                if(isset($_POST['imageList'])){//组图重写fileID
+                    $imageList = $_POST['imageList'];
+                    foreach($imageList['fileId'] as $fileID){
+                        $arg = array(
+                            'fdContentID'=>$product->fdContentID,
+                        );
+                        ContentService::factory()->updateFile($fileID,$arg);
+                        ContentService::factory()->saveContribute($product->fdContentID,  $userID, $fileID);
+                    }
+                }
+
+                if(!$_FILES['cover']['name'] && !$_POST['imageList']){
+                    ContentService::factory()->saveContribute($product->fdContentID,  $userID);
+                }
+
                 $this->redirect($this->createUrl('/back/product/index'));
                 return ;
             }catch (Exception $e){
@@ -145,16 +160,28 @@ print_r($_POST);exit;
                 if($content->coverImage->id){
                     ContentService::factory()->updateText($content->coverImage->id , array('fdValue'=>$file->fdURL));
                 }else{
-                    ContentService::factory()->saveText(null, $file->id , $content->id);
+                    ContentService::factory()->saveText(null, $file->fdURL , $content->id);
                     $args=array(
                         'fdContentID'=>$content->id,
                         'fdFileID'=>$file->id,
                         'fdUserID'=>$userID,
                         'fdAttributes'=>0,
                     );
-                    ContentService::factory()->updateContribute($args);
+                   // ContentService::factory()->updateContribute($args);
+                    ContentService::factory()->saveContribute($product->fdContentID,  $userID, $file->id);
                 }
 
+            }
+
+            if(isset($_POST['imageList'])){//组图重写fileID
+                $imageList = $_POST['imageList'];
+                foreach($imageList['fileId'] as $fileID){
+                    $arg = array(
+                        'fdContentID'=>$product->fdContentID,
+                    );
+                    ContentService::factory()->updateFile($fileID,$arg);
+                    ContentService::factory()->saveContribute($product->fdContentID,  $userID, $fileID);
+                }
             }
 
 

@@ -93,6 +93,9 @@ class ArticleController extends Controller
                     $file = FileService::factory()->saveFile($_FILES['cover'],$article->fdContentID);
                     ContentService::factory()->saveText(null, $file->fdURL, $article->fdContentID);
                     $fileID = $file ? $file->id : 0;
+                    ContentService::factory()->saveContribute($article->fdContentID,  $userID, $fileID);
+                }else{
+                    ContentService::factory()->saveContribute($article->fdContentID,  $userID, 0);
                 }
 
                 ContentService::factory()->saveContribute($article->fdContentID,  $userID, $fileID);
@@ -155,7 +158,8 @@ class ArticleController extends Controller
                         'fdUserID'=>$userID,
                         'fdAttributes'=>0,
                     );
-                    ContentService::factory()->updateContribute($args);
+                   // ContentService::factory()->updateContribute($args);
+                    ContentService::factory()->saveContribute($article->fdContentID,  $userID, $file->id);
                 }
 
             }
