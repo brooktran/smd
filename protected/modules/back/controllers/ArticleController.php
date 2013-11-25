@@ -98,7 +98,7 @@ class ArticleController extends Controller
                     ContentService::factory()->saveContribute($article->fdContentID,  $userID, 0);
                 }
 
-                ContentService::factory()->saveContribute($article->fdContentID,  $userID, $fileID);
+                //ContentService::factory()->saveContribute($article->fdContentID,  $userID, $fileID);
                 $this->redirect($this->createUrl('/back/article/index'));
                 return ;
             }catch (Exception $e){
