@@ -93,6 +93,29 @@
                     </div>
                 </div>
 
+                <!-- /.row -->
+                <div class="form-group">
+                    <label class="control-label col-lg-4">热卖/新品</label>
+
+                    <div class="col-lg-8">
+
+                        <div class="checkbox">
+                            <label>
+                                <input class="uniform" type="radio" name="new" value="1" <?php echo $cate->content->fdHot==1 ? 'checked' : ''?>>
+                               热卖产品
+                            </label>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input class="uniform" type="radio" name="new" value="2" <?php echo $cate->content->fdHot==2 ? 'checked' : ''?>>
+                                最新产品
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.row -->
 
                 <?php
                 $this->renderPartial('/upload/_form',array('content'=>$cate->content));
