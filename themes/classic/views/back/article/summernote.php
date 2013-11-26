@@ -33,7 +33,7 @@
         <?php
         if($cate){
         ?>
-        $('.note-editor .note-editable').html('<?php echo $cate->blob->fdValue;?>');
+        $('.note-editor .note-editable').html('<?php echo CHtml::decode($cate->blob->fdValue)?>');
         <?php
         }
         ?>

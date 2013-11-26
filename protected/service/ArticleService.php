@@ -17,10 +17,34 @@ class ArticleService extends AbstractService{
         return  parent::factory(__CLASS__);
     }
 
+    /**
+     * 根据ID获取相应的内容
+     * @param $id
+     * @return array|CActiveRecord|mixed|null
+     */
     public function getArticle($id){
         $article = Article::model()->findByPk($id);
         return $article;
     }
+
+    /**
+     * @param null $limit
+     * @return array|CActiveRecord|mixed|null
+     */
+    public function findAllArticle($limit=null){
+        $criteria = new CDbCriteria();
+        $criteria->with = array('content');
+        if($limit){
+            $criteria->limit = $limit;
+            $criteria->offset = 0;
+        }
+        $criteria->order = 't.id DESC';
+
+        return Article::model()->findAll($criteria);
+    }
+
+
+
 
     /**
      * 保存文章

@@ -147,10 +147,10 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                     <div class="menu-right-bg"></div>
                     <div class="menu-bg">
                         <ul id="menu">
-                            <li><a href="./index.html">首页 +</a>
-                                <ul>
-                                    <li><a href="./index-2.html">首 页 无 动 画</a></li>
-                                </ul>
+                            <li><a href="./index.html">首页 </a>
+<!--                                <ul>-->
+<!--                                    <li><a href="./index-2.html">首 页 无 动 画</a></li>-->
+<!--                                </ul>-->
                             </li>
                             <li><a href="./portfolio-4columns.html">产品中心 +</a>
                                 <ul>
@@ -168,7 +168,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                                 </ul>
                             </li>
 							<li><a href="./contact.html">技术服务</a></li>
-                            <li><a href="./blog.html">资讯中心 +</a>
+                            <li><a href="./blog.html">行业中心 +</a>
 								<ul>
                                     <li><a href="./elements.html">企业新闻</a></li>
                                     <li><a href="./typography.html">行业动态</a></li>

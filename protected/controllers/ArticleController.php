@@ -15,7 +15,12 @@ class ArticleController extends Controller{
     }
 
     public function actionIndex(){
-       $this->render('index');
+       $article = ArticleService::factory()->findAllArticle(2);
+
+       $this->render('index',array(
+           'article'=>$article,
+
+       ));
     }
 
     public function actionArtDetail(){
