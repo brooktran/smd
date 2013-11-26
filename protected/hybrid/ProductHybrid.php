@@ -30,7 +30,7 @@ class ProductHybrid{
         $product = $this->getProduct();
         $contentHybrid = new ContentHybrid();
 
-        $contentID = $contentHybrid->saveContent($properties['fdTypeID'], $name = $properties['fdName']);
+        $contentID = $contentHybrid->saveContent($properties['fdTypeID'], $name = $properties['fdName'], $properties['new']);
 
         $properties['fdContentID'] = $contentHybrid->id;
 
@@ -38,6 +38,7 @@ class ProductHybrid{
 
         if($properties){
             unset($properties['fdValue']);
+            unset($properties['new']);
             unset($properties['fdName']);
             unset($properties['fdTypeID']);
             foreach ($properties as $name=>$value){

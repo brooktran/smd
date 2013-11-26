@@ -83,6 +83,7 @@ class ProductController extends Controller
                 $array['fdColumnID'] = $_POST['ProductForm']['fdColumnID'];
                 $array['fdName'] = $_POST['ProductForm']['fdName'];
                 $array['fdValue'] = $_POST['content'];
+                $array['new'] = $_POST['new'];
                 $array['fdAreaID'] =isset($_POST['ProductForm']['fdAreaID']) ? $_POST['ProductForm']['fdAreaID'] : null;
                 $array['fdDomainID'] = Yii::app()->params['ATTR_DOMAIN_ID'];
                 $array['fdTypeID'] = Yii::app()->params['ATTR_PRODUCT_TYPEID'];
@@ -148,6 +149,7 @@ class ProductController extends Controller
             $array['fdColumnID'] = $_POST['ProductForm']['fdColumnID']?$_POST['ProductForm']['fdColumnID']:0;
             $array['fdName'] = $_POST['ProductForm']['fdName'];
             $array['fdValue'] =  $_POST['content'];
+            $array['new'] = $_POST['new'];
             $array['fdAreaID'] =isset($_POST['ProductForm']['fdAreaID']) ? $_POST['ProductForm']['fdAreaID'] : null;
             $array['fdDomainID'] = Yii::app()->params['ATTR_DOMAIN_ID'];
             $array['fdTypeID'] = Yii::app()->params['ATTR_PRODUCT_TYPEID'];

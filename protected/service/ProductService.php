@@ -45,11 +45,12 @@ class ProductService extends AbstractService{
         $contentHybrid = new ContentHybrid($product->fdContentID);
 
         try{
-            $contentHybrid->updateContent(array('fdName'=>$properties['fdName']));
+            $contentHybrid->updateContent(array('fdName'=>$properties['fdName'], 'new'=>$properties['new']));
             $contentHybrid->updateBlob($contentHybrid->content->blob->id,array('fdValue'=>$properties['fdValue']));
 
             $array = array();
             unset($properties['fdValue']);
+            unset($properties['new']);
             unset($properties['fdName']);
             unset($properties['fdTypeID']);
             $product->fdColumnID = $properties['fdColumnID'];
