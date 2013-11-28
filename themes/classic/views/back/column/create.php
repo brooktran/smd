@@ -18,7 +18,6 @@
                                    href="#collapse2">
                                     <i class="icon-chevron-up"></i>
                                 </a>
-                                <button class="btn btn-xs btn-danger close-box"><i class="icon-remove"></i></button>
                             </div>
                         </li>
                     </ul>

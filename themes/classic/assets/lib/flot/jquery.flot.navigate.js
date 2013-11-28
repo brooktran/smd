@@ -340,7 +340,7 @@ Licensed under the MIT License ~ http://threedubmedia.googlecode.com/files/MIT-L
     $.plot.plugins.push({
         init: init,
         options: options,
-        name: 'navigate',
+        name: 'navigate1',
         version: '1.3'
     });
 })(jQuery);

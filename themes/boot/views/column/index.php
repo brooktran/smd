@@ -41,7 +41,7 @@
                 <?php
                 }
                 ?>
-<!--                <li><a href="#" data-filter=".code">code</a></li>-->
+                <li><a href="#" data-filter=".test">code</a></li>
 
             </ul>
         </div>
@@ -57,7 +57,7 @@
                 foreach($columns as $key=>$column){
                     $products = ProductService::factory()->getProductByCateID($column['id']);
                     foreach($products as $product){
-                        $url = $product->content->file->fdURL;
+                        $url = $product->content->coverFile->fdURL;
                         $imgUrl = FileService::factory()->imgUrl($url);
                     ?>
 
@@ -65,7 +65,7 @@
                         <div class="view view-first">
                             <img src="<?php echo yii::app()->request->baseUrl ?>/<?php echo $imgUrl?>" alt="" />
                             <div class="mask">
-                                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/8.png" rel="prettyPhoto" class="info"></a>
+                                <a href="<?php echo yii::app()->request->baseUrl ?>/<?php echo $product->content->coverFile->fdURL;?>" rel="prettyPhoto" class="info"></a>
                                 <a href="./portfolio-slider.html" class="link"></a>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                 $products = ProductService::factory()->getProductByCateID($currentColumn->id);
                 if($products){
                     foreach($products as $product){
-                        $url = $product->content->file->fdURL;
+                        $url = $product->content->coverFile->fdURL;
                         $imgUrl = FileService::factory()->imgUrl($url);
                     ?>
 
@@ -88,7 +88,7 @@
                         <div class="view view-first">
                             <img src="<?php echo yii::app()->request->baseUrl ?>/<?php echo $imgUrl?>" alt="" />
                             <div class="mask">
-                                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/8.png" rel="prettyPhoto" class="info"></a>
+                                <a href="<?php echo yii::app()->request->baseUrl ?>/<?php echo $product->content->coverFile->fdURL;?>" rel="prettyPhoto" class="info"></a>
                                 <a href="./portfolio-slider.html" class="link"></a>
                             </div>
                         </div>
@@ -103,20 +103,20 @@
 
 
 			
-<!--			<div class="span2 test block ">-->
-<!---->
-<!--                <div class="view view-first">-->
-<!--                    <img src="--><?php //echo yii::app()->theme->baseUrl ?><!--/assets/img/portfolio/2-460x460.png" alt="" />-->
-<!---->
-<!---->
-<!--                    <div class="mask">-->
-<!--                        <a href="--><?php //echo yii::app()->theme->baseUrl ?><!--/assets/img/portfolio/2.png" rel="prettyPhoto" class="info"></a>-->
-<!--                        <a href="./portfolio-single.html" class="link"></a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="descr"><h6><a href="./portfolio-single.html">Fresh Design</a></h6></div>-->
-<!--                <p style="text-align:center">Another Project</p>-->
-<!--            </div>-->
+			<div class="span2 test block ">
+
+                <div class="view view-first">
+                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/2-460x460.png" alt="" />
+
+
+                    <div class="mask">
+                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/2.png" rel="prettyPhoto" class="info"></a>
+                        <a href="./portfolio-single.html" class="link"></a>
+                    </div>
+                </div>
+                <div class="descr"><h6><a href="./portfolio-single.html">Fresh Design</a></h6></div>
+                <p style="text-align:center">Another Project</p>
+            </div>
 			
 			
         </div>
