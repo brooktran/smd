@@ -90,5 +90,13 @@ class FileService extends AbstractService{
         return $fileObj;
     }
 
-
+    /**
+     * 拼接url地址
+     * @param $url
+     */
+    public function imgUrl($url){
+        $str1 = substr($url,0,strrpos($url,'/')+1);
+        $str2 = substr($url,strrpos($url,'/')+1);
+        return $imgUrl = $str1.'thumb_'.$str2;
+    }
 }

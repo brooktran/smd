@@ -87,5 +87,14 @@ class ProductService extends AbstractService{
         }
     }
 
+    /**
+     * 根据分类ID 查出分类下的所有产品
+     * @param int $cateID
+     * @return array|CActiveRecord|mixed|null
+     */
+    public function getProductByCateID($cateID){
+        $products = Product::model()->with('content')->findAllByAttributes(array('fdColumnID'=>$cateID));
+        return $products;
+    }
 
 }

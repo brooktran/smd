@@ -15,10 +15,17 @@ class ColumnController extends Controller{
     }
 
     public function actionIndex(){
-        $this->render('index');
+        $columnID  = RequestUtils::getNormalRequest('columnID');
+        $currentColumn = ColumnService::factory()->getCategoryByID($columnID);
+        $columns = ColumnService::factory()->getChilds($columnID);
+
+
+        $this->render('index',array('columns'=>$columns,'currentColumn'=>$currentColumn));
     }
 
     public function actionGoods(){
         $this->render('goods');
     }
+
+
 }
