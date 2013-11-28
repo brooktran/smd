@@ -147,32 +147,46 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                     <div class="menu-right-bg"></div>
                     <div class="menu-bg">
                         <ul id="menu">
-                            <li><a href="./index.html">首页 </a>
-<!--                                <ul>-->
-<!--                                    <li><a href="./index-2.html">首 页 无 动 画</a></li>-->
-<!--                                </ul>-->
+                            <li><a href="<?php echo $this->createUrl('homePage/index');?>">首页 </a>
                             </li>
-                            <li><a href="./portfolio-4columns.html">产品中心 +</a>
+                            <li><a href="javascript:">产品中心 +</a>
+                                <?php
+                                $typeID = Yii::app()->params['ATTR_PRODUCT_TYPEID'];
+                                $columns = ColumnService::factory()->getAllCategoryByTypeID($typeID,0);
+                                ?>
                                 <ul>
-                                    <li><a href="#">产品分类</a>
-                                        <ul>
-                                            <li><a href="./portfolio-slider.html">产品动画</a></li>
-                                            <li><a href="./portfolio-video.html">产品视频</a></li>
-                                            <li><a href="./portfolio-single.html">产品相册</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="./portfolio-6columns.html">分类6</a></li>
-                                    <li><a href="./portfolio-4columns.html">分类4</a></li>
-                                    <li><a href="./portfolio-3columns.html">分类3</a></li>
-                                    <li><a href="./portfolio-2columns.html">分类2</a></li>
+                                    <?php
+                                    foreach($columns as $column){
+                                    $childrens = ColumnService::factory()->getChilds($column->id);
+                                    ?>
+                                    <li><a href="<?php echo $this->createUrl('column/index',array('columnID'=>$column->id));?>"><?php echo $column->fdName;?></a>
+                                        <?php
+                                        ColumnService::factory()->listColumnHtml($childrens);
+                                        ?>
+                                        <?php
+                                        }
+                                        ?>
                                 </ul>
                             </li>
 							<li><a href="./contact.html">技术服务</a></li>
-                            <li><a href="./blog.html">行业中心 +</a>
-								<ul>
-                                    <li><a href="./elements.html">企业新闻</a></li>
-                                    <li><a href="./typography.html">行业动态</a></li>
-                                    <li><a href="./full-width.html">企业未来计划</a></li>
+                            <li>
+                                <?php
+                                $typeID = Yii::app()->params['ATTR_ARTICLE_TYPEID'];
+                                $columns = ColumnService::factory()->getAllCategoryByTypeID($typeID,0);
+                                ?>
+                                <a href="javascript:">行业中心 +</a>
+								    <ul>
+                                    <?php
+                                    foreach($columns as $column){
+                                        $childrens = ColumnService::factory()->getChilds($column->id);
+                                    ?>
+                                    <li><a href="<?php echo $this->createUrl('column/index',array('columnID'=>$column->id));?>"><?php echo $column->fdName;?></a>
+                                        <?php
+                                        ColumnService::factory()->listColumnHtml($childrens);
+                                        ?>
+                                    <?php
+                                    }
+                                    ?>
                                 </ul>
 							
 							</li>

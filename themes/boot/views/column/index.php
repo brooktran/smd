@@ -12,7 +12,7 @@
         <div class="row">
             <div class="span12">
                 <div class="welcome">
-                    <h1><span class="colored">Portfolio</span><span class="grey_colored"> / 6 Columns</span></h1>
+                    <h1><span class="colored">产品中心</span><span class="grey_colored"> / Goods</span></h1>
                 </div>
             </div>
         </div>
@@ -28,19 +28,21 @@
             <ul class="unstyled" id="themeFilterableNav">
                 <li class="filter-tab">FILTER</li>
                 <li class="active-tag"><a data-filter="*" href="#">all</a></li>
+                <?php
+                if($columns){
+                    foreach($columns as $key=>$column){
+                    ?>
+                    <li><a href="#" data-filter=".goods<?php echo $column['id']?>"><?php echo $column['text'];?></a></li>
+                    <?php
+                    }
+                }else{
+                    ?>
+                    <li><a href="#" data-filter=".goods<?php echo $currentColumn->id?>"><?php echo $currentColumn->fdName;?></a></li>
+                <?php
+                }
+                ?>
+<!--                <li><a href="#" data-filter=".code">code</a></li>-->
 
-                <li><a href="#" data-filter=".code">code</a>
-                </li>
-                <li><a href="#" data-filter=".design">design</a>
-                </li>
-                <li><a href="#" data-filter=".graphic">graphic</a>
-                </li>
-                <li><a href="#" data-filter=".mobile">血清</a>
-                </li>
-                <li><a href="#" data-filter=".print">试剂</a>
-                </li>
-				<li><a href="#" data-filter=".test">耗材</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -50,189 +52,71 @@
     <section style="padding-top:25px !important;">
         <div id="portfolio" class="row">
 
-            <div class="span2 design block ">
+            <?php
+            if($columns){
+                foreach($columns as $key=>$column){
+                    $products = ProductService::factory()->getProductByCateID($column['id']);
+                    foreach($products as $product){
+                        $url = $product->content->file->fdURL;
+                        $imgUrl = FileService::factory()->imgUrl($url);
+                    ?>
 
-                <div class="view view-first">
-                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/8-460x460.png" alt="" />
-
-
-                    <div class="mask">
-                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/8.png" rel="prettyPhoto" class="info"></a>
-                        <a href="./portfolio-slider.html" class="link"></a>
+                    <div class="span2 goods<?php echo $column['id']?> block ">
+                        <div class="view view-first">
+                            <img src="<?php echo yii::app()->request->baseUrl ?>/<?php echo $imgUrl?>" alt="" />
+                            <div class="mask">
+                                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/8.png" rel="prettyPhoto" class="info"></a>
+                                <a href="./portfolio-slider.html" class="link"></a>
+                            </div>
+                        </div>
+                        <div class="descr"><h6><a href="./portfolio-slider.html"><?php echo $product->content->fdName ?></a></h6></div>
+                        <p style="text-align:center"><?php echo $column['text']?></p>
                     </div>
-                </div>
-                <div class="descr"><h6><a href="./portfolio-slider.html">Portfolio With Slider</a></h6></div>
-                <p style="text-align:center">New Design</p>
-            </div>
-            <div class="span2 graphic block ">
+                <?php
+                    }
+                }
+            }else{
 
-                <div class="view view-first">
-                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/7-460x460.png" alt="" />
+                $products = ProductService::factory()->getProductByCateID($currentColumn->id);
+                if($products){
+                    foreach($products as $product){
+                        $url = $product->content->file->fdURL;
+                        $imgUrl = FileService::factory()->imgUrl($url);
+                    ?>
 
-
-                    <div class="mask">
-                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/7.png" rel="prettyPhoto" class="info"></a>
-                        <a href="./portfolio-video.html" class="link"></a>
+                    <div class="span2 goods<?php echo $currentColumn->id?> block ">
+                        <div class="view view-first">
+                            <img src="<?php echo yii::app()->request->baseUrl ?>/<?php echo $imgUrl?>" alt="" />
+                            <div class="mask">
+                                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/8.png" rel="prettyPhoto" class="info"></a>
+                                <a href="./portfolio-slider.html" class="link"></a>
+                            </div>
+                        </div>
+                        <div class="descr"><h6><a href="./portfolio-slider.html"><?php echo $product->content->fdName ?></a></h6></div>
+                        <p style="text-align:center"><?php echo $currentColumn->fdName?></p>
                     </div>
-                </div>
-                <div class="descr"><h6><a href="./portfolio-video.html">Portfolio With Video</a></h6></div>
-                <p style="text-align:center">HTML5 Design</p>
-            </div>
-            <div class="span2 mobile block ">
-
-                <div class="view view-first">
-                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/5-460x460.png" alt="" />
+            <?php
+                    }
+                }
+            }
+            ?>
 
 
-                    <div class="mask">
-                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/5.png" rel="prettyPhoto" class="info"></a>
-                        <a href="./portfolio-single.html" class="link"></a>
-                    </div>
-                </div>
-                <div class="descr"><h6><a href="./portfolio-single.html">Standart Portfolio</a></h6></div>
-                <p style="text-align:center">Another Project</p>
-            </div>
-            <div class="span2 mobile block ">
-
-                <div class="view view-first">
-                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/4-460x460.png" alt="" />
-
-
-                    <div class="mask">
-                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/4.png" rel="prettyPhoto" class="info"></a>
-                        <a href="./portfolio-single.html" class="link"></a>
-                    </div>
-                </div>
-                <div class="descr"><h6><a href="./portfolio-single.html">Mobile App</a></h6></div>
-                <p style="text-align:center">New IOS</p>
-            </div>
-            <div class="span2 design block ">
-
-                <div class="view view-first">
-                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/10-460x460.png" alt="" />
-
-
-                    <div class="mask">
-                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/10.png" rel="prettyPhoto" class="info"></a>
-                        <a href="./portfolio-single.html" class="link"></a>
-                    </div>
-                </div>
-                <div class="descr"><h6><a href="./portfolio-single.html">Best Design</a></h6></div>
-                <p style="text-align:center">HTML5 Design</p>
-            </div>
-            <div class="span2 code block ">
-
-                <div class="view view-first">
-                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/3-460x460.png" alt="" />
-
-
-                    <div class="mask">
-                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/3.png" rel="prettyPhoto" class="info"></a>
-                        <a href="./portfolio-single.html" class="link"></a>
-                    </div>
-                </div>
-                <div class="descr"><h6><a href="./portfolio-single.html">Some Project</a></h6></div>
-                <p style="text-align:center">Web Design</p>
-            </div>
-            <div class="span2 print block ">
-
-                <div class="view view-first">
-                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/6-460x460.png" alt="" />
-
-
-                    <div class="mask">
-                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/6.png" rel="prettyPhoto" class="info"></a>
-                        <a href="./portfolio-single.html" class="link"></a>
-                    </div>
-                </div>
-                <div class="descr"><h6><a href="./portfolio-single.html">Mobile Web Design</a></h6></div>
-                <p style="text-align:center">HTML5 Design</p>
-            </div>
-            <div class="span2 mobile block ">
-
-                <div class="view view-first">
-                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/12-460x460.png" alt="" />
-
-
-                    <div class="mask">
-                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/12.png" rel="prettyPhoto" class="info"></a>
-                        <a href="./portfolio-single.html" class="link"></a>
-                    </div>
-                </div>
-                <div class="descr"><h6><a href="./portfolio-single.html">Another Motion</a></h6></div>
-                <p style="text-align:center">Another Project</p>
-            </div>
-            <div class="span2 design block ">
-
-                <div class="view view-first">
-                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/9-460x460.png" alt="" />
-
-
-                    <div class="mask">
-                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/9.png" rel="prettyPhoto" class="info"></a>
-                        <a href="./portfolio-single.html" class="link"></a>
-                    </div>
-                </div>
-                <div class="descr"><h6><a href="./portfolio-single.html">Some Project</a></h6></div>
-                <p style="text-align:center">Web Design</p>
-            </div>
-            <div class="span2 code block ">
-
-                <div class="view view-first">
-                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/1-460x460.png" alt="" />
-
-
-                    <div class="mask">
-                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/1.png" rel="prettyPhoto" class="info"></a>
-                        <a href="./portfolio-single.html" class="link"></a>
-                    </div>
-                </div>
-                <div class="descr"><h6><a href="./portfolio-single.html">Your Responsive</a></h6></div>
-                <p style="text-align:center">Web Design</p>
-            </div>
-            <div class="span2 mobile block ">
-
-                <div class="view view-first">
-                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/11-460x460.png" alt="" />
-
-
-                    <div class="mask">
-                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/11.png" rel="prettyPhoto" class="info"></a>
-                        <a href="./portfolio-single.html" class="link"></a>
-                    </div>
-                </div>
-                <div class="descr"><h6><a href="./portfolio-single.html">Other Mobile App</a></h6></div>
-                <p style="text-align:center">HTML5 Design</p>
-            </div>
-            <div class="span2 mobile block ">
-
-                <div class="view view-first">
-                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/2-460x460.png" alt="" />
-
-
-                    <div class="mask">
-                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/2.png" rel="prettyPhoto" class="info"></a>
-                        <a href="./portfolio-single.html" class="link"></a>
-                    </div>
-                </div>
-                <div class="descr"><h6><a href="./portfolio-single.html">Fresh Design</a></h6></div>
-                <p style="text-align:center">Another Project</p>
-            </div>
 			
-			<div class="span2 test block ">
-
-                <div class="view view-first">
-                    <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/2-460x460.png" alt="" />
-
-
-                    <div class="mask">
-                        <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/2.png" rel="prettyPhoto" class="info"></a>
-                        <a href="./portfolio-single.html" class="link"></a>
-                    </div>
-                </div>
-                <div class="descr"><h6><a href="./portfolio-single.html">Fresh Design</a></h6></div>
-                <p style="text-align:center">Another Project</p>
-            </div>
+<!--			<div class="span2 test block ">-->
+<!---->
+<!--                <div class="view view-first">-->
+<!--                    <img src="--><?php //echo yii::app()->theme->baseUrl ?><!--/assets/img/portfolio/2-460x460.png" alt="" />-->
+<!---->
+<!---->
+<!--                    <div class="mask">-->
+<!--                        <a href="--><?php //echo yii::app()->theme->baseUrl ?><!--/assets/img/portfolio/2.png" rel="prettyPhoto" class="info"></a>-->
+<!--                        <a href="./portfolio-single.html" class="link"></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="descr"><h6><a href="./portfolio-single.html">Fresh Design</a></h6></div>-->
+<!--                <p style="text-align:center">Another Project</p>-->
+<!--            </div>-->
 			
 			
         </div>
