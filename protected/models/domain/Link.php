@@ -49,7 +49,7 @@ class Link extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fdName', 'required'),
+			array('fdHref', 'required'),
 			array('id, fdType, fdDomainID', 'numerical', 'integerOnly'=>true),
 			array('fdText', 'length', 'max'=>200),
 			array('fdHref, fdName, fdCSS', 'length', 'max'=>255),

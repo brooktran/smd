@@ -76,8 +76,12 @@ class NavigateController extends Controller
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
+        $typeID = $_GET['tid'];
+        $category = ColumnService::factory()->getAllFirstLevel();
 		$this->render('create',array(
 			'model'=>$model,
+            'tid'=>$typeID,
+            'cates'=>$category
 		));
 	}
 
@@ -137,6 +141,7 @@ class NavigateController extends Controller
 	 */
 	public function actionAdmin()
 	{
+        $typeID = $_GET['tid'];
 		$model=new Link('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Link']))
@@ -144,6 +149,7 @@ class NavigateController extends Controller
 
 		$this->render('admin',array(
 			'model'=>$model,
+            'tid'=>$typeID
 		));
 	}
 
