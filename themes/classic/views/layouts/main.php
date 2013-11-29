@@ -180,10 +180,24 @@ $this->pageTitle = Yii::app()->name . ' - 后台管理';
             </span>
             </a>
             <ul class="collapse" id="dashboard-nav">
-                <li class=""><a href="#"><i class="icon-angle-right"></i>前台控制</a></li>
+                <li class=""><a href="#"><i class="icon-angle-right"></i> 前台控制</a></li>
                 <li class=""><a href="#"><i class="icon-angle-right"></i> 后台控制</a></li>
             </ul>
         </li>
+
+        <li class="panel ">
+            <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
+               data-target="#column-nav">
+                <i class="icon-tasks"></i> 栏目管理
+	    <span class="pull-right">
+		<i class="icon-angle-left"></i>
+            </span>
+            </a>
+            <ul class="collapse" id="column-nav">
+                <li class=""><a href="<?php echo $this->createUrl('/back/navigate/',array('tid'=>Yii::app()->params['NAV_TYPEID']));?>"><i class="icon-angle-right"></i> 导航管理</a></li>
+                <li class=""><a href="<?php echo $this->createUrl('/back/navigate/',array('tid'=>Yii::app()->params['LINK_TYPEID']));?>"><i class="icon-angle-right"></i> 友情链接</a></li>
+            </ul>
+        </li><!-- end panel -->
 
         <li class="panel ">
             <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle"
