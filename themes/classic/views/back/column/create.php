@@ -82,8 +82,6 @@
                                                href="#cleditorDiv">
                                                 <i class="icon-minus"></i>
                                             </a>
-                                            <button class="btn btn-xs btn-danger close-box"><i
-                                                    class="icon-remove"></i></button>
                                         </div>
                                     </li>
                                 </ul>

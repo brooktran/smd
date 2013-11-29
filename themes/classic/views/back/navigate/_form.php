@@ -73,36 +73,7 @@
             <?php echo $form->error($model,'fdHref'); ?>
         </div>
     </div>
-
-
-    <!-- /.row -->
-    <div class="form-group">
-        <label class="control-label col-lg-4">导航/友情链接</label>
-
-        <div class="col-lg-8">
-
-            <div class="checkbox">
-                <label>
-                    <input class="uniform" type="radio" name="new" value="<?php echo Yii::app()->params['NAV_TYPEID']?>" checked>
-                    导航栏目
-                </label>
-            </div>
-
-            <div class="checkbox">
-                <label>
-                    <input class="uniform" type="radio" name="new" value="<?php echo Yii::app()->params['LINK_TYPEID']?>" >
-                    友情链接
-                </label>
-            </div>
-
-        </div>
-    </div>
-    <!-- /.row -->
-
-
-
-
-
+    <input type="hidden" name='new' value='<?php echo $tid;?>'>
 
 
     <div class="form-actions no-margin-bottom" style="margin-left: 240px;">

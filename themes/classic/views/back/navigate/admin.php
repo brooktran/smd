@@ -45,9 +45,9 @@ $('.search-form form').submit(function(){
         <div class="box">
             <header>
                 <div class="icons"><i class="icon-move"></i></div>
-                <a href="<?php echo $this->createUrl('/back/navigate/create')?>" class="btn btn-default btn-xs"><h5>创建</h5></a>
+                <a href="<?php echo $this->createUrl('/back/navigate/create',array('tid'))?>" class="btn btn-default btn-xs"><h5>创建</h5></a>
 
-                <h5>导航/链接列表</h5>
+                <h5>栏目列表</h5>
             </header>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'link-grid',
