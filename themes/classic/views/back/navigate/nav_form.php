@@ -23,7 +23,7 @@
         <div class="box">
             <header class="dark">
                 <div class="icons"><i class="icon-edit"></i></div>
-                <h5>创建<?php echo $_GET['tid']==Yii::app()->params['NAV_TYPEID'] ? "导航" : "友情链接"?></h5>
+                <h5>创建导航</h5>
                 <div class="toolbar">
                     <ul class="nav">
                         <li>
@@ -99,7 +99,7 @@
                         <?php echo $form->hiddenField($model,'fdHref',array('value'=>1, 'size'=>60,'maxlength'=>255,'class'=>'validate[required] form-control')); ?>
                     </div>
                 </div>
-                <input type="hidden" name='new' value='<?php echo $tid;?>'>
+                <input type="hidden" name='type' value='<?php echo $tid;?>'>
 
 
                 <div class="form-actions no-margin-bottom" style="margin-left: 240px;">

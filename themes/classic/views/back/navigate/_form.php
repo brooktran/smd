@@ -73,7 +73,7 @@
             <?php echo $form->error($model,'fdHref'); ?>
         </div>
     </div>
-    <input type="hidden" name='new' value='<?php echo $tid;?>'>
+    <input type="hidden" name='type' value='<?php echo $tid;?>'>
 
 
     <div class="form-actions no-margin-bottom" style="margin-left: 240px;">

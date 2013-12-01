@@ -106,6 +106,15 @@ class ArticleService extends AbstractService{
     }
 
 
+    /**
+     * 根据分类ID 查出分类下的所有文章
+     * @param int $cateID
+     * @return array|CActiveRecord|mixed|null
+     */
+    public function getArticleByCateID($cateID){
+        $article = Article::model()->with('content')->findAllByAttributes(array('fdColumnID'=>$cateID));
+        return $article;
+    }
 
 
 }

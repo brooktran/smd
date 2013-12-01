@@ -69,9 +69,24 @@ class NavigateController extends Controller
 
 		if(isset($_POST['Link']))
 		{
-			$model->attributes=$_POST['Link'];
+            $model->attributes=$_POST['Link'];
+            if($_POST['type']==Yii::app()->params['NAV_TYPEID']){
+                $column = ColumnService::factory()->getCategoryByID($_POST['Link']['fdName']);
+                $model->fdName = $column->fdName;
+
+                if($column->fdTypeID==Yii::app()->params['ATTR_ARTICLE_TYPEID']){
+                    $model->fdHref = substr($this->createUrl('article/index',array('id'=>$column->id)),6);
+                }
+                if($column->fdTypeID==Yii::app()->params['ATTR_PRODUCT_TYPEID']){
+                    $model->fdHref = substr($this->createUrl('column/index',array('id'=>$column->id)),6);
+                }
+            }
+
             $model->fdDomainID =Yii::app()->params['ATTR_DOMAIN_ID'];
-            $model->fdType = $_POST['new'];
+            $model->fdType = $_POST['type'];
+
+
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -99,14 +114,27 @@ class NavigateController extends Controller
 
 		if(isset($_POST['Link']))
 		{
-			$model->attributes=$_POST['Link'];
-            $model->fdType = $_POST['new'];
+            $model->attributes=$_POST['Link'];
+            if($_POST['type']==Yii::app()->params['NAV_TYPEID']){
+                $column = ColumnService::factory()->getCategoryByID($_POST['Link']['fdName']);
+                $model->fdName = $column->fdName;
+
+                if($column->fdTypeID==Yii::app()->params['ATTR_ARTICLE_TYPEID']){
+                    $model->fdHref = substr($this->createUrl('article/index',array('id'=>$column->id)),6);
+                }
+                if($column->fdTypeID==Yii::app()->params['ATTR_PRODUCT_TYPEID']){
+                    $model->fdHref = substr($this->createUrl('column/index',array('id'=>$column->id)),6);
+                }
+            }
+
+            $model->fdType = $_POST['type'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
-
+        $category = ColumnService::factory()->getAllFirstLevel();
 		$this->render('update',array(
 			'model'=>$model,
+            'cates'=>$category
 		));
 	}
 

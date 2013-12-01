@@ -149,7 +149,12 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                         <ul id="menu">
                             <li><a href="<?php echo $this->createUrl('homePage/index');?>">首页 </a>
                             </li>
-                            <li><a href="javascript:">产品中心 +</a>
+                            <?php
+                            $typeID = Yii::app()->params['NAV_TYPEID'];
+                            $link = LinkService::factory()->findNavByTypeID($typeID);
+
+                            ?>
+                            <li><a href="javascript:"><?php  print_r($link);?>产品中心 +</a>
                                 <?php
                                 $typeID = Yii::app()->params['ATTR_PRODUCT_TYPEID'];
                                 $columns = ColumnService::factory()->getAllCategoryByTypeID($typeID,0);

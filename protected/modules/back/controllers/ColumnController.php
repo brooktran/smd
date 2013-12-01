@@ -25,7 +25,7 @@ class ColumnController extends Controller{
         if(!$id){
             $this->redirect($this->createUrl('/back/column',array('tid'=>$tid)));
         }
-        $column= ColumnService::factory()->deleteByCateId($id);
+        $column= ColumnService::factory()->deleteByCateId($id, $tid);
         if($column){
             $this->redirect($this->createUrl('/back/column',array('tid'=>$tid)));
         }

@@ -16,6 +16,12 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Link <?php echo $model->id; ?></h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php
+    if($model->fdType==Yii::app()->params['LINK_TYPEID']){
+        echo $this->renderPartial('_form', array('model'=>$model,'tid'=>$model->fdType));
+    }
+    if($model->fdType==Yii::app()->params['NAV_TYPEID']){
+        echo $this->renderPartial('nav_form', array('model'=>$model,'tid'=>$model->fdType,'cates'=>$cates));
+    }
+?>

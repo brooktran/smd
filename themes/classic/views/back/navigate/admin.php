@@ -45,14 +45,14 @@ $('.search-form form').submit(function(){
         <div class="box">
             <header>
                 <div class="icons"><i class="icon-move"></i></div>
-                <a href="<?php echo $this->createUrl('/back/navigate/create',array('tid'))?>" class="btn btn-default btn-xs"><h5>创建</h5></a>
+                <a href="<?php echo $this->createUrl('/back/navigate/create',array('tid'=>$tid))?>" class="btn btn-default btn-xs"><h5>创建</h5></a>
 
                 <h5>栏目列表</h5>
             </header>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'link-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+	'dataProvider'=>ColumnService::factory()->dataProvider($tid),//$model->search(),
+	//'filter'=>$model,
 	'columns'=>array(
 		//'id',
         array(
@@ -70,7 +70,11 @@ $('.search-form form').submit(function(){
 		//'fdTarget',
 		//'fdCSS',
 
-		'fdType',
+		//'fdType',
+//        array(
+//            'name'=>'fdType',
+//            //'filter'=>array(1=>'导航',2=>'友情链接')
+//        ),
         /*'fdDomainID',
         */
 		array(
