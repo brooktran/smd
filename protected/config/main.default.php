@@ -145,6 +145,7 @@ return CMap::mergeArray(
         'ATTR_DOMAIN_ID'=>'1',//域名ID
 
         'COVER_TYPEID'=> '1',//file的封面图片
+		'FILELIST_TYPEID'=>'0',//content对应的file组图
 		'NAV_TYPEID'  => '1',//导航类型
         'LINK_TYPEID' => '2',//友情链接
 		

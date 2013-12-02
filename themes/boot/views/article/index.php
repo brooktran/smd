@@ -16,9 +16,56 @@
 <div class="row">
 <div class="span8">
 <div class="row">
+
+<?php
+foreach($articles as $k=>$article){
+?>
+    <div class="span8 blog_post">
+        <div class="row">
+            <div class="span8">
+                <div class="row">
+                    <div class="span2">
+                        <h5 class="gray_bg" style="border-radius:5px;border:1px solid #efefef;padding-right:8px;text-align:right"><i class="icon-calendar"></i> 11 May / 2012  </h5>
+                        <div class="meta hidden-phone">
+
+                            <span> admin <i class="icon-user"></i></span>
+
+                            <span><a href="#" title="View all posts in software" rel="category">software</a> <i class="icon-list-alt"></i></span>
+                            <span><a href="./blog-single.html" title="留言">3 留言</a> <i class="icon-comment"></i></span>
+                            <hr />
+                            <div class="meta_readmore"><a class="readmore" href="./blog-single.html"><span class="readmoreicon"></span>更多</a></div>
+
+                        </div>
+                    </div>
+
+                    <div class="span6 block">
+                        <div class="postheader_bottom">
+                            <h3><a href="./blog-single.html">Your Responsive Design</a></h3>
+                        </div>
+                        <div class="view view-first">
+                            <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/blog/p1-full.jpg" alt="" />
+                            <div class="mask">
+                                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/blog/p1-full.jpg" rel="prettyPhoto" class="info"></a>
+                                <a href="./blog-single.html" class="link"></a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:-15px;" class="offset2 span6">
+                        <p> 欢迎来到美丽的bootstrap，这里是研科生物科研基地！</p>
+                        <p>Nunc ac erat in leo porttitor rutrum. Curabitur sit amet justo odio. Donec vel metus nisi, id eleifend orci. Morbi euismod metus et nisl semper ultricies laoreet nulla ullamcorper. Curabitur gravida cursus dui, vel&#8230;</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+<?php
+}
+?>
 <div class="span8 blog_post">
     <div class="row">
-
         <div class="span8">
             <div class="row">
                 <div class="span2">
@@ -28,7 +75,7 @@
                         <span> admin <i class="icon-user"></i></span>
 
                         <span><a href="#" title="View all posts in software" rel="category">software</a> <i class="icon-list-alt"></i></span>
-                        <span><a href="./blog-single.html" title="Comment on Your Responsive Design">3 留言</a> <i class="icon-comment"></i></span>
+                        <span><a href="./blog-single.html" title="留言">3 留言</a> <i class="icon-comment"></i></span>
                         <hr />
                         <div class="meta_readmore"><a class="readmore" href="./blog-single.html"><span class="readmoreicon"></span>更多</a></div>
 
@@ -58,6 +105,7 @@
 
     </div>
 </div>
+
 <div class="span8 blog_post">
     <div class="row">
 
@@ -267,10 +315,16 @@
             <p>The Internet isn’t just on your computer screen anymore. It’s also on your phone, your tablet, your laptop, and god knows what else in the next few years. So when you visit AWES webpage, morph to ideally match the size and shape of the screen you’re viewing it on.</p>
         </div></div>			<!-- end WIDGET -->
 
-    <!-- WIDGET -->
-    <div class="well"><h4 class="sep_bg">Video Widget</h4>			<div class="textwidget"><p><iframe src="http://player.vimeo.com/video/28321798?title=0&byline=0&portrait=0&color=4cb3ad" width="100%" height="200" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe></p>
-        </div>
-    </div>			<!-- end WIDGET -->
+<!--    <!-- WIDGET -->
+<!--    <div class="well">-->
+<!--        <h4 class="sep_bg">Video Widget</h4>-->
+<!--        <div class="textwidget">-->
+<!--            <p>-->
+<!--                <iframe src="http://player.vimeo.com/video/28321798?title=0&byline=0&portrait=0&color=4cb3ad" width="100%" height="200" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>-->
+<!--            </p>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!-- end WIDGET -->
 
     <!-- WIDGET -->
     <div class="well"><h4 class="sep_bg">FEATURED POSTS</h4><div class="featured-posts">				<!--item-->

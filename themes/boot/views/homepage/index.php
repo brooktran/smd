@@ -85,16 +85,37 @@
 
 <div class="row">
 <div class="span12">
-<div class="margintop30"></div>			<h3 class="titlemore"><span class="slash-colored">//</span> 热 卖 产 品 </h3>	<div class="row">
+<div class="margintop30"></div>
+<h3 class="titlemore">
+    <span class="slash-colored">//</span> 热 卖 产 品
+</h3>
 
+
+<div class="row">
+<?php
+foreach($hots as $hot){
+    $url = $hot->content->coverFile->fdURL;
+    $imgUrl = FileService::factory()->imgUrl($url);
+?>
+    <div class="span3 block">
+        <div class="view view-first">
+            <img src="<?php echo yii::app()->request->baseUrl ?>/<?php echo $imgUrl?>" alt="" />
+            <div class="mask">
+                <a href="<?php echo yii::app()->request->baseUrl ?>/<?php echo $hot->content->coverFile->fdURL;?>" rel="prettyPhoto" class="info"></a>
+                <a href="<?php echo $this->createUrl('/column/goods',array('id'=>$hot->id));?>" class="link"></a>
+            </div>
+        </div>
+        <div class="descr">
+            <h6><a href="<?php echo $this->createUrl('/column/goods',array('id'=>$hot->id));?>"><?php echo $hot->content->fdName;?></a></h6>
+        </div>
+    </div>
+<?php
+}
+?>
 
     <div class="span3 block">
         <div class="view view-first">
-
             <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/8-460x460.png" alt="" />
-
-
-
             <div class="mask">
                 <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/8.png" rel="prettyPhoto" class="info"></a>
                 <a href="./portfolio-slider.html" class="link"></a>
@@ -103,13 +124,11 @@
         <div class="descr">
             <h6><a href="./portfolio-slider.html">Portfolio With Slider</a></h6>
         </div>
-    </div>	                                        <div class="span3 block">
+    </div>
+
+    <div class="span3 block">
         <div class="view view-first">
-
             <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/7-460x460.png" alt="" />
-
-
-
             <div class="mask">
                 <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/7.png" rel="prettyPhoto" class="info"></a>
                 <a href="./portfolio-video.html" class="link"></a>
@@ -118,13 +137,11 @@
         <div class="descr">
             <h6><a href="./portfolio-video.html">Portfolio With Video</a></h6>
         </div>
-    </div>	                                        <div class="span3 block">
+    </div>
+
+    <div class="span3 block">
         <div class="view view-first">
-
             <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/5-460x460.png" alt="" />
-
-
-
             <div class="mask">
                 <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/5.png" rel="prettyPhoto" class="info"></a>
                 <a href="./portfolio-single.html" class="link"></a>
@@ -133,7 +150,8 @@
         <div class="descr">
             <h6><a href="./portfolio-single.html">Standart Portfolio</a></h6>
         </div>
-    </div>	                                        <div class="span3 block">
+    </div>
+    <div class="span3 block">
         <div class="view view-first">
 
             <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/4-460x460.png" alt="" />
@@ -148,7 +166,9 @@
         <div class="descr">
             <h6><a href="./portfolio-single.html">Mobile App</a></h6>
         </div>
-    </div>	                                        <div class="span3 block">
+    </div>
+
+    <div class="span3 block">
         <div class="view view-first">
 
             <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/10-460x460.png" alt="" />
@@ -163,9 +183,10 @@
         <div class="descr">
             <h6><a href="./portfolio-single.html">Best Design</a></h6>
         </div>
-    </div>	                                        <div class="span3 block">
-        <div class="view view-first">
+    </div>
 
+    <div class="span3 block">
+        <div class="view view-first">
             <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/3-460x460.png" alt="" />
 
 
@@ -178,7 +199,9 @@
         <div class="descr">
             <h6><a href="./portfolio-single.html">Some Project</a></h6>
         </div>
-    </div>	                                        <div class="span3 block">
+    </div>
+
+    <div class="span3 block">
         <div class="view view-first">
 
             <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/6-460x460.png" alt="" />
@@ -193,7 +216,9 @@
         <div class="descr">
             <h6><a href="./portfolio-single.html">Mobile Web Design</a></h6>
         </div>
-    </div>	                                        <div class="span3 block">
+    </div>
+
+    <div class="span3 block">
         <div class="view view-first">
 
             <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/12-460x460.png" alt="" />
@@ -210,6 +235,7 @@
         </div>
     </div>
 </div><!-- portfolio row end -->
+
 <div class="row">
     <div class="span12">
         <div class="hero-unit">

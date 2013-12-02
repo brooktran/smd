@@ -90,7 +90,7 @@ jQuery.noConflict()(function($){
 ***************************************************/
 jQuery.noConflict()(function($){
 	jQuery(document).ready(function () {
-		JQTWEET.loadTweets();
+		//JQTWEET.loadTweets();
 	});
 })
 
@@ -111,7 +111,7 @@ jQuery.noConflict()(function($){
 jQuery.noConflict()(function($){
 	$('#slides').slides({
 		preload: true,
-        preloadImage: '<?php echo yii::app()->theme->baseUrl ?>/assets/img/spinner-trans.gif',
+        preloadImage: '/themes/boot/assets/img/spinner-trans.gif',
 		next: 'next',
 		prev: 'prev',
 		generatePagination: false

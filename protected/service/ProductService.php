@@ -18,7 +18,7 @@ class ProductService extends AbstractService{
     }
 
     public  function getProduct($id){
-        $product = Product::model()->findByPk($id);
+        $product = Product::model()->with('content')->findByPk($id);
         return $product;
     }
 
@@ -95,6 +95,21 @@ class ProductService extends AbstractService{
     public function getProductByCateID($cateID){
         $products = Product::model()->with('content')->findAllByAttributes(array('fdColumnID'=>$cateID));
         return $products;
+    }
+
+    /**
+     * 列出product 前$num 条数据
+     * @return array|CActiveRecord|mixed|null
+     */
+    public function findHotGoods($num=8){
+        $criteria = new CDbCriteria();
+
+        $criteria->with = array('content');
+        $criteria->addCondition('content.fdHot=1');
+        $criteria->limit = $num;
+        $criteria->order = 't.id DESC';
+
+        return Product::model()->findAll($criteria);
     }
 
 }

@@ -66,10 +66,10 @@
                             <img src="<?php echo yii::app()->request->baseUrl ?>/<?php echo $imgUrl?>" alt="" />
                             <div class="mask">
                                 <a href="<?php echo yii::app()->request->baseUrl ?>/<?php echo $product->content->coverFile->fdURL;?>" rel="prettyPhoto" class="info"></a>
-                                <a href="./portfolio-slider.html" class="link"></a>
+                                <a href="<?php echo $this->createUrl('/column/goods',array('id'=>$product->id));?>" class="link"></a>
                             </div>
                         </div>
-                        <div class="descr"><h6><a href="./portfolio-slider.html"><?php echo $product->content->fdName ?></a></h6></div>
+                        <div class="descr"><h6><a href="<?php echo $this->createUrl('/column/goods',array('id'=>$product->id));?>"><?php echo $product->content->fdName ?></a></h6></div>
                         <p style="text-align:center"><?php echo $column['text']?></p>
                     </div>
                 <?php
@@ -89,10 +89,10 @@
                             <img src="<?php echo yii::app()->request->baseUrl ?>/<?php echo $imgUrl?>" alt="" />
                             <div class="mask">
                                 <a href="<?php echo yii::app()->request->baseUrl ?>/<?php echo $product->content->coverFile->fdURL;?>" rel="prettyPhoto" class="info"></a>
-                                <a href="./portfolio-slider.html" class="link"></a>
+                                <a href="<?php echo $this->createUrl('/column/goods',array('id'=>$product->id));?>" class="link"></a>
                             </div>
                         </div>
-                        <div class="descr"><h6><a href="./portfolio-slider.html"><?php echo $product->content->fdName ?></a></h6></div>
+                        <div class="descr"><h6><a href="<?php echo $this->createUrl('/column/goods',array('id'=>$product->id));?>"><?php echo $product->content->fdName ?></a></h6></div>
                         <p style="text-align:center"><?php echo $currentColumn->fdName?></p>
                     </div>
             <?php

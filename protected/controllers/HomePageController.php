@@ -15,7 +15,9 @@ class HomePageController extends Controller{
     }
 
     public function actionIndex(){
-        $this->render('index');
+        $hotGoods = ProductService::factory()->findHotGoods();
+
+        $this->render('index',array('hots'=>$hotGoods));
     }
 
 }

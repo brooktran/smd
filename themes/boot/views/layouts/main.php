@@ -151,62 +151,38 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                             </li>
                             <?php
                             $typeID = Yii::app()->params['NAV_TYPEID'];
-                            $link = LinkService::factory()->findNavByTypeID($typeID);
-
+                            $links = LinkService::factory()->findNavByTypeID($typeID);
+                             foreach($links as $k=>$link){
+                                 $columnID = substr($link->fdHref,strrpos($link->fdHref,'=')+1);
+                                 $columns = ColumnService::factory()->getChilds($columnID);
                             ?>
-                            <li><a href="javascript:"><?php  print_r($link);?>产品中心 +</a>
+                            <li><a href="<?php echo $columns ? 'javascript:' :'/'.$link->fdHref;?>"><?php echo $link->fdName;echo $columns? '+' : ''?></a>
                                 <?php
-                                $typeID = Yii::app()->params['ATTR_PRODUCT_TYPEID'];
-                                $columns = ColumnService::factory()->getAllCategoryByTypeID($typeID,0);
+                                 if($columns){
                                 ?>
                                 <ul>
                                     <?php
                                     foreach($columns as $column){
-                                    $childrens = ColumnService::factory()->getChilds($column->id);
+                                    $childrens = ColumnService::factory()->getChilds($column['id']);
+                                    $controller = $column['type']==Yii::app()->params['ATTR_ARTICLE_TYPEID'] ? 'article' :'column';
                                     ?>
-                                    <li><a href="<?php echo $this->createUrl('column/index',array('columnID'=>$column->id));?>"><?php echo $column->fdName;?></a>
+                                    <li><a href="<?php echo $this->createUrl($controller.'/index',array('columnID'=>$column['id']));?>"><?php echo $column['text'];?></a>
                                         <?php
-                                        ColumnService::factory()->listColumnHtml($childrens);
+                                        ColumnService::factory()->listColumnHtml($childrens,$controller);
                                         ?>
                                         <?php
                                         }
                                         ?>
                                 </ul>
-                            </li>
-							<li><a href="./contact.html">技术服务</a></li>
-                            <li>
                                 <?php
-                                $typeID = Yii::app()->params['ATTR_ARTICLE_TYPEID'];
-                                $columns = ColumnService::factory()->getAllCategoryByTypeID($typeID,0);
+                                }
                                 ?>
-                                <a href="javascript:">行业中心 +</a>
-								    <ul>
-                                    <?php
-                                    foreach($columns as $column){
-                                        $childrens = ColumnService::factory()->getChilds($column->id);
-                                    ?>
-                                    <li><a href="<?php echo $this->createUrl('column/index',array('columnID'=>$column->id));?>"><?php echo $column->fdName;?></a>
-                                        <?php
-                                        ColumnService::factory()->listColumnHtml($childrens);
-                                        ?>
-                                    <?php
-                                    }
-                                    ?>
-                                </ul>
-							
-							</li>
-                           <!-- <li><a href="./elements.html">Features +</a>
-                                <ul>
-                                    <li><a href="./elements.html">Template Elements</a></li>
-                                    <li><a href="./typography.html">Typography</a></li>
-                                    <li><a href="./full-width.html">Full Width Page</a></li>
-                                    <li><a href="./sitemap.html">Sitemap</a></li>
-                                    <li><a href="./404.html">404 Page</a></li>
-                                </ul>
-                            </li>-->
-                            <li><a href="./contact.html">联系我们</a></li>
-                            <li><a target="_blank" href="#">购买指南</a></li>
-                        </ul>                    
+                            </li>
+
+                           <?php
+                             }
+                            ?>
+                        </ul>
 						</div><div class="menu-left-bg"></div>
                 </nav>
             </div>
@@ -253,8 +229,6 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                     <i class="icon-map-marker icon-white"></i> 湖南省 长沙市<br />
                     <i class="icon-user  icon-white"></i> +86 188 7408 5701<br />
                     <i class="icon-envelope icon-white"></i> <a href="mailto:example@yourdomain.com">example@yourdomain.com</a></p>
-
-
             </div>
             <!-- end widget -->
 
@@ -273,7 +247,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
     </div>
 </footer>
 <!--/FOOTER-->
-<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/js/twitter.js"></script>
+<!--<script src="--><?php //echo yii::app()->theme->baseUrl ?><!--/assets/js/twitter.js"></script>-->
 <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/js/custom.js"></script>
 
 <!--[if IE]>

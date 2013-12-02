@@ -15,10 +15,14 @@ class ArticleController extends Controller{
     }
 
     public function actionIndex(){
-       $article = ArticleService::factory()->findAllArticle(2);
+        $columnID  = RequestUtils::getNormalRequest('columnID');
+//        $currentColumn = ColumnService::factory()->getCategoryByID($columnID);
+//        $columns = ColumnService::factory()->getChilds($columnID);
+
+        $article = ArticleService::factory()->getArticleByCateID($columnID);
 
        $this->render('index',array(
-           'article'=>$article,
+           'articles'=>$article,
 
        ));
     }

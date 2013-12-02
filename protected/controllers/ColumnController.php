@@ -24,7 +24,9 @@ class ColumnController extends Controller{
     }
 
     public function actionGoods(){
-        $this->render('goods');
+        $id = $_GET['id'];
+        $good = ProductService::factory()->getProduct($id);
+        $this->render('goods',array('good'=>$good));
     }
 
 
