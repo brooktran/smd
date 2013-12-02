@@ -247,7 +247,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
     </div>
 </footer>
 <!--/FOOTER-->
-<!--<script src="--><?php //echo yii::app()->theme->baseUrl ?><!--/assets/js/twitter.js"></script>-->
+<script src="<?php echo yii::app()->theme->baseUrl ?>/assets/js/twitter.js"></script>
 <script src="<?php echo yii::app()->theme->baseUrl ?>/assets/js/custom.js"></script>
 
 <!--[if IE]>

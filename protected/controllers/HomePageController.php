@@ -16,8 +16,13 @@ class HomePageController extends Controller{
 
     public function actionIndex(){
         $hotGoods = ProductService::factory()->findHotGoods();
+        $latests= ArticleService::factory()->findAllArticle(5);
 
-        $this->render('index',array('hots'=>$hotGoods));
+        $this->render('index',
+            array(
+                'hots'=>$hotGoods,
+                'latests'=>$latests
+            ));
     }
 
 }

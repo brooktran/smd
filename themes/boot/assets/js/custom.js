@@ -90,7 +90,7 @@ jQuery.noConflict()(function($){
 ***************************************************/
 jQuery.noConflict()(function($){
 	jQuery(document).ready(function () {
-		//JQTWEET.loadTweets();
+		JQTWEET.loadTweets();
 	});
 })
 

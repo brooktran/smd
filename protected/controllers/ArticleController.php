@@ -16,19 +16,21 @@ class ArticleController extends Controller{
 
     public function actionIndex(){
         $columnID  = RequestUtils::getNormalRequest('columnID');
-//        $currentColumn = ColumnService::factory()->getCategoryByID($columnID);
+        $currentColumn = ColumnService::factory()->getCategoryByID($columnID);
 //        $columns = ColumnService::factory()->getChilds($columnID);
 
         $article = ArticleService::factory()->getArticleByCateID($columnID);
 
        $this->render('index',array(
            'articles'=>$article,
-
+           'currentColumn'=>$currentColumn
        ));
     }
 
     public function actionArtDetail(){
-        $this->render('detail');
+        $id = RequestUtils::getNormalRequest('id');
+        $article = ArticleService::factory()->getArticle($id);
+        $this->render('detail',array('article'=>$article));
     }
 
 

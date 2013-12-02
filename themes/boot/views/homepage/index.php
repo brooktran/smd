@@ -113,127 +113,9 @@ foreach($hots as $hot){
 }
 ?>
 
-    <div class="span3 block">
-        <div class="view view-first">
-            <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/8-460x460.png" alt="" />
-            <div class="mask">
-                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/8.png" rel="prettyPhoto" class="info"></a>
-                <a href="./portfolio-slider.html" class="link"></a>
-            </div>
-        </div>
-        <div class="descr">
-            <h6><a href="./portfolio-slider.html">Portfolio With Slider</a></h6>
-        </div>
-    </div>
-
-    <div class="span3 block">
-        <div class="view view-first">
-            <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/7-460x460.png" alt="" />
-            <div class="mask">
-                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/7.png" rel="prettyPhoto" class="info"></a>
-                <a href="./portfolio-video.html" class="link"></a>
-            </div>
-        </div>
-        <div class="descr">
-            <h6><a href="./portfolio-video.html">Portfolio With Video</a></h6>
-        </div>
-    </div>
-
-    <div class="span3 block">
-        <div class="view view-first">
-            <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/5-460x460.png" alt="" />
-            <div class="mask">
-                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/5.png" rel="prettyPhoto" class="info"></a>
-                <a href="./portfolio-single.html" class="link"></a>
-            </div>
-        </div>
-        <div class="descr">
-            <h6><a href="./portfolio-single.html">Standart Portfolio</a></h6>
-        </div>
-    </div>
-    <div class="span3 block">
-        <div class="view view-first">
-
-            <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/4-460x460.png" alt="" />
 
 
 
-            <div class="mask">
-                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/4.png" rel="prettyPhoto" class="info"></a>
-                <a href="./portfolio-single.html" class="link"></a>
-            </div>
-        </div>
-        <div class="descr">
-            <h6><a href="./portfolio-single.html">Mobile App</a></h6>
-        </div>
-    </div>
-
-    <div class="span3 block">
-        <div class="view view-first">
-
-            <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/10-460x460.png" alt="" />
-
-
-
-            <div class="mask">
-                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/10.png" rel="prettyPhoto" class="info"></a>
-                <a href="./portfolio-single.html" class="link"></a>
-            </div>
-        </div>
-        <div class="descr">
-            <h6><a href="./portfolio-single.html">Best Design</a></h6>
-        </div>
-    </div>
-
-    <div class="span3 block">
-        <div class="view view-first">
-            <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/3-460x460.png" alt="" />
-
-
-
-            <div class="mask">
-                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/3.png" rel="prettyPhoto" class="info"></a>
-                <a href="./portfolio-single.html" class="link"></a>
-            </div>
-        </div>
-        <div class="descr">
-            <h6><a href="./portfolio-single.html">Some Project</a></h6>
-        </div>
-    </div>
-
-    <div class="span3 block">
-        <div class="view view-first">
-
-            <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/6-460x460.png" alt="" />
-
-
-
-            <div class="mask">
-                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/6.png" rel="prettyPhoto" class="info"></a>
-                <a href="./portfolio-single.html" class="link"></a>
-            </div>
-        </div>
-        <div class="descr">
-            <h6><a href="./portfolio-single.html">Mobile Web Design</a></h6>
-        </div>
-    </div>
-
-    <div class="span3 block">
-        <div class="view view-first">
-
-            <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/12-460x460.png" alt="" />
-
-
-
-            <div class="mask">
-                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/12.png" rel="prettyPhoto" class="info"></a>
-                <a href="./portfolio-single.html" class="link"></a>
-            </div>
-        </div>
-        <div class="descr">
-            <h6><a href="./portfolio-single.html">Another Motion</a></h6>
-        </div>
-    </div>
 </div><!-- portfolio row end -->
 
 <div class="row">
@@ -243,7 +125,6 @@ foreach($hots as $hot){
         </div>
     </div>
 </div>
-<div class="inner_copyright">Collect from <a href="http://www.cssmoban.com/" target="_blank" title="网页模板">网页模板</a></div>
 <div class="clearfix"></div><!-- featured row end --><div class="clearfix"></div>
 <div class="row">
     <div class="span6"><div class="margintop30"></div>
@@ -254,123 +135,40 @@ foreach($hots as $hot){
                 <div class="clearfix"></div>
             </div>
             <div class="slides_container">
+
+            <?php
+            foreach($latests as $latest){
+                $url = $latest->content->coverFile->fdURL;
+                $imgUrl = FileService::factory()->imgUrl($url);
+
+            ?>
                 <div class="row">
                     <div class="span3">
                         <div class="view view-first nolink noshadow hidden-phone">
-
-                            <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/blog/p1-full-740x400.jpg" alt="" />
-
-
+                            <img src="/<?php echo $imgUrl?>" alt="" />
                             <br />
                             <div class="mask">
-                                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/blog/p1-full.jpg" rel="prettyPhoto" class="info"></a>
-
+                                <a href="/<?php echo $url;?>" rel="prettyPhoto" class="info"></a>
                             </div>
                         </div>
                         <div class="meta hidden-phone"><br /><br /><br /><br /><br /><br />
-                            <h3 style="text-align:right">May 11, 2012 </h3><div class="margintop10"></div>
-                                    <span><i class="icon-list-alt"></i> <a href="./blog.html" title="View all posts in software" rel="category">software</a> &nbsp;&nbsp;&nbsp;
+                            <h3 style="text-align:right"><?php echo date("j / F / Y",strtotime($latest->content->fdCreate)); ?> </h3><div class="margintop10"></div>
+<!--                                    <span><i class="icon-list-alt"></i> <a href="./blog.html" title="View all posts in software" rel="category">software</a> &nbsp;&nbsp;&nbsp;-->
                                     <i class="icon-user"></i>  admin  &nbsp;&nbsp;&nbsp;
-                                    <i class="icon-comment"></i> <a href="./blog-single.html" title="Comment on Your Responsive Design">3 Comments</a> </span>
+                                    <i class="icon-comment"></i> <a href='javascript:' title="Comment on Your Responsive Design">3 留言</a> </span>
                             <hr />
-
-
                         </div>
                     </div>
                     <div class="span3">
-                        <h3><a href="./blog-single.html">Your Responsive Design</a></h3>
+                        <h3><a href="<?php echo $this->createUrl('article/artDetail',array('id'=>$latest->id));?>"><?php echo $latest->content->fdName;?></a></h3>
                         <div class="margintop10"></div>
-                        <p>Praesent erat ipsum, vulputate at eleifend ut, molestie at lacusticusolan. Ut non ipsum massa. Duis viverra convallis feugiat. Aliquam purus velit, iaculis nec tristique id, porta quislorem. Vivamus et enim pellentesque dui mattis scelerisque eget eu nibh. Praesent in auctor arcu.Etiam accumsan malesuada enim&#8230;</p>
-                        <div class="read-more"><a href="./blog-single.html">Read more &rarr;</a></div>
-                    </div>
-                </div>                                        <div class="row">
-                    <div class="span3">
-                        <div class="view view-first nolink noshadow hidden-phone">
-
-                            <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/blog/p2-full-740x400.jpg" alt="" />
-
-
-                            <br />
-                            <div class="mask">
-                                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/blog/p2-full.jpg" rel="prettyPhoto" class="info"></a>
-
-                            </div>
-                        </div>
-                        <div class="meta hidden-phone"><br /><br /><br /><br /><br /><br />
-                            <h3 style="text-align:right">May 11, 2012 </h3><div class="margintop10"></div>
-                                    <span><i class="icon-list-alt"></i> <a href="./blog.html" title="View all posts in software" rel="category">software</a> &nbsp;&nbsp;&nbsp;
-                                    <i class="icon-user"></i>  admin  &nbsp;&nbsp;&nbsp;
-                                    <i class="icon-comment"></i> <a href="./blog-single.html" title="Comment on Design New Graphics">3 Comments</a> </span>
-                            <hr />
-
-
-                        </div>
-                    </div>
-                    <div class="span3">
-                        <h3><a href="./blog-single.html">Design New Graphics</a></h3>
-                        <div class="margintop10"></div>
-                        <p>Praesent erat ipsum, vulputate at eleifend ut, molestie at lacusticusolan. Ut non ipsum massa. Duis viverra convallis feugiat. Aliquam purus velit, iaculis nec tristique id, porta quislorem. Vivamus et enim pellentesque dui mattis scelerisque eget eu nibh. Praesent in auctor arcu. Etiam accumsan malesuada&#8230;</p>
-                        <div class="read-more"><a href="./blog-single.html">Read more &rarr;</a></div>
-                    </div>
-                </div>                                        <div class="row">
-                    <div class="span3">
-                        <div class="view view-first nolink noshadow hidden-phone">
-
-                            <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/blog/p3-full1-740x400.jpg" alt="" />
-
-
-                            <br />
-                            <div class="mask">
-                                <a href="http://awes.wpelement.com/img/blog/p3-full1.jpg" rel="prettyPhoto" class="info"></a>
-
-                            </div>
-                        </div>
-                        <div class="meta hidden-phone"><br /><br /><br /><br /><br /><br />
-                            <h3 style="text-align:right">May 11, 2012 </h3><div class="margintop10"></div>
-                                    <span><i class="icon-list-alt"></i> <a href="./blog.html" title="View all posts in mobile" rel="category">mobile</a> &nbsp;&nbsp;&nbsp;
-                                    <i class="icon-user"></i>  admin  &nbsp;&nbsp;&nbsp;
-                                    <i class="icon-comment"></i> <a href="./blog-single.html" title="Comment on How to Retouch an Image">3 Comments</a> </span>
-                            <hr />
-
-
-                        </div>
-                    </div>
-                    <div class="span3">
-                        <h3><a href="./blog-single.html">How to Retouch an Image</a></h3>
-                        <div class="margintop10"></div>
-                        <p>Praesent erat ipsum, vulputate at eleifend ut, molestie at lacus. Ut non ipsum massa. Duis viverra convallis feugiat. Aliquam purus velit, iaculis nec tristique id, porta quis lorem. Vivamus et enim pellentesque dui mattis scelerisque eget eu nibh. Praesent in auctor arcu. Etiam accumsan&#8230;</p>
-                        <div class="read-more"><a href="./blog-single.html">Read more &rarr;</a></div>
-                    </div>
-                </div>                                        <div class="row">
-                    <div class="span3">
-                        <div class="view view-first nolink noshadow hidden-phone">
-
-                            <img src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/blog/p6-full-740x400.jpg" alt="" />
-
-
-                            <br />
-                            <div class="mask">
-                                <a href="<?php echo yii::app()->theme->baseUrl ?>/assets/img/blog/p6-full.jpg" rel="prettyPhoto" class="info"></a>
-
-                            </div>
-                        </div>
-                        <div class="meta hidden-phone"><br /><br /><br /><br /><br /><br />
-                            <h3 style="text-align:right">May 11, 2012 </h3><div class="margintop10"></div>
-                                    <span><i class="icon-list-alt"></i> <a href="./blog.html" title="View all posts in general" rel="category">general</a> &nbsp;&nbsp;&nbsp;
-                                    <i class="icon-user"></i>  admin  &nbsp;&nbsp;&nbsp;
-                                    <i class="icon-comment"></i> <a href="./blog-single.html" title="Comment on Insert A New Code In A File">3 Comments</a> </span>
-                            <hr />
-
-
-                        </div>
-                    </div>
-                    <div class="span3">
-                        <h3><a href="./blog-single.html">Insert A New Code In A File</a></h3>
-                        <div class="margintop10"></div>
-                        <p>Praesent erat ipsum, vulputate at eleifend ut, molestie at lacus. Ut non ipsum massa. Duis viverra convallis feugiat. Aliquam purus velit, iaculis nec tristique id In accumsan lorem eu mauris vehicula gravida. Nullam nec odio at lacus molestie rhoncus sit amet eu ante. Sed&#8230;</p>
-                        <div class="read-more"><a href="./blog-single.html">Read more &rarr;</a></div>
+                        <p> <?php echo Truncate::truncate_utf8_string($latest->content->blob->fdValue,80,'......');?></p>
+                        <div class="read-more"><a href="<?php echo $this->createUrl('article/artDetail',array('id'=>$latest->id));?>">更多 &rarr;</a></div>
                     </div>
                 </div>
+                <?php
+                }
+                ?>
 
             </div>
         </div>
@@ -379,6 +177,7 @@ foreach($hots as $hot){
         <div class="margintop30"></div>
         <h3 class="titlemore"><span class="slash-colored">//</span> 友 情 链 接</h3>
         <div class="row">
+
             <div class="span2 block">
                 <div class="view view-first noinfo">
                     <img class="bordered" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/cl1.jpg" alt="" />
@@ -387,6 +186,7 @@ foreach($hots as $hot){
                     </div>
                 </div>
             </div>
+
             <div class="span2 block">
                 <div class="view view-first noinfo">
                     <img class="bordered" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/cl2.jpg" alt="" />

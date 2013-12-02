@@ -23,7 +23,7 @@ class ArticleService extends AbstractService{
      * @return array|CActiveRecord|mixed|null
      */
     public function getArticle($id){
-        $article = Article::model()->findByPk($id);
+        $article = Article::model()->with('content')->findByPk($id);
         return $article;
     }
 
@@ -38,7 +38,7 @@ class ArticleService extends AbstractService{
             $criteria->limit = $limit;
             $criteria->offset = 0;
         }
-        $criteria->order = 't.id DESC';
+        $criteria->order = 'content.fdCreate DESC';
 
         return Article::model()->findAll($criteria);
     }
