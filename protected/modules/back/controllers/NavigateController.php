@@ -75,10 +75,10 @@ class NavigateController extends Controller
                 $model->fdName = $column->fdName;
 
                 if($column->fdTypeID==Yii::app()->params['ATTR_ARTICLE_TYPEID']){
-                    $model->fdHref = substr($this->createUrl('article/index',array('id'=>$column->id)),6);
+                    $model->fdHref = substr($this->createUrl('article/index',array('columnID'=>$column->id)),6);
                 }
                 if($column->fdTypeID==Yii::app()->params['ATTR_PRODUCT_TYPEID']){
-                    $model->fdHref = substr($this->createUrl('column/index',array('id'=>$column->id)),6);
+                    $model->fdHref = substr($this->createUrl('column/index',array('columnID'=>$column->id)),6);
                 }
             }
 
