@@ -55,30 +55,32 @@
     <div class="span4">
 
         <h3 class="titlemore"><span class="slash-colored">//</span> 关 于 研 科</h3>
-        <p>研科生物成立于2012年，随着时间的推移，公司的效益越来越高！</p>
-        <p>AWES template has been coded in HTML5 &amp; CSS3 and jQuery. It has a solid flexible responsive layout.<br />
+<!--        <p>研科生物，随着时间的推移，公司的效益越来越高！</p>-->
+        <p>
+            研科生物科技有限责任公司是一家面向生命科学领域，从事科研机构、高校、院所及生产企业所需科研试剂、耗材、仪器、服务和原料的高新技术企业。目前公司主要代理的国际品牌有Ruibio、Sigma、Amresco、Aldrich、Fluka、MERCK、Roche、Applichem 斯佳生物是一个朝气蓬勃、积极进取、充满活力的年轻企业。我们立志于成为国内一流的生物试剂相关产品的开发商和供应；以及BI血清湖南总代理，研科生物的成长大家有目共度，谢谢大家的支持与厚爱。
+         </p>
         <hr />
         <h4><span class="slash-colored">//</span> 公 司 联 系 方 式</h4>
         <div class="row">
             <div class="span2">
                 <ul style="margin-top:10px;" class="unstyled">
                     <li><i class="icon-user"></i> 严 经 理</li>
-                    <li><i class="icon-th"></i> 18664846215</li>
-                    <li><i class="icon-resize-horizontal"></i> 0731 - 88888888</li>
-                    <li><i class="icon-book"></i> 湖南省 长沙市 雨花区</li>
+                    <li><i class="icon-th"></i> 18874085701</li>
+                    <li><i class="icon-bell"></i> 0731 - 88888888</li>
+                    <li><i class="icon-map-marker"></i> 湖南省 长沙市 雨花区 XXXX </li>
                 </ul>
             </div>
-            <div class="span2">
-                <ul style="margin-top:10px;" class="unstyled">
-                    <li><i class="icon-resize-small"></i> Responsive design</li>
-                    <li><i class="icon-eye-open"></i> Cross-everything</li>
-                    <li><i class="icon-list-alt"></i> Styleguide docs</li>
-                    <li><i class="icon-cog"></i> jQuery plugins</li>
-                </ul>
-            </div>
+<!--            <div class="span2">-->
+<!--                <ul style="margin-top:10px;" class="unstyled">-->
+<!--                    <li><i class="icon-resize-small"></i> Responsive design</li>-->
+<!--                    <li><i class="icon-eye-open"></i> Cross-everything</li>-->
+<!--                    <li><i class="icon-list-alt"></i> Styleguide docs</li>-->
+<!--                    <li><i class="icon-cog"></i> jQuery plugins</li>-->
+<!--                </ul>-->
+<!--            </div>-->
         </div>
         <hr />
-        <a target="_blank" href="#" class="featbtn2">Purchase Now That Great Template Only 25$</a></p>
+        <a target="_blank" href="javacript:" class="featbtn2">立刻购买！</a></p>
 
     </div>
 </div><!-- end row -->
@@ -121,7 +123,11 @@ foreach($hots as $hot){
 <div class="row">
     <div class="span12">
         <div class="hero-unit">
-            <h1><b>So what are you waiting for?</b></h1><p>AWES has been coded in HTML5 & CSS3 and jQuery. AWES has a solid flexible responsive layout for showing your work to everyone in the world! </p><p><a target="_blank" class="featbtn" href="#"><b>BUY THIS TEMPLATE ONLY 25$</b></a></p>
+            <h1><b>您还在等什么呢?</b></h1>
+            <p>
+                研科生物自成立以来，备受老师和学生的青睐！
+            </p>
+            <p><a target="_blank" class="featbtn" href="javascript:"><b>马上联系！</b></a></p>
         </div>
     </div>
 </div>
@@ -180,26 +186,26 @@ foreach($hots as $hot){
 
             <div class="span2 block">
                 <div class="view view-first noinfo">
-                    <img class="bordered" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/cl1.jpg" alt="" />
+                    <img class="bordered" src="http://www.bioon.com/images/logo/logo-bioon.gif" width="88" height="51" border="0" alt="生物谷">
                     <div class="mask">
-                        <a href="#" class="link"></a>
+                        <a href="http://www.bioon.com" class="link"></a>
                     </div>
                 </div>
             </div>
 
             <div class="span2 block">
                 <div class="view view-first noinfo">
-                    <img class="bordered" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/cl2.jpg" alt="" />
+                    <img class="bordered" width="88" height="51"  alt="生物帮" src="http://res.bio1000.com/bio1000/image/moren/logo.jpg">
                     <div class="mask">
-                        <a href="#" class="link"></a>
+                        <a href="http://www.bio1000.com/" class="link"></a>
                     </div>
                 </div>
             </div>
             <div class="span2 block">
                 <div class="view view-first noinfo">
-                    <img class="bordered" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/cl3.jpg" alt="" />
+                    <img class="bordered" width="139" height="55"  src="http://www.ebiotrade.com/web_images/2009531143559.gif">
                     <div class="mask">
-                        <a href="#" class="link"></a>
+                        <a href="http://www.ebiotrade.com/" class="link"></a>
                     </div>
                 </div>
             </div>
@@ -207,32 +213,32 @@ foreach($hots as $hot){
 
 
         <div class="span6 clearfix"></div>
-        <div class="row">
-            <div class="span2 block">
-                <div class="view view-first noinfo">
-                    <img class="bordered" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/cl4.jpg" alt="" />
-                    <div class="mask">
-                        <a href="#" class="link"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="span2 block">
-                <div class="view view-first noinfo">
-                    <img class="bordered" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/cl5.jpg" alt="" />
-                    <div class="mask">
-                        <a href="#" class="link"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="span2 block">
-                <div class="view view-first noinfo">
-                    <img class="bordered" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/portfolio/cl11.jpg" alt="" />
-                    <div class="mask">
-                        <a href="#" class="link"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--        <div class="row">-->
+<!--            <div class="span2 block">-->
+<!--                <div class="view view-first noinfo">-->
+<!--                    <img class="bordered" src="--><?php //echo yii::app()->theme->baseUrl ?><!--/assets/img/portfolio/cl4.jpg" alt="" />-->
+<!--                    <div class="mask">-->
+<!--                        <a href="#" class="link"></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="span2 block">-->
+<!--                <div class="view view-first noinfo">-->
+<!--                    <img class="bordered" src="--><?php //echo yii::app()->theme->baseUrl ?><!--/assets/img/portfolio/cl5.jpg" alt="" />-->
+<!--                    <div class="mask">-->
+<!--                        <a href="#" class="link"></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="span2 block">-->
+<!--                <div class="view view-first noinfo">-->
+<!--                    <img class="bordered" src="--><?php //echo yii::app()->theme->baseUrl ?><!--/assets/img/portfolio/cl11.jpg" alt="" />-->
+<!--                    <div class="mask">-->
+<!--                        <a href="#" class="link"></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div><!-- end blog/clients row -->
 </div><!-- end container -->

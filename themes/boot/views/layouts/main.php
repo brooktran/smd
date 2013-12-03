@@ -206,18 +206,19 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
                 </div>                </div>
             <!-- end widget -->
             <!-- widget -->
-            <div class="span3">
-                <h6>TWITTER</h6><hr />				
-				<div id="jstwitter" class="clearfix">
-                    <ul id="twitter_update_list"></ul>
-                </div>
-
-            </div>
+<!--            <div class="span3">-->
+<!--                <h6>TWITTER</h6><hr />				-->
+<!--				<div id="jstwitter" class="clearfix">-->
+<!--                    <ul id="twitter_update_list"></ul>-->
+<!--                </div>-->
+<!---->
+<!--            </div>-->
             <!-- end widget -->
 
             <!-- widget -->
-            <div class="span3">
-                <h6>FLICKR</h6><hr />				<div id="flickr_badge_wrapper" class="clearfix">
+            <div class="span6">
+                <h6>网站地图</h6><hr />
+                <div id="flickr_badge_wrapper" class="clearfix">
 
                 </div>
             </div>
@@ -232,6 +233,8 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
             </div>
             <!-- end widget -->
 
+
+
         </div>
     </div>
     <hr class="bottom" />
@@ -239,7 +242,7 @@ $this->pageTitle = Yii::app()->name . ' - 首页';
         <div class="container">
             <div class="row">
                 <div class="span6">
-                    <span style="font-size:11px;">© 2012 AWES Responsive HTML5 Template. Collect from by Laojiu QQ407898830</span>
+                    <span style="font-size:11px;">© 2012 by Laojiu QQ407898830</span>
                 </div>
 
             </div>

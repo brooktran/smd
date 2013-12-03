@@ -72,13 +72,13 @@ foreach($articles as $k=>$article){
 
 
 
-    <div class="span8 pagination pagination-left">
-        <ul>
-            <li><a href='#' class='current'>1</a></li>
-            <li><a href='#'>2</a></li><li><a href='#'>3</a></li>
-            <li><a href="#"> Next &rarr; </a></li>
-        </ul>
-    </div>
+<!--    <div class="span8 pagination pagination-left">-->
+<!--        <ul>-->
+<!--            <li><a href='#' class='current'>1</a></li>-->
+<!--            <li><a href='#'>2</a></li><li><a href='#'>3</a></li>-->
+<!--            <li><a href="#"> Next &rarr; </a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
 
 
 

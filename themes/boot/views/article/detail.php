@@ -139,7 +139,9 @@
         <h4 class="sep_bg">关于我们 ---- About US</h4>
         <div class="text-widget">
             <img class="widgetlogo" alt="" src="<?php echo yii::app()->theme->baseUrl ?>/assets/img/small_logo.png" />
-            <p>The Internet isn’t just on your computer screen anymore. It’s also on your phone, your tablet, your laptop, and god knows what else in the next few years. So when you visit AWES webpage, morph to ideally match the size and shape of the screen you’re viewing it on.</p>
+            <p>
+                研科生物科技有限责任公司是一家面向生命科学领域，从事科研机构、高校、院所及生产企业所需科研试剂、耗材、仪器、服务和原料的高新技术企业。目前公司主要代理的国际品牌有Ruibio、Sigma、Amresco、Aldrich、Fluka、MERCK、Roche、Applichem 斯佳生物是一个朝气蓬勃、积极进取、充满活力的年轻企业。我们立志于成为国内一流的生物试剂相关产品的开发商和供应；以及BI血清湖南总代理，研科生物的成长大家有目共度，谢谢大家的支持与厚爱。
+            </p>
         </div>
     </div>
     <!-- end WIDGET -->
